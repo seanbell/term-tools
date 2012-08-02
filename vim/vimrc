@@ -1,0 +1,447 @@
+" Must be first since this sets some options as a side effect
+set nocompatible
+
+" Pathogen : package manager {{{
+call pathogen#infect()
+call pathogen#helptags()
+" }}}
+
+" Global config {{{
+
+" Important -- detect file type, load plugins, and load indent rules
+filetype plugin indent on
+
+" Color scheme -- dark, 256 color, desert theme
+"set background=dark
+"set t_Co=256
+"syntax on
+"colorscheme desert
+set background=dark
+set t_Co=16
+syntax on
+colorscheme solarized
+
+" Misc
+let is_bash=1          " we are using bash
+set encoding=utf-8     " use UTF-8 (default latin1)
+set autoread           " auto-reload modified files (with no local changes)
+set undolevels=65536   " lots of undo (default 1000)
+set history=1024       " lots of history (default 20)
+set clipboard=unnamed  " Share system clipboard.
+set mouse=a            " enable mouse
+set foldmethod=marker  " fold using markers
+set hidden             " allow un-saved buffers in background
+set lazyredraw         " no redraws in macros
+set confirm            " dialog when :q, :w, :x, :wq fails
+set title              " change terminal title
+set nostartofline      " don't move cursor when switching buffers/files
+set nobackup           " that's what git is for
+
+" Appearance
+set number             " enable line numbers
+set scrolloff=3        " keep 3 lines below and above cursor
+set linebreak          " Show wrap at word boundaries and preface wrap with >>
+set showbreak=>>
+
+" Autocompletion
+set wildmenu                 " completion with menu
+set wildmode=list:longest    " list instead of fill in options
+set wildignore=*~,*.o,*.d,*.obj,*.class,*.bak,*.swp,.svn,.git
+set suffixes=~,.o,.d,.obj,.class,.bak,.swp
+set completeopt=menu,preview " Completion with a menu
+
+" Indentation -- width of 4 spaces
+set autoindent     " automatic indentation
+set smartindent    " smarter indentation, especially for C/C++
+set tabstop=4      " Number of spaces that a <Tab> in the file counts for (default 8)
+set shiftwidth=4   " Number of spaces to use for each step of (auto)indent.
+set textwidth=90   " slightly wider margins (default 80) to better match approx pdf width
+
+" Better search
+set incsearch      " incremental search
+set nohlsearch     " disable search highlighting
+set ignorecase     " ignore case in search
+set smartcase      " override ignorecase if uppercase is used in search string
+
+" Show more things
+set showmode       " show which mode we are in
+set showcmd        " show state of keyboard input
+set showmatch      " show brace match
+set matchtime=2    " faster brace match
+set report=0       " report all changes
+set ruler          " show position in bottom right
+
+" STFU
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+" Faster timeout for some actions
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Re-adjust windows on window resize
+autocmd VimResized * wincmd =
+
+" }}}
+
+" Convenient commands {{{
+
+" Use , instead of \
+let mapleader=','
+
+" Use ; instead of : for writing commands -- no need for shift
+nnoremap ; :
+
+" Left/right -- switch tabs
+noremap <left>  gT
+noremap <right> gt
+
+" Ctrl+left/right -- move tabs
+noremap <c-left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
+noremap <c-right> :execute 'silent! tabmove ' . tabpagenr()<cr>
+
+" Up/down -- switch windows
+noremap <down> <c-w>w
+noremap <up> <c-w>W
+
+" Ctrl+up/down -- move windows
+noremap <c-down> <c-w>r
+noremap <c-up> <c-w>R
+
+" Ctrl+alt+left/right -- move window into new tab left or right
+map <c-s-left> <c-w>T<c-left>
+map <c-s-right> <c-w>T<c-right>
+
+" Navigating tabs
+noremap <leader>tl gt         " move right a tab
+noremap <leader>th gT         " move left a tab
+
+let g:lasttab = 1
+au TabLeave * let g:lasttab = tabpagenr()
+nmap <Leader>tt :exe "tabn ".g:lasttab<cr> " move to last tab
+
+" Managing tabs
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>te :tabe<space>
+noremap <leader>tf :tabnew<cr>:CtrlP<cr>
+
+" Navigating windows
+noremap <leader>ww <c-w>w " move below/right in a cycle
+noremap <leader>wt <c-w>t " move to top/left
+noremap <leader>wb <c-w>b " move to bottom/right
+noremap <leader>wp <c-w>p " move to previous window
+noremap <leader>wl <c-w>l " move right a window
+noremap <leader>wh <c-w>h " move left a window
+noremap <leader>wj <c-w>j " move down a window
+noremap <leader>wk <c-w>k " move up a window
+
+" Managing windows
+noremap <leader>wn <c-w>n " create a new window with empty file
+noremap <leader>ws <c-w>s " split current window
+noremap <leader>wv <c-w>v " split current window vertically
+noremap <leader>wq <c-w>q " quit current window
+noremap <leader>wc <c-w>c " close current window
+noremap <leader>wo <c-w>o " make current window only one on screen
+noremap <leader>we :e<space>
+noremap <leader>wf <c-w>v:CtrlP<cr>
+
+" Edit file
+noremap <leader>ew :e<space>
+noremap <leader>es :sp<space>
+noremap <leader>ev :vsp<space>
+noremap <leader>et :tabe<space>
+
+" Move easily between ^ (line beginning) and $ (line end)
+noremap <C-h> ^
+noremap <C-l> $
+
+" Move by displayed lines, not physical lines
+noremap j gj
+noremap k gk
+
+" Indent with spacebar (un-indent with ctrl+space)
+nnoremap <space> >>
+vnoremap <space> >
+nnoremap <c-space> <<
+vnoremap <c-space> <
+
+" Reflow paragraph with Q in normal and visual mode
+" NOTE that this overwrites the mark q
+nnoremap Q mqgqap`q
+vnoremap Q gq
+
+" <F2>: enter paste mode (while in insert mode) to paste from outside vim safely
+noremap <F2> :set invpaste paste?<cr>
+set pastetoggle=<F2>
+
+"" Switch CWD to the directory of the open buffer
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" <leader>s : toggle check spelling
+noremap <leader>s :setlocal spell!<cr>
+
+" ctrl+s : save (you have to enable passing ctrl+s to applications)
+nmap <c-s> :w<cr>
+
+" :w!! : Save with sudo
+cmap w!! w !sudo tee % >/dev/null
+
+" select all
+nnoremap <c-a> 1GVG
+
+" backspace in normal mode
+nmap <bs> X
+
+" <leader>mk : run make
+noremap <leader>mk :make<cr>
+
+" Map :W --> :w etc
+command! W :w
+command! Wq :wq
+command! WQ :wq
+command! E :e
+
+" }}}
+
+" Global fixes {{{
+
+" Remove the toolbar if we're running under a GUI
+if has("gui_running")
+  set guioptions=-t
+endif
+
+" Fix backspaces
+set backspace=indent,eol,start
+if has('mac')
+	fixdel
+endif
+
+" Jump to last known line when opening a file (change ' to ` to do column too)
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g'\"" |
+  \   if foldlevel('.') > 0 |
+  \     exe "normal zO" |
+  \   endif |
+  \ endif
+
+" Highlight trailing whitespace in the most annoying way possible.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+noremap <leader>dw :call DeleteTrailingWS()
+
+" }}}
+
+" Filetype tabs {{{
+
+" Python -- whitespace sensitive
+autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+" Crontab -- save a backup
+autocmd FileType crontab setlocal backupcopy=yes
+
+" Latex -- 2-space tabs
+autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2
+
+" }}}
+
+" Plugin config {{{
+
+" Solarized -- change some color assignments to use less eye-bleeding red
+" tex : eye-bleeding red --> dark gray
+autocmd FileType tex hi Special ctermfg=10
+" cpp : eye-bleeding red --> bright blue
+autocmd FileType c,cpp,h,hpp hi Special ctermfg=4
+
+" Eclim -- eclipse + vim (thanks Tim)
+"   -- ctrl+space : code autocomplete
+"   -- enter : search context
+"   -- <leader>v : validate code
+"   -- <leader>fc : find c++ tag
+set completeopt=longest,menuone
+inoremap <nul> <C-x><C-u><C-n>
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
+nnoremap <leader>v <esc>:Validate<cr>
+nnoremap <leader>fc <esc>:CSearch<space>
+autocmd FileType c,cpp,h,hpp nnoremap <cr> <esc>:CSearchContext<cr> " only map for c/c++
+
+" Automatically insert C++ header gates for new h/hpp files
+function! s:insert_gates()
+  let gatename = '__' . substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename
+  execute "normal! Go#endif /* " . gatename . " */"
+  execute "normal! ggo"
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+" ScmDiff -- <leader>d : inline diff with GIT version
+
+" NERDCommenter -- use default mappings; some of them are:
+"   -- <leader>ci : toggle comment
+"   -- <leader>cc : comment;
+"   -- <leader>cs : comment 'sexily';
+
+" CtrlP -- searching files/buffers/tags/etc
+"   -- when selecting a result:
+"     -- enter: open in current window
+"     -- ctrl+t: open in new ab
+"     -- ctrl+v: open in vert split
+"     -- ctrl+s: open in horiz split
+noremap <leader>ff <esc>:CtrlP<cr>            " find file
+noremap <leader>ft <esc>:CtrlPBufTagAll<cr>   " find tag
+noremap <leader>fr <esc>:CtrlPMRUFiles<cr>    " find recently used file
+noremap <leader>fl <esc>:CtrlPLine<cr>        " find in file
+noremap <c-f> <esc>:CtrlPLine<cr>             " find in file
+
+" CtrlP -- refresh file tree on write or focus change
+augroup CtrlPExtension
+  autocmd!
+  autocmd FocusGained * ClearCtrlPCache
+  autocmd BufWritePost * ClearCtrlPCache
+augroup END
+
+" TabMan -- fancy tab manager
+let g:tabman_toggle = '<leader>tm'
+let g:tabman_focus  = '<leader><leader>tm'
+
+" GUndo -- <leader>u : show undo tree in right-hand window
+nnoremap <leader>u :GundoToggle<cr>
+let g:gundo_right = 1
+
+" FSwitch -- <leader>h or H
+"   -- <leader>h -- open in vertical split
+"   -- <leader>H -- open in current window (in place of current file)
+"   -- (custom wrappers I wrote in plugins/sbell.vim)
+noremap <leader>h <esc>:call FSSplitSmart()<cr>
+noremap <leader>H <esc>:call FSNerd(":FSHere")<cr>
+
+" EasyMotion -- map to <leader><leader> (then the usual movement keys: w, b, f, k, j ...)
+let g:EasyMotion_leader_key = '<leader><leader>'
+
+" EasyMotion -- jump repeatedly if inside NERDTree
+" (custom function in plugins/sbell.vim)
+nmap <leader>j <esc>:call EMNerd(0)<cr>
+nmap <leader>k <esc>:call EMNerd(1)<cr>
+
+" TagBar -- ctags on right (mnemonic: tagBar)
+"   -- bt : toggle
+"   -- bo : open
+"   -- bf : find
+"   -- bc : close
+nnoremap <leader>bt :TagbarToggle<cr><c-w=
+nnoremap <leader>bo :TagbarOpen<cr><c-w>=
+nnoremap <leader>bf :TagbarOpen fj<cr><c-w>=2H:call EasyMotion#JK(0, 0)<cr>
+nnoremap <leader>bc :TagbarClose<cr><c-w>=
+
+" NERDTree -- file browser on left (mnemonic: All files)
+"   -- at : toggle
+"   -- ao : open
+"   -- af : find (custom function in plugins/sbell.vim)
+"   -- ac : close
+noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
+noremap <leader>ao <esc>:NERDTree<cr><c-w>=
+noremap <leader>af <esc>:call NERDOpen()<cr>
+noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
+
+" NERDTree -- open if no files are listed and set width to 30
+autocmd vimenter * if !argc() | NERDTree | endif
+let g:NERDTreeWinSize = 30
+
+
+" CloseTag -- close html tags automagically
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+
+" Syntastic -- inline syntax errors
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
+" Fugutive -- git (note the other command: <leader>d for inline diff)
+noremap <leader>gb <esc>:Gblame<cr>
+noremap <leader>gs <esc>:Gstatus<cr>
+noremap <leader>gd <esc>:Gdiff<cr>
+noremap <leader>gl <esc>:Glog<cr>
+noremap <leader>gc <esc>:Gcommit<cr>
+noremap <leader>gp <esc>:Gpush<cr>
+
+" YankRing -- show last few yanked lines and select one to paste
+noremap <leader>y <esc>:YRShow<cr>
+
+" Visual selection
+vnoremap <silent> <leader>f :call VisualSelection('f')<CR>
+vnoremap <silent> <leader>F :call VisualSelection('b')<CR>
+
+" ShowMarks -- toggle with <leader>mt
+"  -- only include letters (I'm not sure what 0123456789.'`^<>[]{}()\" refers to but they
+"     don't seem to match up with what ShowMarks shows in the side bar)
+"  -- fix the default colors (default has foreground == background for me)
+let g:showmarks_include='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+hi ShowMarksHLl ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+
+" Powerline -- fancy status line
+" IMPORTANT: Install these fonts:
+"     ~/.vim/ubuntu-font-family-0.80/UbuntuMono-*-Powerline.ttf
+" to make this work (On Ubuntu, double-click in nautilus)
+let g:Powerline_symbols = 'fancy'
+set laststatus=2  " 2 means always show status
+
+" }}}
+
+" Latex plugin config {{{
+
+" BUGFIX: Vim7 has a problem detecting the filetype correctly when editing a new
+" LaTex document
+let g:tex_flavor='latex'
+
+" BUGFIX: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse latex-suite. Set your grep
+" program to alway generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels. Very useful!
+set iskeyword+=:
+
+" Latex leader: use , instead of `
+let g:Tex_Leader=','
+
+" Don't fold paragraphs or subsubsections
+" (add ,subsubsection,paragraph to end of list to fold those too)
+let g:Tex_FoldedSections='part,chapter,section,%%fakesection,subsection'
+
+" Don't fold \item
+" (add item, to the start of list to fold it too)
+let g:Tex_FoldedMisc='preamble,<<<'
+
+" Directory to scan for latex figure images
+let g:Tex_ImageDir='.'
+
+" Use PDF instead of DVI by default
+let g:Tex_DefaultTargetFormat='pdf'
+if has('unix') && system("uname") == "Darwin\n"  "(mac)
+    let g:Tex_ViewRule_pdf='open $*.pdf'
+else
+	let g:Tex_ViewRule_pdf='evince'
+endif
+
+" }}}
