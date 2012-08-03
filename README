@@ -6,3 +6,6 @@ README: Sean's config
 
 2) Install everything with ./install-all-config.sh
    or read it and run portions to selectively install portions
+
+3) Add 'source ~/term-tools/bashrc.sh' to your bashrc
+   (which already includes the autojump line -- no need to include it twice)
