@@ -1,3 +1,9 @@
+" VIMRC
+"
+" Read the various sections to see all the command mappings.
+" Many (but not all) of the plugins have mini-documentation
+" where they are configured.
+"
 " Must be first since this sets some options as a side effect
 set nocompatible
 
@@ -398,9 +404,6 @@ hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 
 " Powerline -- fancy status line
-" IMPORTANT: Install these fonts:
-"     ~/.vim/ubuntu-font-family-0.80/UbuntuMono-*-Powerline.ttf
-" to make this work (On Ubuntu, double-click in nautilus)
 let g:Powerline_symbols = 'fancy'
 set laststatus=2  " 2 means always show status
 
