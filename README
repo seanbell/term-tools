@@ -19,3 +19,7 @@ This repository contains my vim and tmux configuration
 
 4) Create a gnome terminal profile "solarized", run the installer in
    gnome-terminal-colors-solarized, and then make "solarized" the default profile
+
+5) Remap caps lock to escape -- open "keyboard layout" from the ubuntu menu (super key)
+   choose "options..." then "Caps lock key behavior".  Select "make caps lock an
+   additional escape"
