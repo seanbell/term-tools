@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-# install vim
+# install vim setup
 ./install-vim-config.sh $@
 
 # install autojump

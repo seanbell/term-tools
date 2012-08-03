@@ -1,0 +1,8 @@
+README: Sean's config
+
+1) Install patched ubuntu fonts
+   Open ubuntu-font-family-0.80/
+   using the file manager, open each of UbuntuMono-*-Powerline.ttf and click install
+
+2) Install everything with ./install-all-config.sh
+   or read it and run portions to selectively install portions
