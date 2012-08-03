@@ -10,3 +10,6 @@ git submodule update
 ln $@ -s ~/term-tools/vim ~/.vim
 ln $@ -s ~/term-tools/config/vimrc ~/.vimrc
 ln $@ -s ~/term-tools/config/gvimrc ~/.gvimrc
+
+echo "run with -f to overwrite dotfiles"
+
