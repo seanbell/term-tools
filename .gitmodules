@@ -61,3 +61,18 @@
 [submodule "vim/bundle/yankring"]
 	path = vim/bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "autojump"]
+	path = autojump
+	url = git://github.com/joelthelion/autojump.git
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = git://github.com/seebi/dircolors-solarized.git
+[submodule "gnome-terminal-colors-solarized"]
+	path = gnome-terminal-colors-solarized
+	url = git://github.com/sigurdga/gnome-terminal-colors-solarized.git
+[submodule "tmux-colors-solarized"]
+	path = tmux-colors-solarized
+	url = git://github.com/seebi/tmux-colors-solarized.git
+[submodule "tmux-powerline"]
+	path = tmux-powerline
+	url = git://github.com/erikw/tmux-powerline.git
