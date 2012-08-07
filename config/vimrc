@@ -208,6 +208,9 @@ command! Wq :wq
 command! WQ :wq
 command! E :e
 
+" Trim trailing whitespace
+noremap <leader>t <esc>:call TrimTrailSp()<cr>
+
 " }}}
 
 " Global fixes {{{

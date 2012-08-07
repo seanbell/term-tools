@@ -1,25 +1,37 @@
-== TERM TOOLS ==
+== SEAN'S TERM TOOLS ==
 
-This repository contains my vim and tmux configuration
+This repository contains my vim and tmux configuration, as well.
 
 
 == INSTALLATION INSTRUCTIONS ==
 
 0) sudo apt-get install vim-nox
 
-1) Install patched ubuntu fonts
-   Open ubuntu-font-family-0.80/
-   using the file manager, open each of UbuntuMono-*-Powerline.ttf and click install
+1) Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file manager,
+open each of UbuntuMono-*-Powerline.ttf and click install.
 
-2) Install everything with ./install-all-config.sh
-   or read it and run portions to selectively install portions
+2) Backup and delete your ~/.vimrc, ~/.gvimrc, ~/.vim, and ~/.tmux.conf files.
 
-3) Add 'source ~/term-tools/bashrc.sh' to your bashrc
-   (which already includes the autojump line -- no need to include it twice)
+3) Install everything with ./install-all-config.sh or read it and run portions to
+selectively install portions.  Run with -f to overwrite any existing config you may have
 
-4) Create a gnome terminal profile "solarized", run the installer in
-   gnome-terminal-colors-solarized, and then make "solarized" the default profile
+4) Add 'source ~/term-tools/bashrc.sh' to your bashrc (which already includes the autojump
+line -- no need to include it twice)
 
-5) Remap caps lock to escape -- open "keyboard layout" from the ubuntu menu (super key)
-   choose "options..." then "Caps lock key behavior".  Select "make caps lock an
-   additional escape"
+5) Create a gnome terminal profile "solarized", run the installer in
+gnome-terminal-colors-solarized, and then make "solarized" the default profile
+
+6) Remap caps lock to escape -- open "keyboard layout" from the ubuntu menu (super key)
+choose "options..." then "Caps lock key behavior".  Select "make caps lock an additional
+escape"
+
+7) This assumes that you check out the repository into ~/term-tools/.  If this is not the
+case, edit ~/.tmux.conf and term-tools/bashrc.sh to point to the new path.
+
+== USAGE ==
+
+1) The vim commands are detailed in ~/.vimrc
+
+2) For autojump, use the command "j" with a substring of the directly you want to visit
+(that you have previously visited since installing these tools)
+
