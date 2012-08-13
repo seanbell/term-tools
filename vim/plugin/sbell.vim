@@ -82,8 +82,13 @@ endfunction
 
 " Trim trailing whitespace
 function TrimTrailSp()
-	exec 'normal mq'
-	exec ':%s/\s\+$//g'
-	exec 'normal `q'
+	try
+		exec 'normal mq'
+		exec ':%s/\s\+$//g'
+		exec 'normal `q'
+		exec '1 mark q'
+	catch
+		echo "No changes made"
+	endtry
 endfunction
 
