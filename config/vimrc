@@ -245,9 +245,9 @@ func! DeleteTrailingWS()
 	%s/\s\+$//ge
 	exe "normal `q"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()<cr>
-autocmd BufWrite *.sh :call DeleteTrailingWS()<cr>
-autocmd BufWrite *.coffee :call DeleteTrailingWS()<cr>
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.sh :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
