@@ -208,9 +208,6 @@ command! Wq :wq
 command! WQ :wq
 command! E :e
 
-" Trim trailing whitespace
-noremap <leader><space> <esc>:call TrimTrailSp()<cr>
-
 " }}}
 
 " Global fixes {{{
@@ -244,13 +241,14 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+	exe "normal mq"
+	%s/\s\+$//ge
+	exe "normal `q"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-noremap <leader>dw :call DeleteTrailingWS()
+autocmd BufWrite *.py :call DeleteTrailingWS()<cr>
+autocmd BufWrite *.sh :call DeleteTrailingWS()<cr>
+autocmd BufWrite *.coffee :call DeleteTrailingWS()<cr>
+noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
 

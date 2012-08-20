@@ -80,15 +80,3 @@ function NERDOpen()
 	call EMNerd(0)
 endfunction
 
-" Trim trailing whitespace
-function TrimTrailSp()
-	try
-		exec 'normal mq'
-		exec ':%s/\s\+$//g'
-		exec 'normal `q'
-		exec '1 mark q'
-	catch
-		echo "No changes made"
-	endtry
-endfunction
-
