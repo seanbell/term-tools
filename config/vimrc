@@ -91,7 +91,7 @@ autocmd VimResized * wincmd =
 
 " Convenient commands {{{
 
-" Use , instead of \
+" Use , instead of \ for leader key
 let mapleader=','
 
 " Use ; instead of : for writing commands -- no need for shift
