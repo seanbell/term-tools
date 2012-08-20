@@ -1,7 +1,7 @@
-# UBUNTU TERMINAL CONFIG
+# TERMINAL CONFIG
 # source from ~/.bashrc
 
-# directory containing this file
+# directory containing these tools
 export TERM_TOOLS_DIR=~/term-tools
 
 # 256 colors

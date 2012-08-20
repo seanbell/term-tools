@@ -80,3 +80,10 @@ function NERDOpen()
 	call EMNerd(0)
 endfunction
 
+" Trim trailing whitespace
+function TrimTrailSp()
+	exec 'normal mq'
+	exec ':%s/\s\+$//g'
+	exec 'normal `q'
+endfunction
+
