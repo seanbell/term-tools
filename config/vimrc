@@ -34,7 +34,7 @@ set autoread           " auto-reload modified files (with no local changes)
 set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
 set clipboard=unnamed  " Share system clipboard.
-set mouse=a            " enable mouse
+"set mouse=a            " enable mouse
 set foldmethod=marker  " fold using markers
 set hidden             " allow un-saved buffers in background
 set lazyredraw         " no redraws in macros
