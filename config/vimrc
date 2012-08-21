@@ -35,13 +35,14 @@ set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
 set clipboard=unnamed  " Share system clipboard.
 "set mouse=a            " enable mouse
-set foldmethod=marker  " fold using markers
+set foldmethod=syntax  " fold using markers
 set hidden             " allow un-saved buffers in background
 set lazyredraw         " no redraws in macros
 set confirm            " dialog when :q, :w, :x, :wq fails
 set title              " change terminal title
 set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
+set ttyfast            " smoother changes
 
 " Appearance
 set number             " enable line numbers
@@ -263,6 +264,9 @@ autocmd FileType crontab setlocal backupcopy=yes
 " Latex -- 2-space tabs
 autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2
 
+" Vimrc -- fold with markers
+autocmd FileType vim setlocal foldmethod=marker
+
 " }}}
 
 " Plugin config {{{
@@ -318,6 +322,15 @@ noremap <leader>fq <esc>:CtrlPQuickfix<cr>    " find in quickfix
 noremap <leader>fu <esc>:CtrlPUndo<cr>        " find in undo
 noremap <leader>fl <esc>:CtrlPLine<cr>        " find in file (by line)
 noremap <c-f> <esc>:CtrlPLine<cr>             " find in file (by line)
+
+" CtrlP -- ignore files
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+	\ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.d$\|\.swp$',
+	\ }
+
+" CtrlP -- only search current directory
+let g:ctrlp_working_path_mode = ''
 
 " CtrlP -- refresh file tree on write or focus change
 augroup CtrlPExtension
