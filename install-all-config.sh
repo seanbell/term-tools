@@ -19,6 +19,7 @@ echo "Done"
 ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig
 ln $@ -s ~/term-tools/config/tmux.conf ~/.tmux.conf
 
+set +x
 echo "run with -f to overwrite dotfiles"
 echo ""
 echo "Add this line to your bashrc:"
