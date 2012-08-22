@@ -63,7 +63,7 @@ set autoindent     " automatic indentation
 set smartindent    " smarter indentation, especially for C/C++
 set tabstop=4      " Number of spaces that a <Tab> in the file counts for (default 8)
 set shiftwidth=4   " Number of spaces to use for each step of (auto)indent.
-set textwidth=90   " slightly wider margins (default 80) to better match approx pdf width
+set textwidth=0    " no line wrapping by default
 
 " Better search
 set incsearch      " incremental search
@@ -204,7 +204,7 @@ command! Wq :wq
 command! WQ :wq
 command! E :e
 
-" Reformat file ANSI style (A1), with tabs
+" Reformat file ANSI style (A1), with tabs (assumes c/c++)
 nnoremap <leader>rf <esc>:%!astyle -A1 -t<cr>
 
 " }}}
@@ -266,14 +266,14 @@ noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 " Python -- whitespace sensitive
 autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
-" Crontab -- save a backup
-autocmd FileType crontab setlocal backupcopy=yes
-
-" Latex -- 2-space tabs
-autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2
+" Latex -- 2-space tabs and 90-character hard wrapping
+autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2 textwidth=90
 
 " Vimrc -- fold with markers
 autocmd FileType vim setlocal foldmethod=marker
+
+" Crontab -- save a backup
+autocmd FileType crontab setlocal backupcopy=yes
 
 " }}}
 
@@ -466,6 +466,7 @@ let g:Tex_ImageDir='.'
 
 " Use PDF instead of DVI by default
 let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf='rubber --pdf $*'
 if has('unix') && system("uname") == "Darwin\n"  "(mac)
     let g:Tex_ViewRule_pdf='open $*.pdf'
 else
