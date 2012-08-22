@@ -63,7 +63,7 @@ set autoindent     " automatic indentation
 set smartindent    " smarter indentation, especially for C/C++
 set tabstop=4      " Number of spaces that a <Tab> in the file counts for (default 8)
 set shiftwidth=4   " Number of spaces to use for each step of (auto)indent.
-set textwidth=0    " no line wrapping by default
+set textwidth=0    " no hard wrapping by default
 
 " Better search
 set incsearch      " incremental search
@@ -261,7 +261,7 @@ noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
 
-" Filetype tabs and folding {{{
+" FileType tabs, folding, wrapping {{{
 
 " Python -- whitespace sensitive
 autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
