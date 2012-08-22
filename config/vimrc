@@ -35,7 +35,7 @@ set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
 set clipboard=unnamed  " Share system clipboard.
 "set mouse=a            " enable mouse
-set foldmethod=syntax  " fold using markers
+set foldmethod=syntax  " fold using syntax by default
 set foldminlines=5     " require a medium size to fold
 set hidden             " allow un-saved buffers in background
 set lazyredraw         " no redraws in macros
@@ -82,12 +82,6 @@ set ruler          " show position in bottom right
 " STFU
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Faster timeout for some actions
-set timeout timeoutlen=1000 ttimeoutlen=100
-
-" Re-adjust windows on window resize
-autocmd VimResized * wincmd =
 
 " }}}
 
@@ -214,6 +208,16 @@ command! E :e
 
 " Global fixes {{{
 
+" Faster timeout for some actions
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Re-adjust windows on window resize
+autocmd VimResized * wincmd =
+
+" Insert mode -- don't undo folds when typing
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
 " Remove the toolbar if we're running under a GUI
 if has("gui_running")
   set guioptions=-t
@@ -254,7 +258,7 @@ noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
 
-" Filetype tabs {{{
+" Filetype tabs and folding {{{
 
 " Python -- whitespace sensitive
 autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
