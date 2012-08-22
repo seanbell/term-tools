@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -x -e
 
 # install vim setup
 ./install-vim-config.sh $@
@@ -20,6 +20,9 @@ ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig
 ln $@ -s ~/term-tools/config/tmux.conf ~/.tmux.conf
 
 set +x
+echo ""
+echo " == INSTALL COMPLETE =="
+echo ""
 echo "run with -f to overwrite dotfiles"
 echo ""
 echo "Add this line to your bashrc:"
@@ -27,4 +30,4 @@ echo "    [[ -f ~/term-tools/config/bashrc.sh ]] && source ~/term-tools/config/b
 echo ""
 echo "To have nice c++ reformatting, install astyle:"
 echo "    sudo apt-get install astyle"
-
+echo " ======================"
