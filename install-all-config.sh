@@ -24,3 +24,6 @@ echo ""
 echo "Add this line to your bashrc:"
 echo "    [[ -f ~/term-tools/config/bashrc.sh ]] && source ~/term-tools/config/bashrc.sh"
 echo ""
+echo "To have nice c++ reformatting, install astyle:"
+echo "    sudo apt-get install astyle"
+
