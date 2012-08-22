@@ -36,6 +36,7 @@ set history=1024       " lots of history (default 20)
 set clipboard=unnamed  " Share system clipboard.
 "set mouse=a            " enable mouse
 set foldmethod=syntax  " fold using markers
+set foldminlines=5     " require a medium size to fold
 set hidden             " allow un-saved buffers in background
 set lazyredraw         " no redraws in macros
 set confirm            " dialog when :q, :w, :x, :wq fails
