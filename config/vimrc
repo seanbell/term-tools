@@ -34,7 +34,7 @@ set autoread           " auto-reload modified files (with no local changes)
 set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
 set clipboard=unnamed  " Share system clipboard.
-"set mouse=a            " enable mouse
+set mouse=a            " enable mouse
 set foldmethod=syntax  " fold using syntax by default
 set foldminlines=4     " require a medium size to fold
 set foldnestmax=3      " max 3 fold levels for syntax/indent folding
@@ -49,8 +49,8 @@ set ttyfast            " smoother changes
 " Appearance
 set number             " enable line numbers
 set scrolloff=3        " keep 3 lines below and above cursor
-set linebreak          " Show wrap at word boundaries and preface wrap with ↪
-set showbreak=\ ↪\ 
+set linebreak          " show wrap at word boundaries
+set showbreak=\ ↪\     " preface wrap with ↪
 " Autocompletion
 set wildmenu                 " completion with menu
 set wildmode=list:longest    " list instead of fill in options
@@ -266,8 +266,8 @@ noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 " Python -- whitespace sensitive
 autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
-" Latex -- 2-space tabs and 90-character hard wrapping
-autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2 textwidth=90
+" Latex -- 2-space tabs and 80-character hard wrapping
+autocmd FileType tex setlocal expandtab shiftwidth=2 tabstop=2 textwidth=80
 
 " Vimrc -- fold with markers
 autocmd FileType vim setlocal foldmethod=marker
@@ -297,7 +297,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
 nnoremap <leader>v <esc>:Validate<cr>
 nnoremap <leader>fc <esc>:CSearch<space>
-autocmd FileType c,cpp,h,hpp nnoremap <cr> <esc>:CSearchContext<cr> " only map for c/c++
+autocmd FileType c,cpp,h,hpp nnoremap <cr> <esc>:CSearchContext<cr>zO
+autocmd FileType c,cpp,h,hpp nnoremap <C-LeftMouse> <LeftMouse><esc>:CSearchContext<cr>zO
 
 " Automatically insert C++ header gates for new h/hpp files
 function! s:insert_gates()
