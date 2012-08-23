@@ -46,9 +46,8 @@ set nobackup           " that's what git is for
 " Appearance
 set number             " enable line numbers
 set scrolloff=3        " keep 3 lines below and above cursor
-set linebreak          " Show wrap at word boundaries and preface wrap with >>
-set showbreak=>>
-
+set linebreak          " Show wrap at word boundaries and preface wrap with ↪
+set showbreak=\ ↪\ 
 " Autocompletion
 set wildmenu                 " completion with menu
 set wildmode=list:longest    " list instead of fill in options
