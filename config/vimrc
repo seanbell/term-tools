@@ -37,6 +37,7 @@ set clipboard=unnamed  " Share system clipboard.
 "set mouse=a            " enable mouse
 set foldmethod=syntax  " fold using syntax by default
 set foldminlines=4     " require a medium size to fold
+set foldnestmax=3      " max 3 fold levels for syntax/indent folding
 set hidden             " allow un-saved buffers in background
 set lazyredraw         " no redraws in macros
 set confirm            " dialog when :q, :w, :x, :wq fails
