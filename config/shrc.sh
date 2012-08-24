@@ -34,3 +34,4 @@ function j {
 if command -v dircolors >/dev/null 2>&1; then
 	eval $(dircolors $TERM_TOOLS_DIR/dircolors-solarized/dircolors.ansi-dark)
 fi
+
