@@ -8,10 +8,10 @@ git submodule update
 
 if [ -d ~/.vim ]; then
 	if [ "$1" == "-f" ]; then
-		echo "Note: old ~/.vim is now ~/dotvim-old"
-		mv ~/.vim ~/dotvim-old
+		echo "Note: deleting ~/.vim"
+		rm -rf ~/.vim
 	else
-		echo "Error: .vim exists"
+		echo "Error: .vim exists.  Move or delete ~/.vim"
 		exit 1
 	fi
 fi
