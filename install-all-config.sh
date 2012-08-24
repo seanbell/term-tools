@@ -11,7 +11,7 @@ for f in zsh bash; do
 		echo "Installing autojump into $HOME ($f)..."
 		SRC_AUTOJUMP_SH=~/.autojump/etc/profile.d/autojump.$f
 		cd autojump
-		$f install.sh > /dev/null
+		./install.sh --$f > /dev/null
 		cd ..
 		sed 's/^function j {$/function j_impl {/' < $SRC_AUTOJUMP_SH > $TMP_AUTOJUMP_SH
 		mv -f $TMP_AUTOJUMP_SH $SRC_AUTOJUMP_SH
@@ -30,7 +30,7 @@ echo ""
 echo "run with -f to overwrite dotfiles"
 echo ""
 echo "Add this line to your bashrc:"
-echo "    [[ -f ~/term-tools/config/bashrc.sh ]] && source ~/term-tools/config/bashrc.sh"
+echo "    [[ -f ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh"
 echo ""
 echo "To have nice c++ reformatting, install astyle:"
 echo "    sudo apt-get install astyle"
