@@ -1,17 +1,19 @@
 # TERMINAL CONFIG
-# source from ~/.bashrc
+# source from ~/.bashrc or ~/.zshrc
 
 # directory containing these tools
 export TERM_TOOLS_DIR=~/term-tools
 
 # 256 colors
-if [ "$TERM" == "xterm" ]; then
+if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
 fi
 
 # autojump
-[[ -f ~/.autojump/etc/profile.d/autojump.bash ]] && source ~/.autojump/etc/profile.d/autojump.bash
-complete -F _cd j
+[[ -f ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+if [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+	complete -F _cd j
+fi
 
 # call autojump, or fall back to cd if autojump fails
 function j {
