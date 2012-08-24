@@ -1,10 +1,11 @@
 #!/bin/bash
-set -x
+set -e
 
 # Submodules
 git pull
 git submodule init
 git submodule update
+git pull
 
 if [ -d ~/.vim ]; then
 	if [ "$1" == "-f" ]; then
