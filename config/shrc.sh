@@ -11,7 +11,7 @@ fi
 
 # autojump
 [[ -f ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-if [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+if [ "$BASH_VERSION" ]; then
 	complete -F _cd j
 fi
 
