@@ -30,6 +30,17 @@ set -x -e
 # install vim setup
 ./install-vim-config.sh $@
 
+# store git user info
+FIX_GIT_USER=~/term-tools/fix-git-user.sh
+git config -l | grep "^user" | sed 's/^/git config --global /' | sed 's/=/ "/' | sed 's/$/"/' > $FIX_GIT_USER
+
+# this will fail if it already exists, so we are safe
+ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig
+ln $@ -s ~/term-tools/config/tmux.conf ~/.tmux.conf
+
+source $FIX_GIT_USER
+rm $FIX_GIT_USER
+
 # install autojump for both bash and zsh (if installed)
 TMP_AUTOJUMP_SH=~/.autojump-term-tools.tmp
 for f in zsh bash; do
@@ -44,10 +55,6 @@ for f in zsh bash; do
 	fi
 done
 echo "Done"
-
-# this will fail if it already exists, so we are safe
-ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig
-ln $@ -s ~/term-tools/config/tmux.conf ~/.tmux.conf
 
 # install oh-my-zsh config if it exists
 if [ -d ~/.oh-my-zsh ]; then
