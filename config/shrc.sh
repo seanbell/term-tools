@@ -17,7 +17,7 @@ fi
 
 # call autojump, or fall back to cd if autojump fails
 function j {
-	_p=$PWD
+	local _p=$PWD
 	j_impl $@
 
 	if [[ "$PWD" == "$_p" ]] && [[ -d "$1" ]]; then
