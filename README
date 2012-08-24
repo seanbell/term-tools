@@ -4,28 +4,31 @@ This repository contains my terminal config and plugins for vim and tmux.
 
 == INSTALLATION INSTRUCTIONS ==
 
-00) Checkout term-tools:
+0) Checkout term-tools:
     cd $HOME; git clone git://github.com/seanbell/term-tools.git
-	If you want to install these elsewhere, you need to edit the line in
+
+	If you want to install these elsewhere, you need to edit a bunch of places (sorry):
 	~/term-tools/config/shrc.sh
+	~/term-tools/install-all-config.sh
+	~/term-tools/install-vim-config.sh
 
-0) sudo apt-get install vim-nox
+1) sudo apt-get install vim-nox
 
-1) Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file manager,
+2) Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file manager,
 open each of UbuntuMono-*-Powerline.ttf and click install.
 
-2) Backup and delete your ~/.vimrc, ~/.gvimrc, ~/.vim, and ~/.tmux.conf files.
+3) Backup and delete your ~/.vimrc, ~/.gvimrc, ~/.vim, and ~/.tmux.conf files.
 
-3) Install everything with ./install-all-config.sh or read it and run portions to
+4) Install everything with ./install-all-config.sh or read it and run portions to
 selectively install portions.  Run with -f to overwrite any existing config you may have
 
-4) Add 'source ~/term-tools/config/shrc.sh' to your bashrc (which already includes the
+5) Add 'source ~/term-tools/config/shrc.sh' to your bashrc (which already includes the
 autojump line -- no need to include it twice)
 
-5) Create a gnome terminal profile "solarized", run the installer in
+6) Create a gnome terminal profile "solarized", run the installer in
 gnome-terminal-colors-solarized, and then make "solarized" the default profile
 
-6) Remap caps lock to escape -- open "keyboard layout" from the ubuntu menu (super key)
+7) Remap caps lock to escape -- open "keyboard layout" from the ubuntu menu (super key)
 choose "options..." then "Caps lock key behavior".  Select "make caps lock an additional
 escape"
 
