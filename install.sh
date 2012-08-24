@@ -29,6 +29,11 @@ trap print_err ERR
 
 set -e
 
+# Load submodules
+git pull
+git submodule init
+git submodule update
+
 # run through the installers
 for f in $(ls -1 installers/*.sh); do
 	inst="y"
