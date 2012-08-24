@@ -20,7 +20,7 @@ function j {
 	_p=$PWD
 	j_impl $@
 
-	if [ "$PWD" == "$_p" ] && [ -d "$1" ]; then
+	if [[ "$PWD" == "$_p" ]] && [[ -d "$1" ]]; then
 		cd $1
 		echo -e "\\033[31m${PWD}\\033[0m"
 	fi
