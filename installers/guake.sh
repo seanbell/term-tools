@@ -5,7 +5,7 @@ if command -v apt-get >/dev/null 2>&1; then
 	sudo apt-get install guake
 else
 	echo "ERROR: this installer only works for Ubuntu"
-	exit 1
+	exit 0
 fi
 
 xmodmap -e "keycode 9 = F12"
