@@ -24,10 +24,6 @@ function j {
 		cd $1
 		echo -e "\\033[31m${PWD}\\033[0m"
 	fi
-
-	if [ "$PWD" != "$_p" ]; then
-		ls
-	fi
 }
 
 # solarized color scheme
@@ -53,15 +49,28 @@ fi
 
 # ZSH-SPECIFIC CONFIG
 if [ "$ZSH_VERSION" ]; then
+
+	# ls after every cd
+	function chpwd() {
+		emulate -L zsh
+		ls -a
+	}
+
 	# vim keybindings
 	bindkey -v
 	bindkey '\e[3~' delete-char
 	#bindkey '^R' history-incremental-search-backward
 	bindkey '^R' history-incremental-pattern-search-backward
+
 fi
 
 # BASH-SPECIFIC CONFIG
 if [ "$BASH_VERSION" ]; then
+
+	# ls after every cd
+	function cd()  {
+		 builtin cd "$@" && ls
+    }
 
 	# Custom terminal: blue, 2 levels of directories, and git branch
 	export PROMPT_DIRTRIM=2
