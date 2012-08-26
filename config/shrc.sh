@@ -67,10 +67,12 @@ fi
 # BASH-SPECIFIC CONFIG
 if [ "$BASH_VERSION" ]; then
 
-	# ls after every cd
-	function cd()  {
-		 builtin cd "$@" && ls
-    }
+	# ls after every cd (except on hydra)
+	if [[ ! hostname ~= hydra*.cs.cornell.edu ]]; then
+		function cd()  {
+			 builtin cd "$@" && ls
+		}
+	fi
 
 	# Custom terminal: blue, 2 levels of directories, and git branch
 	export PROMPT_DIRTRIM=2
