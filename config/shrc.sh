@@ -47,6 +47,11 @@ function j {
 		cd $1
 		echo -e "\\033[31m${PWD}\\033[0m"
 	fi
+
+	# ls after cd (since this is disabled when remote)
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		ls
+	fi
 }
 
 # ZSH-SPECIFIC CONFIG
