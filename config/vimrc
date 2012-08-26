@@ -371,6 +371,10 @@ let g:EasyMotion_leader_key = '<leader><leader>'
 nmap <leader>j <esc>:call EMNerd(0)<cr>
 nmap <leader>k <esc>:call EMNerd(1)<cr>
 
+" EasyMotion & Solarized fix
+hi link EasyMotionTarget WarningMsg
+hi link EasyMotionShade Normal
+
 " TagBar -- ctags on right (mnemonic: tagBar)
 "   -- bt : toggle
 "   -- bo : open
