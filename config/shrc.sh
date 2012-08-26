@@ -74,16 +74,16 @@ if [ "$BASH_VERSION" ]; then
 		}
 	fi
 
-	# Custom terminal: blue, 2 levels of directories, and git branch
-	export PROMPT_DIRTRIM=2
+	# Custom terminal: blue, 8 levels of directories, and git branch
+	export PROMPT_DIRTRIM=8
 	DEFAULT_COLOR="\[\e[0m\]"
 	PS1_COLOR="\[\e[1;32;40m\]"
 	GIT_COLOR="\[\e[34m\]"
 	TITLEBAR="\[\e]0;\h \w\007\]"
 	if command -v __git_ps1 >/dev/null 2>&1; then
-	  PS1="$TITLEBAR$PS1_COLOR\h:\w$GIT_COLOR\$(__git_ps1)$PS1_COLOR\$ $DEFAULT_COLOR"
+	  PS1="$TITLEBAR$PS1_COLOR\h:\w$GIT_COLOR\$(__git_ps1)$PS1_COLOR\n \$ $DEFAULT_COLOR"
 	else
-	  PS1="$TITLEBAR$PS1_COLOR\h:\w\$$DEFAULT_COLOR "
+	  PS1="$TITLEBAR$PS1_COLOR\h:\w\n \$$DEFAULT_COLOR "
 	fi
 
 	# don't put duplicate lines or lines starting with space in the history.
