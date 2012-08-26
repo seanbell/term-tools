@@ -68,7 +68,7 @@ fi
 if [ "$BASH_VERSION" ]; then
 
 	# ls after every cd (except on hydra)
-	if [[ ! hostname ~= hydra*.cs.cornell.edu ]]; then
+	if ! hostname | grep 'hydra' >/dev/null; then
 		function cd()  {
 			 builtin cd "$@" && ls
 		}
@@ -100,3 +100,4 @@ if [ "$BASH_VERSION" ]; then
 	shopt -s cdspell
 
 fi
+
