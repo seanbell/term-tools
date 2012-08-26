@@ -1,1 +1,1 @@
-xmodmap -e "keycode 9 = F12"
+xmodmap .Xmodmap
