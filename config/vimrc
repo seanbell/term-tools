@@ -279,6 +279,10 @@ autocmd FileType crontab setlocal backupcopy=yes
 
 " Plugin config {{{
 
+" YankStack -- paste older items on stack
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_older_paste
+
 " Solarized -- change some color assignments to use less eye-bleeding red
 " tex : eye-bleeding red --> dark gray
 autocmd FileType tex hi Special ctermfg=10
