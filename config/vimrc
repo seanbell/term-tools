@@ -416,9 +416,6 @@ noremap <leader>gl <esc>:Glog<cr>
 noremap <leader>gc <esc>:Gcommit<cr>
 noremap <leader>gp <esc>:Gpush<cr>
 
-" YankRing -- show last few yanked lines and select one to paste
-noremap <leader>y <esc>:YRShow<cr>
-
 " Visual selection
 vnoremap <silent> <leader>f :call VisualSelection('f')<CR>
 vnoremap <silent> <leader>F :call VisualSelection('b')<CR>

@@ -58,9 +58,6 @@
 [submodule "vim/bundle/tabman"]
 	path = vim/bundle/tabman
 	url = git://github.com/kien/tabman.vim.git
-[submodule "vim/bundle/yankring"]
-	path = vim/bundle/yankring
-	url = git://github.com/vim-scripts/YankRing.vim.git
 [submodule "autojump"]
 	path = autojump
 	url = git://github.com/joelthelion/autojump.git
