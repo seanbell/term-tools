@@ -278,6 +278,10 @@ autocmd FileType crontab setlocal backupcopy=yes
 " }}}
 
 " Plugin config {{{
+"
+" Powerline -- fancy status line
+let g:Powerline_symbols = 'fancy'
+set laststatus=2  " 2 means always show status
 
 " YankStack -- paste older items on stack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -433,10 +437,6 @@ hi ShowMarksHLl ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
-
-" Powerline -- fancy status line
-let g:Powerline_symbols = 'fancy'
-set laststatus=2  " 2 means always show status
 
 " }}}
 
