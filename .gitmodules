@@ -82,3 +82,6 @@
 [submodule "guake-colors-solarized"]
 	path = guake-colors-solarized
 	url = git://github.com/coolwanglu/guake-colors-solarized.git
+[submodule "vim/bundle/yankstack"]
+	path = vim/bundle/yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack
