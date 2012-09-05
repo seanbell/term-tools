@@ -26,7 +26,7 @@ fun! TeX_fmt()
     endtry
     norm gq
         let &wrapscan = op_wrapscan
-    call setpos('.', save_cursor) 
+    call setpos('.', save_cursor)
     endif
 endfun
 

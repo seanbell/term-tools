@@ -90,9 +90,6 @@ autocmd GUIEnter * set visualbell t_vb=
 " Use , instead of \ for leader key
 let mapleader=','
 
-" Use ; instead of : for writing commands -- no need for shift
-nnoremap ; :
-
 " Left/right -- switch tabs
 noremap <left>  gT
 noremap <right> gt
@@ -170,8 +167,8 @@ vnoremap <c-space> <
 
 " Reflow paragraph with Q in normal and visual mode
 " NOTE that this overwrites the mark q
-nnoremap Q mqgqap`q
-vnoremap Q gq
+nnoremap Q gwap
+vnoremap Q gw
 
 " <F2>: enter paste mode (while in insert mode) to paste from outside vim safely
 noremap <F2> :set invpaste paste?<cr>
@@ -441,6 +438,9 @@ hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 " }}}
 
 " Latex plugin config {{{
+
+" Treat \ like a word character
+autocmd FileType tex setlocal iskeyword+=\\
 
 " BUGFIX: Vim7 has a problem detecting the filetype correctly when editing a new
 " LaTex document
