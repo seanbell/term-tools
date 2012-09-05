@@ -88,6 +88,3 @@
 [submodule "tomorrow-theme"]
 	path = tomorrow-theme
 	url = git://github.com/chriskempson/tomorrow-theme.git
-[submodule "vim/bundle/tomorrow-night"]
-	path = vim/bundle/tomorrow-night
-	url = git://github.com/chriskempson/tomorrow-theme.git
