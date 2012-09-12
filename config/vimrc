@@ -50,7 +50,8 @@ set ttyfast            " smoother changes
 set number             " enable line numbers
 set scrolloff=3        " keep 3 lines below and above cursor
 set linebreak          " show wrap at word boundaries
-set showbreak=\ ↪\     " preface wrap with ↪
+set showbreak=\ ↪\     " prefix wrap with ↪
+
 " Autocompletion
 set wildmenu                 " completion with menu
 set wildmode=list:longest    " list instead of fill in options
@@ -67,9 +68,10 @@ set textwidth=0    " no hard wrapping by default
 
 " Better search
 set incsearch      " incremental search
-set nohlsearch     " disable search highlighting
 set ignorecase     " ignore case in search
 set smartcase      " override ignorecase if uppercase is used in search string
+set hlsearch       " enable search highlighting (change to nohlsearch to disable)
+                   " clear highlight with :noh
 
 " Show more things
 set showmode       " show which mode we are in
@@ -87,7 +89,7 @@ autocmd GUIEnter * set visualbell t_vb=
 
 " Convenient commands {{{
 
-" Use , instead of \ for leader key
+" Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
 " Left/right -- switch tabs
@@ -166,7 +168,6 @@ nnoremap <c-space> <<
 vnoremap <c-space> <
 
 " Reflow paragraph with Q in normal and visual mode
-" NOTE that this overwrites the mark q
 nnoremap Q gwap
 vnoremap Q gw
 
@@ -177,16 +178,19 @@ set pastetoggle=<F2>
 "" Switch CWD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" <leader>s : toggle check spelling
-noremap <leader>s :setlocal spell!<cr>
+" <leader>sp : toggle check spelling
+noremap <leader>sp <esc>:setlocal spell!<cr>
 
-" ctrl+s : save (you have to enable passing ctrl+s to applications)
-nmap <c-s> :w<cr>
+" <leader>sc : search clear highlight
+noremap <leader>sc <esc>:noh<cr>
+
+" ctrl+s : save (you have to enable passing ctrl+s from the terminal)
+nmap <c-s> <esc>:w<cr>
 
 " :w!! : Save with sudo
 cmap w!! w !sudo tee % >/dev/null
 
-" select all
+" ctrl+a : select all
 nnoremap <c-a> 1GVG
 
 " backspace in normal mode
@@ -246,11 +250,12 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
+fun! DeleteTrailingWS()
 	exe "normal mq"
 	%s/\s\+$//ge
 	exe "normal `q"
-endfunc
+	":ShowMarksClearMark
+endfun
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.sh :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
