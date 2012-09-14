@@ -8,14 +8,13 @@
 set nocompatible
 
 " Pathogen : package manager {{{
+filetype off
 call pathogen#infect()
 call pathogen#helptags()
+filetype plugin indent on
 " }}}
 
 " Global config {{{
-
-" Important -- detect file type, load plugins, and load indent rules
-filetype plugin indent on
 
 " Color scheme -- dark, 256 color, desert theme
 "set background=dark
@@ -280,7 +279,7 @@ autocmd FileType crontab setlocal backupcopy=yes
 " }}}
 
 " Plugin config {{{
-"
+
 " Powerline -- fancy status line
 let g:Powerline_symbols = 'fancy'
 set laststatus=2  " 2 means always show status
@@ -439,6 +438,9 @@ hi ShowMarksHLl ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+
+" Python-mode
+let g:pymode_syntax = 0
 
 " }}}
 
