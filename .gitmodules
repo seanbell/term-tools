@@ -94,3 +94,6 @@
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "vim/bundle/cute-python"]
+	path = vim/bundle/cute-python
+	url = git://github.com/ehamberg/vim-cute-python.git
