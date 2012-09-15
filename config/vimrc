@@ -439,15 +439,16 @@ hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 
-" Python-mode
-let g:pymode_syntax = 0
-
 " }}}
 
 " Latex plugin config {{{
 
-" Treat \ like a word character
+" Treat \ and : like a word character
+" Note: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels. Very useful!
 autocmd FileType tex setlocal iskeyword+=\\
+autocmd FileType tex setlocal iskeyword+=:
 
 " BUGFIX: Vim7 has a problem detecting the filetype correctly when editing a new
 " LaTex document
@@ -457,11 +458,6 @@ let g:tex_flavor='latex'
 " search in a singe file. This will confuse latex-suite. Set your grep
 " program to alway generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" if you write your \label's as \label{fig:something}, then if you
-" type in \ref{fig: and press <C-n> you will automatically cycle through
-" all the figure labels. Very useful!
-set iskeyword+=:
 
 " Latex leader: use , instead of `
 let g:Tex_Leader=','
