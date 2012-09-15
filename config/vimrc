@@ -117,7 +117,7 @@ noremap <leader>th gT         " move left a tab
 
 let g:lasttab = 1
 au TabLeave * let g:lasttab = tabpagenr()
-nmap <Leader>tt :exe "tabn ".g:lasttab<cr> " move to last tab
+nnoremap <leader>tt <esc>:exe 'tabn '.g:lasttab<cr> " Move to previous tab
 
 " Managing tabs
 noremap <leader>tn :tabnew<cr>
