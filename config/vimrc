@@ -177,7 +177,7 @@ set pastetoggle=<F2>
 "" Switch CWD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" <leader>sp : toggle check spelling
+" <leader>sp : toggle check SPelling
 noremap <leader>sp <esc>:setlocal spell!<cr>
 
 " <leader>sc : search clear highlight
@@ -204,8 +204,10 @@ command! Wq :wq
 command! WQ :wq
 command! E :e
 
-" Reformat file ANSI style (A1), with tabs (assumes c/c++)
-nnoremap <leader>rf <esc>:%!astyle -A1 -t<cr>
+" <leader>sf -- style-format code
+"    C++    -- ANSI style (A1), with tabs (assumes c/c++)
+autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
+"autocmd FileType python nnoremap <leader>sf <esc>:!autopep8 --in-place %<cr>
 
 " }}}
 
