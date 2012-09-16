@@ -206,8 +206,9 @@ command! E :e
 
 " <leader>sf -- style-format code
 "    C++    -- ANSI style (A1), with tabs (assumes c/c++)
+"    Python -- PEP8 style -- WARNING SAVES FILE
 autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
-autocmd FileType python nnoremap <leader>sf <esc>:%!autopep8 %<cr>
+autocmd FileType python nnoremap <leader>sf <esc>:w<cr>:%!autopep8 %<cr>
 
 " }}}
 
@@ -250,16 +251,17 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space
 fun! DeleteTrailingWS()
 	exe "normal mq"
 	%s/\s\+$//ge
 	exe "normal `q"
 	":ShowMarksClearMark
 endfun
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.sh :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+" commented out: vim seems to hang on save with this
+"autocmd BufWrite *.py :call DeleteTrailingWS()
+"autocmd BufWrite *.sh :call DeleteTrailingWS()
+"autocmd BufWrite *.coffee :call DeleteTrailingWS()
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
