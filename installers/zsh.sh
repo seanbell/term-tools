@@ -28,7 +28,7 @@ if [ -d ~/.oh-my-zsh ]; then
 		mv custom custom.backup
 	fi
 
-	ln $@ -s ~/term-tools/oh-my-zsh-custom custom
+	ln $@ -s ~/term-tools/oh-my-zsh-custom/zsh-syntax-highlighting plugins/zsh-syntax-highlighting
 	ln $@ -s ~/term-tools/config/sbell.zsh-theme themes/sbell.zsh-theme
 	cd -
 
