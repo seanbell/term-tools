@@ -40,6 +40,11 @@ if [ "$BASH_VERSION" ]; then
 	complete -F _cd j
 fi
 
+# ls with a 1-second timeout
+function ls_safe {
+	~/term-tools/config/timeout3.sh -t 1 ls --color=auto
+}
+
 # autojump wrapper (I've renamed "function j" in
 #   autojump.sh to "function j_impl")
 function j {
@@ -50,23 +55,16 @@ function j {
 		cd $1
 		echo -e "\\033[31m${PWD}\\033[0m"
 	fi
-
-	# ls after cd (since this is disabled when remote)
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-		ls
-	fi
 }
 
 # ZSH-SPECIFIC CONFIG
 if [ "$ZSH_VERSION" ]; then
 
-	# ls after every cd (except when remotely logged in)
-	if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
-		function chpwd() {
-			emulate -L zsh
-			ls
-		}
-	fi
+	# ls after every cd
+	function chpwd() {
+		emulate -L zsh
+		ls_safe
+	}
 
 	# vim keybindings for zsh
 	bindkey -v
@@ -78,12 +76,10 @@ fi
 # BASH-SPECIFIC CONFIG
 if [ "$BASH_VERSION" ]; then
 
-	# ls after every cd (except when remotely logged in)
-	if [ ! -n "$SSH_CLIENT" ] && [ ! -n "$SSH_TTY" ]; then
-		function cd()  {
-			 builtin cd "$@" && ls
-		}
-	fi
+	# ls after every cd
+	function cd()  {
+		 builtin cd "$@" && ls_safe
+	}
 
 	# Custom terminal: blue, 2 levels of directories, and git branch
 	export PROMPT_DIRTRIM=2
