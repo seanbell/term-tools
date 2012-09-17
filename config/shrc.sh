@@ -42,7 +42,7 @@ fi
 
 # ls with a 1-second timeout
 function ls_safe {
-	~/term-tools/config/timeout3.sh -t 1 ls
+	~/term-tools/config/timeout3.sh -t 1 ls --color=auto
 }
 
 # autojump wrapper (I've renamed "function j" in
