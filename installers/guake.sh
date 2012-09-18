@@ -2,7 +2,7 @@
 set -e
 
 if command -v apt-get >/dev/null 2>&1; then
-	sudo apt-get install guake
+	sudo apt-get install -y guake
 else
 	echo "ERROR: this installer only works for Ubuntu"
 	exit 0

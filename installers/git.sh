@@ -5,7 +5,7 @@ if command -v git >/dev/null 2>&1; then
 	echo "git: exists"
 elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
-	sudo apt-get install git-all
+	sudo apt-get install -y git-all
 elif command -v /opt/local/bin/port >/dev/null 2>&1; then
 	# macport
 	sudo port install git-core +svn+bash_completion+mp_completion

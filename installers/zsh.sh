@@ -5,7 +5,7 @@ if command -v zsh >/dev/null 2>&1; then
 	echo "zsh: exists"
 elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
-	sudo apt-get install zsh
+	sudo apt-get install -y zsh
 elif command -v /opt/local/bin/port >/dev/null 2>&1; then
 	# macport
 	sudo port install zsh
