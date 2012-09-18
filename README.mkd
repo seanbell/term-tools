@@ -8,10 +8,10 @@ released their scripts!
 ## SREENSHOTS
 
 Using `zsh`:
-![Screenshot 1](screenshots/screen1.png)
+![Screenshot 1](seanbell.github.com/term-tools/screenshots/screen1.png)
 
 Using `vim`:
-![Screenshot 2](screenshots/screen2.png)
+![Screenshot 2](seanbell.github.com/term-tools/screenshots/screen2.png)
 
 ## FEATURES
  * Installs and configures `autojump`, `guake`, `solarized`, `tomorrow`, `zsh`,
