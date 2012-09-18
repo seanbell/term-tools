@@ -63,6 +63,12 @@ released their scripts!
 
 1. The Vim commands are detailed in `~/.vimrc`
 
-2. For autojump, use the command `j` with a substring of the directly you want to visit
-   (that you have previously visited since installing these tools)
+2. For autojump, use the command `j` with a substring of the directly you want
+   to visit (that you have previously visited since installing these tools)
 
+## POSSIBLE ISSUES
+
+ * Typing is slow in large directories -- `zsh-syntax-highlighting` looks at
+   files in the current directory, so the whole terminal becomes slow if
+   `ls` is slow.  To resolve this, remove `zsh-syntax-highlighting` from
+   the line `plugins=( ... )` in `~/.zshrc`.
