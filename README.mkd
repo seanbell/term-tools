@@ -15,8 +15,8 @@ This repository contains my terminal config and plugins for vim and tmux.
 2. Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file
    manager, open each of `UbuntuMono-*-Powerline.ttf` and click install.
 
-3. Backup and delete your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`, `~/.vim`, and
-   `~/.tmux.conf` files if you have them.
+3. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
+   `~/.vim`, and `~/.tmux.conf` files if you have them.
 
 4. Install everything with `./install.sh`.  You shouldn't need to run it with
    `sudo`, though the script will make calls to `sudo` internally.  It will ask
