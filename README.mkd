@@ -5,6 +5,14 @@ zsh and vim.  Most of this repository is pieced together from existing
 configurations and hard work by other programmers.  Many thanks to those who
 released their scripts!
 
+## SREENSHOTS
+
+Using `zsh`:
+![Screenshot 1](screenshots/screen1.png)
+
+Using `vim`:
+![Screenshot 2](screenshots/screen2.png)
+
 ## FEATURES
  * Installs and configures `autojump`, `guake`, `solarized`, `tomorrow`, `zsh`,
    `oh-my-zsh`
