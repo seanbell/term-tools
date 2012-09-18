@@ -12,8 +12,8 @@ This repository contains my terminal config and plugins for vim and tmux.
 
 1. Install vim: <pre>sudo apt-get install vim-nox</pre>
 
-2. Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file
-   manager, open each of `UbuntuMono-*-Powerline.ttf` and click install.
+2. Install patched Ubuntu fonts.  Open `ubuntu-font-family-0.80/` using the
+   file manager, open each of `UbuntuMono-*-Powerline.ttf` and click install.
 
 3. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
    `~/.vim`, and `~/.tmux.conf` files if you have them.
@@ -23,10 +23,10 @@ This repository contains my terminal config and plugins for vim and tmux.
    whether each component should be installed.  Run with `-f` to overwrite any
    existing config you may have.
 
-5. Add <pre>source ~/term-tools/config/shrc.sh</pre> to your `~/.bashrc` and
-   `~/.zshrc` (`shrc.sh` already includes the autojump include code -- no need to
-   include it twice).  Note that this will install zsh, so you should include the
-   above line in both `~/.bashrc` and `~/.zshrc`
+5. Add this line: <pre>source ~/term-tools/config/shrc.sh</pre> to your
+   `~/.bashrc` and `~/.zshrc` (`shrc.sh` already includes the autojump include
+   code -- no need to include it twice).  Note that this will install zsh, so
+   you should include the above line in both `~/.bashrc` and `~/.zshrc`
 
 6. Create a gnome terminal profile "solarized", run the installer in
    gnome-terminal-colors-solarized, and then make "solarized" the default profile.
