@@ -18,8 +18,10 @@ This repository contains my terminal config and plugins for vim and tmux.
 3. Backup and delete your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`, `~/.vim`, and
    `~/.tmux.conf` files if you have them.
 
-4. Install everything with `./install.sh`.  It will ask whether each component
-   should be installed.  Run with -f to overwrite any existing config you may have
+4. Install everything with `./install.sh`.  You shouldn't need to run it with
+   `sudo`, though the script will make calls to `sudo` internally.  It will ask
+   whether each component should be installed.  Run with `-f` to overwrite any
+   existing config you may have.
 
 5. Add <pre>source ~/term-tools/config/shrc.sh</pre> to your `~/.bashrc` and
    `~/.zshrc` (`shrc.sh` already includes the autojump include code -- no need to
