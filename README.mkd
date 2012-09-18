@@ -5,10 +5,10 @@ This repository contains my terminal config and plugins for vim and tmux.
 ## INSTALLATION INSTRUCTIONS
 
 0. Checkout term-tools:
-    cd $HOME; git clone git://github.com/seanbell/term-tools.git
+   <pre>cd $HOME; git clone git://github.com/seanbell/term-tools.git</pre>
 
-    If you want to install these elsewhere, you need to search the scripts for
-    ~/term-tools and change them to the new location (sorry).
+   If you want to install these elsewhere, you need to search the scripts for
+   `~/term-tools` and change them to the new location (sorry).
 
 1. Install vim: <pre>sudo apt-get install vim-nox</pre>
 
@@ -21,8 +21,10 @@ This repository contains my terminal config and plugins for vim and tmux.
 4. Install everything with `./install.sh`.  It will ask whether each component
    should be installed.  Run with -f to overwrite any existing config you may have
 
-5. Add <pre>source ~/term-tools/config/shrc.sh</pre> to your bashrc or zshrc (shrc.sh
-   already includes the autojump line -- no need to include it twice)
+5. Add <pre>source ~/term-tools/config/shrc.sh</pre> to your `~/.bashrc` and
+   `~/.zshrc` (`shrc.sh` already includes the autojump include code -- no need to
+   include it twice).  Note that this will install zsh, so you should include the
+   above line in both `~/.bashrc` and `~/.zshrc`
 
 6. Create a gnome terminal profile "solarized", run the installer in
    gnome-terminal-colors-solarized, and then make "solarized" the default profile.
