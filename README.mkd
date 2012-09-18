@@ -10,23 +10,23 @@ This repository contains my terminal config and plugins for vim and tmux.
     If you want to install these elsewhere, you need to search the scripts for
     ~/term-tools and change them to the new location (sorry).
 
-1. sudo apt-get install vim-nox
+1. Install vim: <pre>sudo apt-get install vim-nox</pre>
 
 2. Install patched ubuntu fonts.  Open ubuntu-font-family-0.80/ using the file
-   manager, open each of UbuntuMono-*-Powerline.ttf and click install.
+   manager, open each of `UbuntuMono-*-Powerline.ttf` and click install.
 
-3. Backup and delete your ~/.zshrc, ~/.vimrc, ~/.gvimrc, ~/.vim, and
-   ~/.tmux.conf files if you have them.
+3. Backup and delete your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`, `~/.vim`, and
+   `~/.tmux.conf` files if you have them.
 
-4. Install everything with ./install.sh.  It will ask whether each component
+4. Install everything with `./install.sh`.  It will ask whether each component
    should be installed.  Run with -f to overwrite any existing config you may have
 
-5. Add 'source ~/term-tools/config/shrc.sh' to your bashrc or zshrc (which
+5. Add <pre>source ~/term-tools/config/shrc.sh</pre> to your bashrc or zshrc (shrc.sh
    already includes the autojump line -- no need to include it twice)
 
 6. Create a gnome terminal profile "solarized", run the installer in
    gnome-terminal-colors-solarized, and then make "solarized" the default profile.
-   In that profile, make the font <pre>Ubuntu Mono for Powerline</pre> 13
+   In that profile, make the font `Ubuntu Mono for Powerline 13`
 
 7. Suggested: remap caps lock to escape -- open "keyboard layout" from the
    ubuntu menu (super key) choose "options..." then "Caps lock key behavior".
@@ -34,10 +34,8 @@ This repository contains my terminal config and plugins for vim and tmux.
 
 ## USAGE
 
-1) The vim commands are detailed in ~/.vimrc
+1. The Vim commands are detailed in `~/.vimrc`
 
-2) For autojump, use the command "j" with a substring of the directly you want to visit
+2. For autojump, use the command `j` with a substring of the directly you want to visit
    (that you have previously visited since installing these tools)
-
-3)
 
