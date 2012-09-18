@@ -69,6 +69,6 @@ released their scripts!
 ## POSSIBLE ISSUES
 
  * Typing is slow in large directories -- `zsh-syntax-highlighting` looks at
-   files in the current directory, so the whole terminal becomes slow if
-   `ls` is slow.  To resolve this, remove `zsh-syntax-highlighting` from
+   files in the current directory, so the whole terminal becomes slow if `ls`
+   is slow.  If this is an issue for you, remove `zsh-syntax-highlighting` from
    the line `plugins=( ... )` in `~/.zshrc`.
