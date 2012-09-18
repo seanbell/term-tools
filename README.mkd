@@ -5,7 +5,7 @@ zsh and vim.  Most of this repository is pieced together from existing
 configurations and hard work by other programmers.  Many thanks to those who
 released their scripts!
 
-## SREENSHOT
+## SREENSHOTS
 
 #### Using `vim`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen1.png?raw=true)
