@@ -1,6 +1,9 @@
 # TERM TOOLS
 
-This repository contains my terminal config and plugins for vim and tmux.
+This repository contains my terminal config and plugins, mostly focused around
+zsh and vim.  Most of this repository is pieced together from existing
+configurations and hard work by other programmers.  Many thanks to those who
+released their scripts!
 
 ## FEATURES
  * Installs and configures `autojump`, `guake`, `solarized`, `tomorrow`, `zsh`,
@@ -14,6 +17,9 @@ This repository contains my terminal config and plugins for vim and tmux.
    `powerline` `python-mode` `rainbow-parentheses` `searchcomplete` `showmarks`
    `solarized` `supertab` `surround` `syntastic` `tabman` `tagbar`
    `tomorrow-night` `yankstack`
+ * Custom vim scripts: improved text-wrapping with `Q`,
+   delete-trailing-whitespace, render python `lambda` as `λ`, other things I
+   forget
  * Smart `ls` after `cd`: if `ls` takes more than 1 second to respond, it is
    suppressed
  * More things I can't think of
