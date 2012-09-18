@@ -29,8 +29,9 @@ This repository contains my terminal config and plugins for vim and tmux.
    you should include the above line in both `~/.bashrc` and `~/.zshrc`
 
 6. Create a gnome terminal profile "solarized", run the installer in
-   gnome-terminal-colors-solarized, and then make "solarized" the default profile.
-   In that profile, make the font `Ubuntu Mono for Powerline 13`
+   `gnome-terminal-colors-solarized`, and then make "solarized" the default
+   gnome terminal profile.  In that profile, make the font `Ubuntu Mono for
+   Powerline 13`.
 
 7. Suggested: remap caps lock to escape -- open "keyboard layout" from the
    ubuntu menu (super key) choose "options..." then "Caps lock key behavior".

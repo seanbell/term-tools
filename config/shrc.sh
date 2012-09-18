@@ -81,8 +81,8 @@ if [ "$BASH_VERSION" ]; then
 		 builtin cd "$@" && ls_safe
 	}
 
-	# Custom terminal: blue, 2 levels of directories, and git branch
-	export PROMPT_DIRTRIM=2
+	# Custom terminal: blue path and yellow git branch
+	#export PROMPT_DIRTRIM=2  # uncomment to trim to 2 directories
 	DEFAULT_COLOR="\[\e[0m\]"
 	PS1_COLOR="\[\e[34m\]"
 	GIT_COLOR="\[\e[33m\]"
