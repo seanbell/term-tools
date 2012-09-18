@@ -48,7 +48,7 @@ released their scripts!
 5. Add this line: <pre>source ~/term-tools/config/shrc.sh</pre> to your
    `~/.bashrc` and `~/.zshrc` (`shrc.sh` already includes the autojump include
    code -- no need to include it twice).  Note that this will install zsh, so
-   you should include the above line in both `~/.bashrc` and `~/.zshrc`
+   you should include the above line in both `~/.bashrc` and `~/.zshrc`.
 
 6. Create a gnome terminal profile "solarized", run the installer in
    `gnome-terminal-colors-solarized`, and then make "solarized" the default
