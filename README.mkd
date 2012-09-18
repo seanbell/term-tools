@@ -2,6 +2,16 @@
 
 This repository contains my terminal config and plugins for vim and tmux.
 
+## FEATURES
+ * Packages `autojump`, `guake`, `solarized`, `tomorrow`, `zsh`, `oh-my-zsh`
+ * Includes configuration and wrappers for the above
+ * Packages the best vim plugins: `closetag` `ctrlp` `easymotion` `fswitch`
+   `fugitive` `gitignore` `gundo` `latex` `matchit` `nerdcommenter` `nerdtree`
+   `powerline` `python-mode` `rainbow-parentheses` `searchcomplete` `showmarks`
+   `solarized` `supertab` `surround` `syntastic` `tabman` `tagbar`
+   `tomorrow-night` `yankstack`
+ * Improved `~/.vimrc` key mappings
+
 ## INSTALLATION INSTRUCTIONS
 
 0. Checkout term-tools:
