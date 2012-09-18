@@ -5,12 +5,12 @@ zsh and vim.  Most of this repository is pieced together from existing
 configurations and hard work by other programmers.  Many thanks to those who
 released their scripts!
 
-## SREENSHOTS
+## SREENSHOT
 
-Using `zsh`:
+#### Using `vim`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen1.png?raw=true)
 
-Using `vim`:
+#### Using `zsh`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
