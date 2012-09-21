@@ -9,5 +9,6 @@ else
 fi
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
+ln $@ -s ~/term-tools/config/inputrc ~/.inputrc
 
 echo "run with -f to overwrite dotfiles"
