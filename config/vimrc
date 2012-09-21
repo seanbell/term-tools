@@ -210,6 +210,9 @@ command! E :e
 autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
 autocmd FileType python nnoremap <leader>sf <esc>:PyLintAuto<cr>
 
+" Python:
+" <leader>r -- run file (or visual selection) in mini-window
+
 " }}}
 
 " Global fixes {{{
