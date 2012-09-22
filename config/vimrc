@@ -450,6 +450,9 @@ hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 
 " Latex plugin config {{{
 
+" Replace latex with their math symbol
+" --> see bundle/sbell/syntax/tex.vim
+
 " Treat \ and : like a word character
 " Note: if you write your \label's as \label{fig:something}, then if you
 " type in \ref{fig: and press <C-n> you will automatically cycle through
