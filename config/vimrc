@@ -296,7 +296,7 @@ nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_older_paste
 
 " Solarized -- change some color assignments to use less eye-bleeding red
-" tex : eye-bleeding red --> dark gray
+" tex : eye-bleeding red --> dark gray (note that 2 or 3 also work pretty well)
 autocmd FileType tex hi Special ctermfg=10
 " cpp : eye-bleeding red --> bright blue
 autocmd FileType c,cpp,h,hpp hi Special ctermfg=4
