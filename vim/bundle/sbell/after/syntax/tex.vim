@@ -1,15 +1,16 @@
 if has('conceal')
+	" more reasonably sized symbols that were already defined
+	syn match texMathSymbol '\\Rightarrow\>' contained conceal cchar=⇒
+	syn match texMathSymbol '\\Leftarrow\>' contained conceal cchar=⇐
+	syn match texMathSymbol '\\rightarrow\>' contained conceal cchar=→
+	syn match texMathSymbol '\\leftarrow\>' contained conceal cchar=←
+	syn match texMathSymbol '\\emptyset\>' contained conceal cchar=Ø
+
 	" logical symbols
 	syn match texMathSymbol '\\lor\>' contained conceal cchar=∨
 	syn match texMathSymbol '\\land\>' contained conceal cchar=∧
 	syn match texMathSymbol '\\lnot\>' contained conceal cchar=¬
 	syn match texMathSymbol '\\implies\>' contained conceal cchar=⇒
-
-	" more reasonably sized arrows
-	syn match texMathSymbol '\\Rightarrow\>' contained conceal cchar=⇒
-	syn match texMathSymbol '\\Leftarrow\>' contained conceal cchar=⇐
-	syn match texMathSymbol '\\rightarrow\>' contained conceal cchar=→
-	syn match texMathSymbol '\\leftarrow\>' contained conceal cchar=←
 
 	" \mathbb characters
 	syn match texMathSymbol '\\mathbb{A}' contained conceal cchar=𝔸
