@@ -60,7 +60,7 @@ set completeopt=menu,preview " Completion with a menu
 
 " Indentation -- width of 4 spaces
 set autoindent     " automatic indentation
-set smartindent    " smarter indentation, especially for C/C++
+set nosmartindent  " disable C-style indenting by default (only useful for C/C++)
 set tabstop=4      " Number of spaces that a <Tab> in the file counts for (default 8)
 set shiftwidth=4   " Number of spaces to use for each step of (auto)indent.
 set textwidth=0    " no hard wrapping by default
@@ -282,6 +282,9 @@ autocmd FileType vim setlocal foldmethod=marker
 
 " Crontab -- save a backup
 autocmd FileType crontab setlocal backupcopy=yes
+
+" C/C++ -- smart indentation
+autocmd FileTYpe c,cpp,h,hpp setlocal smartindent cindent
 
 " }}}
 
