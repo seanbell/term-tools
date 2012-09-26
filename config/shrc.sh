@@ -41,9 +41,16 @@ if [ "$BASH_VERSION" ]; then
 fi
 
 # ls with a 1-second timeout
-function ls_safe {
-	~/term-tools/config/timeout3.sh -t 1 ls --color=auto
-}
+if uname | grep Darwin > /dev/null; then
+	# Mac version
+	function ls_safe {
+		~/term-tools/config/timeout3.sh -t 1 ls -G
+	}
+else
+	function ls_safe {
+		~/term-tools/config/timeout3.sh -t 1 ls --color=auto
+	}
+fi
 
 # autojump wrapper (I've renamed "function j" in
 #   autojump.sh to "function j_impl")
