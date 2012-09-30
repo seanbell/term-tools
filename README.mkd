@@ -70,7 +70,8 @@ have `term-tools` working on both OSX and Ubuntu.
 
 7. Suggested: remap caps lock to escape -- open "keyboard layout" from the
    ubuntu menu (super key) choose "options..." then "Caps lock key behavior".
-   Select "make caps lock an additional escape"
+   Select "make caps lock an additional escape".  This is probably the single
+   best improvement I've done to my workflow.
 
 ## USAGE
 
