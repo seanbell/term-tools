@@ -10,7 +10,7 @@ released their scripts!
 #### Using `vim`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen1.png?raw=true)
 
-#### Using `zsh`
+#### Using `zsh` and `autojump`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
