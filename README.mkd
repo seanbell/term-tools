@@ -45,8 +45,9 @@ have `term-tools` working on both OSX and Ubuntu.
 
 1. Install vim: <pre>sudo apt-get install vim-nox</pre>
 
-2. Install patched Ubuntu fonts.  Open `ubuntu-font-family-0.80/` using the
-   file manager, open each of `UbuntuMono-*-Powerline.ttf` and click install.
+2. Install patched Ubuntu fonts for the `powerline` plugin.  Open
+   `ubuntu-font-family-0.80/` using the file manager, open each of
+   `UbuntuMono-*-Powerline.ttf` and click install.
 
 3. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
    `~/.vim`, and `~/.tmux.conf` files if you have them.
