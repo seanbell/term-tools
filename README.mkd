@@ -57,10 +57,11 @@ have `term-tools` working on both OSX and Ubuntu.
    whether each component should be installed.  Run with `-f` to overwrite any
    existing config you may have.
 
-5. Add this line: <pre>source ~/term-tools/config/shrc.sh</pre> to your
-   `~/.bashrc` and `~/.zshrc` (`shrc.sh` already includes the autojump include
-   code -- no need to include it twice).  Note that this will install zsh, so
-   you should include the above line in both `~/.bashrc` and `~/.zshrc`.
+5. Add this line to your `~/.bashrc` and `~/.zshrc`:
+   <pre>source ~/term-tools/config/shrc.sh</pre>
+   (`shrc.sh` already includes the autojump include code -- no need to include
+   it twice).  Note that this will install zsh, so you should include the
+   above line in both `~/.bashrc` and `~/.zshrc`.
 
 6. Create a gnome terminal profile "solarized", run the installer in
    `gnome-terminal-colors-solarized`, and then make "solarized" the default
