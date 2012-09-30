@@ -44,7 +44,7 @@ set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
 set ttyfast            " smoother changes
 
-if heas('unix') && system("uname") == "Linux\n"
+if has('unix') && system("uname") == "Linux\n"
 	set clipboard=unnamedplus  " Share X windows clipboard.
 else
 	set clipboard=unnamed  " Share system clipboard.
