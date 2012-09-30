@@ -60,7 +60,7 @@ have `term-tools` working on both OSX and Ubuntu.
 5. Add this line to your `~/.bashrc` and `~/.zshrc`:
    <pre>source ~/term-tools/config/shrc.sh</pre>
    (`shrc.sh` already includes the autojump include code -- no need to include
-   it twice).  Note that if you use install zsh, so you should include the
+   it twice).  Note that if you use install `zsh`, so you should include the
    above line in both `~/.bashrc` and `~/.zshrc`.
 
 6. Create a Gnome Terminal profile "solarized", run the installer in
