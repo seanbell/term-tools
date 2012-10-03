@@ -94,3 +94,6 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/yankstack"]
+	path = vim/bundle/yankstack
+	url = git://github.com/maxbrunsfeld/vim-yankstack.git
