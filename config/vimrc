@@ -96,6 +96,9 @@ autocmd GUIEnter * set visualbell t_vb=
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
+" Make Y more consistent with C and D
+nmap Y y$
+
 " Left/right -- switch tabs
 noremap <left>  gT
 noremap <right> gt
