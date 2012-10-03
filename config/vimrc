@@ -301,6 +301,7 @@ set laststatus=2  " 2 means always show status
 
 " YankStack -- paste older items on stack
 let g:yankstack_map_keys = 0
+call yankstack#setup()
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
