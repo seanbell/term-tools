@@ -300,8 +300,9 @@ let g:Powerline_symbols = 'fancy'
 set laststatus=2  " 2 means always show status
 
 " YankStack -- paste older items on stack
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_older_paste
+let g:yankstack_map_keys = 0
+nnoremap <leader>p <Plug>yankstack_substitute_older_paste
+nnoremap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Solarized -- change some color assignments to use less eye-bleeding red
 " tex : eye-bleeding red --> dark gray (note that 2 or 3 also work pretty well)
