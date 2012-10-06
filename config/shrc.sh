@@ -88,6 +88,11 @@ if [ "$BASH_VERSION" ]; then
 		 builtin cd "$@" && ls_safe
 	}
 
+	# cdd browser: navigate with hjkl, esc: cancel, enter: use that dir
+	if [ -s ~/term-tools/cdd/cdd.sh ]; then
+		alias cdd=". ~/term-tools/cdd/cdd.sh"
+	fi
+
 	# Custom terminal: blue path and yellow git branch
 	#export PROMPT_DIRTRIM=2  # uncomment to trim to 2 directories
 	DEFAULT_COLOR="\[\e[0m\]"
