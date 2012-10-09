@@ -40,9 +40,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/searchcomplete"]
-	path = vim/bundle/searchcomplete
-	url = git://github.com/vim-scripts/SearchComplete.git
 [submodule "vim/bundle/fswitch"]
 	path = vim/bundle/fswitch
 	url = git://github.com/derekwyatt/vim-fswitch.git
