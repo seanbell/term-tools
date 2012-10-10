@@ -131,7 +131,6 @@ nnoremap <leader>tt <esc>:exe 'tabn '.g:lasttab<cr> " Move to previous tab
 noremap <leader>tn :tabnew<cr>
 noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
-noremap <leader>te :tabe<space>
 noremap <leader>tf :tabnew<cr>:CtrlP<cr>
 
 " Navigating windows
@@ -151,14 +150,20 @@ noremap <leader>wv <c-w>v " split current window vertically
 noremap <leader>wq <c-w>q " quit current window
 noremap <leader>wc <c-w>c " close current window
 noremap <leader>wo <c-w>o " make current window only one on screen
-noremap <leader>we :e<space>
 noremap <leader>wf <c-w>v:CtrlP<cr>
 
-" Edit file
+" Edit file in current window
 noremap <leader>ew :e<space>
+noremap <leader>we :e<space>
+" Edit file in split (horizontal)
 noremap <leader>es :sp<space>
+noremap <leader>se :sp<space>
+" Edit file in split (vertical)
 noremap <leader>ev :vsp<space>
+noremap <leader>ve :vsp<space>
+" Edit file new tab
 noremap <leader>et :tabe<space>
+noremap <leader>te :tabe<space>
 
 " Move easily between ^ (line beginning) and $ (line end)
 noremap <C-h> ^
@@ -317,14 +322,14 @@ autocmd FileType c,cpp,h,hpp hi Special ctermfg=4
 " Eclim -- eclipse + vim (thanks Tim)
 "   -- ctrl+space : code autocomplete
 "   -- enter : search context
-"   -- <leader>v : validate code
+"   -- <leader>vc : validate c++ code
 "   -- <leader>fc : find c++ tag
 set completeopt=longest,menuone
 inoremap <nul> <C-x><C-u><C-n>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
-nnoremap <leader>v <esc>:Validate<cr>
+nnoremap <leader>vc <esc>:Validate<cr>
 nnoremap <leader>fc <esc>:CSearch<space>
 autocmd FileType c,cpp,h,hpp nnoremap <cr> <esc>:CSearchContext<cr>zO
 autocmd FileType c,cpp,h,hpp nnoremap <C-LeftMouse> <LeftMouse><esc>:CSearchContext<cr>zO
