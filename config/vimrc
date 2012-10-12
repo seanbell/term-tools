@@ -97,6 +97,7 @@ autocmd GUIEnter * set visualbell t_vb=
 let mapleader=','
 
 " Make Y more consistent with C and D
+call yankstack#setup()
 nmap Y y$
 
 " Left/right -- switch tabs
@@ -308,8 +309,6 @@ let g:Powerline_symbols = 'fancy'
 set laststatus=2  " 2 means always show status
 
 " YankStack -- paste older items on stack
-let g:yankstack_map_keys = 0
-call yankstack#setup()
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
