@@ -167,18 +167,18 @@ noremap <leader>et :tabe<space>
 noremap <leader>te :tabe<space>
 
 " Move easily between ^ (line beginning) and $ (line end)
-noremap <C-h> ^
-noremap <C-l> $
+noremap <c-h> ^
+noremap <c-l> $
 
 " Move by displayed lines, not physical lines
 noremap j gj
 noremap k gk
 
-" Indent with spacebar (un-indent with ctrl+space)
-nnoremap <space> >>
-vnoremap <space> >
-nnoremap <c-space> <<
-vnoremap <c-space> <
+" Indent with tab, unindent with shift-tab
+nnoremap <tab> >>
+vnoremap <tab> >
+nnoremap <s-tab> <<
+vnoremap <s-tab> <
 
 " Reflow paragraph with Q in normal and visual mode
 nnoremap Q gwap
