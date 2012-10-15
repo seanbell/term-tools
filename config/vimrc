@@ -180,6 +180,10 @@ vnoremap <tab> >
 nnoremap <s-tab> <<
 vnoremap <s-tab> <
 
+" Also indent with space
+nnoremap <space> >>
+vnoremap <space> >
+
 " Reflow paragraph with Q in normal and visual mode
 nnoremap Q gwap
 vnoremap Q gw
