@@ -475,7 +475,7 @@ let g:html_indent_style1 = "inc"
 " Replace latex with their math symbol
 " --> see bundle/sbell/syntax/tex.vim
 
-" Disable the <++>
+" Disable the <++> that normally gets inserted with this latex plugin
 let g:Imap_UsePlaceHolders = 0
 
 " Treat \ and : like a word character
