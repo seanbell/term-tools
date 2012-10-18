@@ -228,9 +228,6 @@ command! E :e
 autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
 autocmd FileType python nnoremap <leader>sf <esc>:PyLintAuto<cr>
 
-" Python:
-" <leader>r -- run file (or visual selection) in mini-window
-
 " }}}
 
 " Global fixes {{{
@@ -471,6 +468,10 @@ hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+" Python -- check on the fly instead of on write
+let g:pymode_lint_write = 0
+let g:pymode_lint_onfly = 0
 
 " }}}
 
