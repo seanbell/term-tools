@@ -50,14 +50,20 @@ for f in $(ls -1 installers/*.sh); do
 	fi
 done
 
+for f in ~/.zshrc ~/.bashrc; do
+	if [[ -s $f ]]; then
+		if [[ $(grep -c '[[ -s ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh' $f) == "0" ]]; then
+			echo '[[ -s ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh' >> $f
+		fi
+	fi
+done
+
+
 set +x
 echo ""
 echo " == INSTALL COMPLETE =="
 echo ""
 echo "To overwrite existing config, rerun with -f (this will delete any existing configuration)"
-echo ""
-echo "Add this line to both your ~/.bashrc and ~/.zshrc:"
-echo "    [[ -s ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh"
 echo ""
 echo "To make zsh the default shell, run:"
 echo "    chsh -s /bin/zsh"
