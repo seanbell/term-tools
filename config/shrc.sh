@@ -89,6 +89,7 @@ if [ "$BASH_VERSION" ]; then
 	}
 
 	# cdd browser: navigate with hjkl, esc: cancel, enter: use that dir
+	# (unfortunately this does not work in zsh)
 	if [ -s ~/term-tools/cdd/cdd.sh ]; then
 		alias cdd=". ~/term-tools/cdd/cdd.sh"
 	fi
