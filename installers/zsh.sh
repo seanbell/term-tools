@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# tmp file for this script
+ZSHRC_TMP=~/term-tools/zshrc-tmp
+
 if command -v zsh >/dev/null 2>&1; then
 	echo "zsh: exists"
 elif command -v apt-get >/dev/null 2>&1; then
@@ -18,6 +21,15 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 fi
 
+if [ -s /etc/zsh/zshrc ]; then
+	# This fixes the  up arrow key for ZSH default config.  The default is to
+	# have the cursor go to th END of the line, but Ubuntu has overwritten this
+	# ZSH default to go to the beginning of the line.  I think that's stupid,
+	# so I'm reverting back to the default behavior
+	sed -e 's/vi-up-line-or-history/up-line-or-history/g' -e 's/vi-down-line-or-history/down-line-or-history/' /etc/zsh/zshrc > $ZSHRC_TMP
+	sudo mv $ZSHRC_TMP /etc/zsh/zshrc
+fi
+
 # install oh-my-zsh config if it exists
 if [ -d ~/.oh-my-zsh ]; then
 	cd ~/.oh-my-zsh
@@ -33,7 +45,6 @@ if [ -d ~/.oh-my-zsh ]; then
 	cd -
 
 	# set theme and add syntax plugin
-	ZSHRC_TMP=~/term-tools/zshrc-tmp
 	sed -e 's/ZSH_THEME=.*$/ZSH_THEME="sbell"/' -e 's/plugins=(\(.*\))/plugins=(\1 zsh-syntax-highlighting)/' -e 's/zsh-syntax-highlighting zsh-syntax-highlighting/zsh-syntax-highlighting/' ~/.zshrc > $ZSHRC_TMP
 	mv -f $ZSHRC_TMP ~/.zshrc
 else
