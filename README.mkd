@@ -63,10 +63,10 @@ have `term-tools` working on both OSX and Ubuntu.
    it twice).  Note that if you use install `zsh`, so you should include the
    above line in both `~/.bashrc` and `~/.zshrc`.
 
-6. Create a Gnome Terminal profile "solarized", run the installer in
-   `gnome-terminal-colors-solarized`, and then make "solarized" the default
-   Gnome Terminal profile.  In that profile, make the font `Ubuntu Mono for
-   Powerline 13`.
+6. Create a Gnome Terminal profile "solarized", run the installer
+   (`installer.sh`) in `gnome-terminal-colors-solarized`, and then make
+   "solarized" the default Gnome Terminal profile.  In that profile, make the
+   font `Ubuntu Mono for Powerline 13`.
 
 7. Suggested: remap caps lock to escape -- open "keyboard layout" from the
    ubuntu menu (super key) choose "options..." then "Caps lock key behavior".
