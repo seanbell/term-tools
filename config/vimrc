@@ -89,16 +89,12 @@ set ruler          " show position in bottom right
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-" }}}
-
-" Convenient commands {{{
-
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
-" Make Y more consistent with C and D
-call yankstack#setup()
-nmap Y y$
+" }}}
+
+" Windows and tabs {{{
 
 " Left/right -- switch tabs
 noremap <left>  gT
@@ -120,10 +116,6 @@ noremap <c-up> <c-w>R
 map <c-s-left> <c-w>T<c-left>
 map <c-s-right> <c-w>T<c-right>
 
-" Navigating tabs
-noremap <leader>tl gt         " move right a tab
-noremap <leader>th gT         " move left a tab
-
 let g:lasttab = 1
 au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <leader>tt <esc>:exe 'tabn '.g:lasttab<cr> " Move to previous tab
@@ -133,6 +125,7 @@ noremap <leader>tn :tabnew<cr>
 noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
 noremap <leader>tf :tabnew<cr>:CtrlP<cr>
+noremap <leader>ts :tab split
 
 " Navigating windows
 noremap <leader>ww <c-w>w " move below/right in a cycle
@@ -165,6 +158,19 @@ noremap <leader>ve :vsp<space>
 " Edit file new tab
 noremap <leader>et :tabe<space>
 noremap <leader>te :tabe<space>
+
+" Merge current window ino a vert-split with prev/next tab
+" (defined in ~/.vim/bundle/sbell/plugin/sbell.vim
+nnoremap <leader>tl <esc>:call MoveToNextTab()<cr>
+nnoremap <leader>th <esc>:call MoveToPrevTab()<cr>
+
+" }}}
+
+" Convenient commands {{{
+
+" Make Y more consistent with C and D
+call yankstack#setup()
+nmap Y y$
 
 " Move easily between ^ (line beginning) and $ (line end)
 noremap <c-h> ^
@@ -301,6 +307,8 @@ autocmd FileType crontab setlocal backupcopy=yes
 " C/C++ -- smart indentation
 autocmd FileTYpe c,cpp,h,hpp setlocal smartindent cindent
 
+" Coffeescript -- 2-space tabs
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 " }}}
 
 " Plugin config {{{
