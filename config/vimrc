@@ -238,7 +238,7 @@ autocmd FileType python nnoremap <leader>sf <esc>:PyLintAuto<cr><esc>:PyLint<cr>
 "    Python -- PEP8 style
 "    Coffee
 autocmd FileType coffee nnoremap <leader>l <esc>:PyLint<cr>
-autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint | cwindow<cr>
+autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
 
 " <leader>r -- run/compile code
 "     C/C++  -- run make
@@ -453,6 +453,9 @@ noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
 " NERDTree -- open if no files are listed and set width to 30
 autocmd vimenter * if !argc() | NERDTree | endif
 let g:NERDTreeWinSize = 30
+
+" NERDTree -- hide files
+let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
 
 
 " CloseTag -- close html tags automagically
