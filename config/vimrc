@@ -229,16 +229,22 @@ command! WQ :wq
 command! E :e
 
 " <leader>sf -- style-format code
-"    C++    -- ANSI style (A1), with tabs (assumes c/c++)
-"    Python -- PEP8 style (should suppress all style warnings)
-"    Coffee
+"    C/C++  -- ANSI style (A1), with tabs
+"    Python -- PEP8 style
 autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
 autocmd FileType python nnoremap <leader>sf <esc>:PyLintAuto<cr><esc>:PyLint<cr>
-autocmd FileType coffee nnoremap <leader>sf <esc>:CoffeeLint<cr>
 
-" <leader>r -- run/compile code -- works for Python and Coffee
+" <leader>l -- lint code
+"    Python -- PEP8 style
+"    Coffee
+autocmd FileType coffee nnoremap <leader>l <esc>:PyLint<cr>
+autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint | cwindow<cr>
+
+" <leader>r -- run/compile code
+"     C/C++  -- run make
 "     Python -- set up by python-mode
 "     Coffee -- watch live compilation
+autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:make<cr>
 autocmd FileType coffee nnoremap <leader>r <esc>:CoffeeCompile watch<cr>
 
 " }}}
