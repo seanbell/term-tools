@@ -128,7 +128,8 @@ texnames = [f.tex for f in files]
 print_msg('Files: %s' % texnames)
 
 if len(texnames) < 1:
-    print_err('Usage: %s <file1.tex> [<file2.tex> ...]' % sys.argv[0])
+    print_err('\nUsage: %s <file1.tex> [<file2.tex> ...]' % sys.argv[0])
+    print_msg('Note: if there is only one .tex file, you can omit the argument')
     exit(1)
 
 ###
