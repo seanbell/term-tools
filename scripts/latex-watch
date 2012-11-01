@@ -39,7 +39,6 @@ class Tex:
     def __init__(self, tex, use_hash=True):
         self.tex = tex
         self.pdf = re.sub(r'\.tex$', '.pdf', tex)
-        self.use_hash = use_hash
         self._viewed = False
         self._md5 = None
         self._mtime = None
@@ -54,7 +53,7 @@ class Tex:
                 self._viewed = True
 
     def make(self):
-        """ Builds self.tex to produce self.pdf """
+        """ Builds self.tex to produce self.pdf; returns true if rebuilt """
         if self.use_hash:
             new_mtime = os.path.getmtime(self.tex)
             if new_mtime != self._mtime:
@@ -62,9 +61,10 @@ class Tex:
                 if new_md5 != self._md5:
                     self._md5 = new_md5
                     self._mtime = new_mtime
-                    make(self.tex)
+                    return make(self.tex)
         else:
-            make(self.tex)
+            return make(self.tex)
+        return False
 
     def md5(self):
         """ Returns hash of the file self.tex """
@@ -81,10 +81,10 @@ class Tex:
 ###
 # find latex compiler
 if is_cmd("rubber"):
-    make = lambda x: os.system("rubber --pdf %s" % x)
+    make = lambda x: 0 == os.system("rubber --pdf %s" % x)
     print_msg('Compiler: rubber')
 elif is_cmd("latexmk"):
-    make = lambda x: os.system("latexmk -pdf -pdflatex='pdflatex "
+    make = lambda x: 0 == os.system("latexmk -pdf -pdflatex='pdflatex "
                                "-interaction=nonstopmode' -use-make %s" % x)
     print_msg('Compiler: latexmk')
 else:
@@ -140,8 +140,8 @@ if len(texnames) < 1:
 print ''
 while True:
     for f in files:
-        f.make()
-        f.view()
+        if f.make():
+            f.view()
 
     wait(texnames)
 
