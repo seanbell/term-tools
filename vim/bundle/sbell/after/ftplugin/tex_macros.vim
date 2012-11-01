@@ -1,6 +1,6 @@
 " Shortcuts
-call IMAP(',w', '\omega', 'tex')
-call IMAP(',o', '\omicron', 'tex')
+call IMAP(g:Tex_Leader.'w', '\omega', 'tex')
+call IMAP(g:Tex_Leader.'o', '\omicron', 'tex')
 call IMAP('\ig ', '\includegraphics[width=<++>\textwidth]{fig/<++>}', 'tex')
 
 " Reformat lines (getting the spacing correct) {{{
