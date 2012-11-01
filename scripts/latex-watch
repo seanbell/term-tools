@@ -39,6 +39,7 @@ class Tex:
     def __init__(self, tex, use_hash=True):
         self.tex = tex
         self.pdf = re.sub(r'\.tex$', '.pdf', tex)
+        self.use_hash = use_hash
         self._viewed = False
         self._md5 = None
         self._mtime = None
