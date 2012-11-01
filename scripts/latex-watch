@@ -46,7 +46,10 @@ class Tex:
 
     def view(self):
         """ Opens self.pdf only if it has not been opened yet """
-        if not self._viewed and os.path.isfile(self.pdf) and os.path.getsize(self.pdf) > 0:
+        if is_ubuntu() and self._viewed:
+            # on Ubuntu, evince will automagically refresh
+            return
+        if os.path.isfile(self.pdf) and os.path.getsize(self.pdf) > 0:
             if view(self.pdf) == 0:
                 self._viewed = True
 
