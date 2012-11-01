@@ -4,6 +4,9 @@
 # directory containing these tools
 export TERM_TOOLS_DIR=~/term-tools
 
+# add scripts to path
+export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
+
 # store more shell history
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
