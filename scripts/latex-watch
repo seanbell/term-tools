@@ -1,0 +1,149 @@
+#!/usr/bin/env python2.7
+import os
+import re
+import sys
+import glob
+import time
+import hashlib
+
+# fix ctrl+c issues
+import signal
+signal.signal(signal.SIGINT, lambda x, y: exit(1))
+
+
+def print_err(s):
+    """ Print bold red message """
+    print '\033[1;31m%s\033[m' % s
+
+
+def print_msg(s):
+    """ Print yellow message """
+    print '\033[33m%s\033[m' % s
+
+
+def is_cmd(cmd):
+    """ Returns true if the command is available to the shell """
+    return os.system("command -v %s >/dev/null 2>&1" % cmd) == 0
+
+
+def is_ubuntu():
+    return "Ubuntu" in os.popen("uname -a").read()
+
+
+def is_mac():
+    return "Darwin" in os.popen("uname -a").read()
+
+
+class Tex:
+    """ Keeps track of view and modify state for one file """
+    def __init__(self, tex, use_hash=True):
+        self.tex = tex
+        self.pdf = re.sub(r'\.tex$', '.pdf', tex)
+        self.use_hash = use_hash
+        self._viewed = False
+        self._md5 = None
+        self._mtime = None
+
+    def view(self):
+        """ Opens self.pdf only if it has not been opened yet """
+        if is_ubuntu() and self._viewed:
+            # on Ubuntu, evince will automagically refresh
+            return
+        if os.path.isfile(self.pdf) and os.path.getsize(self.pdf) > 0:
+            if view(self.pdf) == 0:
+                self._viewed = True
+
+    def make(self):
+        """ Builds self.tex to produce self.pdf; returns true if rebuilt """
+        if self.use_hash:
+            new_mtime = os.path.getmtime(self.tex)
+            if new_mtime != self._mtime:
+                new_md5 = self.md5()
+                if new_md5 != self._md5:
+                    self._md5 = new_md5
+                    self._mtime = new_mtime
+                    return make(self.tex)
+        else:
+            return make(self.tex)
+        return False
+
+    def md5(self):
+        """ Returns hash of the file self.tex """
+        md5 = hashlib.md5()
+        with open(self.tex, 'rb') as f:
+            while True:
+                data = f.read(16384)
+                if not data:
+                    break
+                md5.update(data)
+            return md5.digest()
+
+
+###
+# find latex compiler
+if is_cmd("rubber"):
+    make = lambda x: 0 == os.system("rubber --pdf %s" % x)
+    print_msg('Compiler: rubber')
+elif is_cmd("latexmk"):
+    make = lambda x: 0 == os.system("latexmk -pdf -pdflatex='pdflatex "
+                               "-interaction=nonstopmode' -use-make %s" % x)
+    print_msg('Compiler: latexmk')
+else:
+    print_err("Error: no LaTeX make-style compiler")
+    if is_ubuntu():
+        print_err(
+            "Suggested: install rubber with 'sudo apt-get install rubber'")
+    elif is_mac():
+        print_err("Suggested: install rubber with 'sudo port install rubber'")
+    exit(1)
+
+###
+# find pdf viewer -- prefer evince since it auto-refereshes
+for cmd in ("evince", "gnome-open", "gvfs-open", "xdg-open", "open", "acroread", "xpdf"):
+    if is_cmd(cmd):
+        view = lambda x, cmd=cmd: os.system("%s \"%s\" &" % (cmd, x))
+        print_msg('Viewer: %s' % cmd)
+        break
+else:
+    print_err("Error: could not find PDF viewer")
+    exit(1)
+
+###
+# find loop command
+if is_cmd("inotifywait"):
+    wait = lambda x: os.popen(
+        "inotifywait -e modify %s 2>/dev/null" % ' '.join(x))
+    print_msg("Sleep: inotifywait")
+    use_hash = False
+else:
+    print_msg("Sleep: time.sleep(1)")
+    if is_ubuntu():
+        print_err("Suggested: install inotifywait with "
+                  "'sudo apt-get install inotify-tools'")
+
+    wait = lambda x: time.sleep(1)
+    use_hash = True
+
+###
+# set up files
+arglist = (sys.argv[1:] if len(sys.argv) > 1 else glob.glob('*.tex'))
+files = [Tex(f, use_hash) for f in arglist]
+texnames = [f.tex for f in files]
+print_msg('Files: %s' % texnames)
+
+if len(texnames) < 1:
+    print_err('\nUsage: %s <file1.tex> [<file2.tex> ...]' % sys.argv[0])
+    print_msg('Note: if there is only one .tex file, you can omit the argument')
+    exit(1)
+
+###
+# go!
+print ''
+while True:
+    for f in files:
+        if f.make():
+            f.view()
+
+    wait(texnames)
+
+print_err('Exiting')

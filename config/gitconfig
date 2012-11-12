@@ -1,6 +1,3 @@
-[user]
-	name = Sean Bell
-	email = sbell@cs.cornell.edu
 [color]
 	ui = auto
 [alias]
@@ -33,3 +30,6 @@
 	cmd = gvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [merge]
 	tool = vimdiff3
+[user]
+	name = Sean Bell
+	email = sbell@cs.cornell.edu

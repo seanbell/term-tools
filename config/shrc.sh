@@ -4,9 +4,8 @@
 # directory containing these tools
 export TERM_TOOLS_DIR=~/term-tools
 
-# vim by default instead of emacs
-set -o vi
-export EDITOR="vim"
+# add scripts to path
+export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
 
 # store more shell history
 export HISTSIZE=1000000
@@ -15,7 +14,15 @@ export HISTFILESIZE=1000000
 # enable core dumps
 ulimit -c unlimited 2>/dev/null
 
-# 256 colors
+# if no editor is specified, assume vim
+if [ ! "$EDITOR" ]; then
+	export EDITOR="vim"
+fi
+if [ ! "$TERM_EDITOR" ]; then
+	export TERM_EDITOR="$EDITOR"
+fi
+
+# enable full 256 colors -- so many colors!
 if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
 fi
@@ -26,7 +33,7 @@ if command -v dircolors >/dev/null 2>&1; then
 fi
 
 # syntax highlighting in less
-if [ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
+if [[ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
   export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
   export LESS=' -R '
 fi
@@ -73,15 +80,27 @@ if [ "$ZSH_VERSION" ]; then
 		ls_safe
 	}
 
-	# vim keybindings for zsh
-	bindkey -v
+	# terminal editor mode -- vim or emacs
+	if [[ "$TERM_EDITOR" == "vim" ]]; then
+		bindkey -v
+	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
+		bindkey -e
+	fi
+
+	# Better delete key and search with ctrl-R
 	bindkey '\e[3~' delete-char
 	bindkey '^R' history-incremental-pattern-search-backward
-
 fi
 
 # BASH-SPECIFIC CONFIG
 if [ "$BASH_VERSION" ]; then
+
+	# terminal editor mode -- vim or emacs
+	if [[ "$TERM_EDITOR" == "vim" ]]; then
+		set -o vi
+	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
+		set -o emacs
+	fi
 
 	# ls after every cd
 	function cd()  {

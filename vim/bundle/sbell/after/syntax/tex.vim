@@ -80,4 +80,24 @@ if has('conceal')
 	else
 	 syn region texMathText matchgroup=texStatement start='\\\(\(inter\)\=text\|mbox\)\s*{'	end='}'	concealends keepend contains=@texFoldGroup
 	endif
+
+	"""
+	" Contributed by Wenzel Jakob
+	syn match texStatement '\\item\>' contained conceal cchar=•
+	syn match texDelimiter '\\{' contained conceal cchar={
+	syn match texDelimiter '\\}' contained conceal cchar=}
+	syn match texMathSymbol '\\setminus' contained conceal cchar=\
+
+	" hide \text delimiter etc inside math mode
+	if !exists("g:tex_nospell") || !g:tex_nospell
+	syn region texMathText matchgroup=texStatement start='\\\(\(inter\)\=text\|mbox\|mathrm\)\s*{' end='}' concealends keepend contains=@texFoldGroup,@Spell
+	else
+	syn region texMathText matchgroup=texStatement start='\\\(\(inter\)\=text\|mbox\|mathrm\)\s*{' end='}' concealends keepend contains=@texFoldGroup
+	endif
+
+	syn region texBoldMathText matchgroup=texStatement start='\\\(mathbf\|bm\){' end='}' concealends keepend contains=@texMathZoneGroup
+	syn cluster texMathZoneGroup add=texBoldMathText
+
+	hi texBoldMathText ctermfg=white guifg=white
+	"""
 endif
