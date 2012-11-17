@@ -18,9 +18,8 @@ fi
 FIX_GIT_USER=~/term-tools/fix-git-user.sh
 git config -l | grep "^user" | sed 's/^/git config --global /' | sed 's/=/ "/' | sed 's/$/"/' > $FIX_GIT_USER
 
-# delete my name
-tail -n +4 ~/term-tools/config/gitconfig > ~/term-tools/config/gitconfig.tmp
-mv -f ~/term-tools/config/gitconfig.tmp ~/term-tools/config/gitconfig
+# use template
+cp -f ~/term-tools/config/gitconfig-template ~/term-tools/config/gitconfig
 
 # this will fail if it already exists, so we are safe
 ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig

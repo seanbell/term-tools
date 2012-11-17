@@ -161,8 +161,12 @@ noremap <leader>te :tabe<space>
 
 " Merge current window ino a vert-split with prev/next tab
 " (defined in ~/.vim/bundle/sbell/plugin/sbell.vim
-nnoremap <leader>tl <esc>:call MoveToNextTab()<cr>
-nnoremap <leader>th <esc>:call MoveToPrevTab()<cr>
+nnoremap <leader>tj <esc>:call MoveToNextTab()<cr>
+nnoremap <leader>tk <esc>:call MoveToPrevTab()<cr>
+
+" Another shortcut for move left/right tab (for symmetry with window commands)
+nnoremap <leader>th gT
+nnoremap <leader>tl gt
 
 " }}}
 
