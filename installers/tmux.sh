@@ -14,5 +14,4 @@ else
 	exit 1
 fi
 
-ln $@ -sn ~/term-tools/tmuxified ~/.tmux
-ln $@ -sn ~/term-tools/tmuxified/tmux.conf ~/.tmux.conf
+ln $@ -sn ~/term-tools/config/tmux.conf ~/.tmux.conf
