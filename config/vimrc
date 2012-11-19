@@ -445,14 +445,14 @@ nnoremap <leader>bf :TagbarOpen fj<cr><c-w>=2H:call EasyMotion#JK(0, 0)<cr>
 nnoremap <leader>bc :TagbarClose<cr><c-w>=
 
 " NERDTree -- file browser on left (mnemonic: All files)
-"   -- at : toggle
 "   -- ao : open
-"   -- af : find (custom function in plugins/sbell.vim)
 "   -- ac : close
-noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
-noremap <leader>ao <esc>:NERDTree<cr><c-w>=
-noremap <leader>af <esc>:call NERDOpen()<cr>
+"   -- at : toggle
+"   -- af : find (custom function in plugins/sbell.vim)
+noremap <leader>ao <esc>:NERDTreeFind<cr><c-w>=
 noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
+noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
+noremap <leader>af <esc>:call NERDOpen()<cr>
 
 " NERDTree -- open if no files are listed and set width to 30
 autocmd vimenter * if !argc() | NERDTree | endif
