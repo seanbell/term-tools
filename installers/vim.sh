@@ -11,7 +11,7 @@ if [ -d ~/.vim ]; then
 	fi
 fi
 
-if [[ "$DESKTOP_SESSION" == "ubuntu" ]] || [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
+if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
 	if command -v apt-get >/dev/null 2>&1; then
 		# vim-gnome integration
 		sudo apt-get install -y vim-gnome
