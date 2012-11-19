@@ -97,3 +97,6 @@
 [submodule "vim/bundle/less"]
 	path = vim/bundle/less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "tmuxified"]
+	path = tmuxified
+	url = https://github.com/seanbell/tmuxified
