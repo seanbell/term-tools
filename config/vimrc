@@ -479,10 +479,16 @@ noremap <leader>gc <esc>:Gcommit<cr>
 noremap <leader>gp <esc>:Gpush<cr>
 
 " Visual selection
-vnoremap <silent> <leader>f :call VisualSelection('f')<CR>
-vnoremap <silent> <leader>F :call VisualSelection('b')<CR>
+vnoremap <silent> <leader>f :call VisualSelection('f')<cr>
+vnoremap <silent> <leader>F :call VisualSelection('b')<cr>
 
-" ShowMarks -- toggle with <leader>mt
+" ShowMarks
+"   -- enable with <leader>mo
+"   -- close  with <leader>mc
+"   -- toggle with <leader>mt
+noremap <leader>mc <esc>:ShowMarksClearAll<cr>
+
+" ShowMarks fixes
 "  -- only include letters (I'm not sure what 0123456789.'`^<>[]{}()\" refers to but they
 "     don't seem to match up with what ShowMarks shows in the side bar)
 "  -- fix the default colors (default has foreground == background for me)
