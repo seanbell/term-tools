@@ -100,3 +100,6 @@
 [submodule "tmuxified"]
 	path = tmuxified
 	url = https://github.com/seanbell/tmuxified
+[submodule "vim/bundle/vimux"]
+	path = vim/bundle/vimux
+	url = https://github.com/benmills/vimux
