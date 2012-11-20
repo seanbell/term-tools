@@ -214,8 +214,8 @@ noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " <leader>sp : toggle check SPelling
 noremap <leader>sp <esc>:setlocal spell!<cr>
 
-" <leader>sc : search clear highlight
-noremap <leader>sc <esc>:noh<cr>
+" // : clear search
+noremap // <esc>:noh<cr>
 
 " ctrl+s : save (you have to enable passing ctrl+s from the terminal)
 nmap <c-s> <esc>:w<cr>
