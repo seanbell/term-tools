@@ -92,6 +92,12 @@ autocmd GUIEnter * set visualbell t_vb=
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
+" Fix tmux ctrl-arrows
+execute "set <xUp>=\e[1;*A"
+execute "set <xDown>=\e[1;*B"
+execute "set <xRight>=\e[1;*C"
+execute "set <xLeft>=\e[1;*D"
+
 " }}}
 
 " Windows and tabs {{{

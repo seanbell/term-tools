@@ -42,10 +42,15 @@ if [ -d ~/.oh-my-zsh ]; then
 
 	ln $@ -s ~/term-tools/oh-my-zsh-custom/zsh-syntax-highlighting plugins/zsh-syntax-highlighting
 	ln $@ -s ~/term-tools/config/sbell.zsh-theme themes/sbell.zsh-theme
+	ln $@ -s ~/term-tools/config/sbell-screen.zsh-theme themes/sbell-screen.zsh-theme
 	cd -
 
 	# set theme and add syntax plugin
-	sed -e 's/ZSH_THEME=.*$/ZSH_THEME="sbell"/' -e 's/plugins=(\(.*\))/plugins=(\1 zsh-syntax-highlighting)/' -e 's/zsh-syntax-highlighting zsh-syntax-highlighting/zsh-syntax-highlighting/' ~/.zshrc > $ZSHRC_TMP
+	sed -e 's/ZSH_THEME=.*$/if [[ $TERM == "screen-256color" ]]; then ZSH_THEME="sbell-screen" else ZSH_THEME="sbell" fi/' \
+		-e 's/plugins=(\(.*\))/plugins=(\1 zsh-syntax-highlighting)/' \
+		-e 's/zsh-syntax-highlighting zsh-syntax-highlighting/zsh-syntax-highlighting/' \
+		~/.zshrc > $ZSHRC_TMP
+
 	mv -f $ZSHRC_TMP ~/.zshrc
 else
 	echo "ERROR: ~/.oh-my-zsh does not exist"
