@@ -1,36 +1,47 @@
-# Starts tmux for new terminals
+# Starts tmux for new terminals (Bash or Zsh)
 #
-# Put this at the END of your ~/.zshrc -- NOTE that any commands after this line will not run.
+# Put this at the END of your ~/.zshrc (or ~/.bashrc) -- NOTE that any commands after this line will not run.
 #    source ~/term-tools/config/shrc-tmux.sh
-# This important restriction should be commented in ~/.zshrc when you add the line.
+# This important restriction should be commented in ~/.zshrc (or ~/.bashrc) when you add the line.
 #
 
 # make sure that tmux is installed and configured
 if [[ -s ~/.tmux.conf ]] && command -v tmux >/dev/null 2>&1; then
 
-# make sure that this script is included last
-line=$(grep -n -E 'source\s+.*config/shrc-tmux.sh' ~/.zshrc | head -n 1 | awk -F: '{print $1}')
-tot=$(wc -l < ~/.zshrc)
-let diff=$tot-$line
-txt=$(tail -n $diff ~/.zshrc)
-
-if [[ ! $txt =~ [^[:space:]] ]] ; then
-	# this script is last
-
-	# Now, check to make sure that we are in a fresh interactive non-tmux terminal
-	if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ "$TERM" == "xterm-256color" ]] && [[ $- = *i* ]]; then
-		# start tmux with 256 colors
-		tmux -2 && exit
+	# handle both Bash and Zsh
+	if [ "$BASH_VERSION" ]; then
+		rcfile=~/.bashrc
+		this="${BASH_SOURCE[0]}"
+	elif [ "$ZSH_VERSION" ]; then
+		rcfile=~/.zshrc
+		this=$0
 	fi
-else
-	echo -e "\e[1;31;48m"
-	echo "ERROR: In this file:"
-	echo "    ~/.zshrc"
-    echo "There cannot be any commands after this line:"
-	echo "    source $0"
-	echo "Move all commands before this (line $line)."
-	echo -e "\e[m"
-	echo "This message is coming from $0."
-fi
 
+	if [[ -s $rcfile ]]; then
+
+		# make sure that this script is included last
+		line=$(grep -n -E 'source\s+.*config/shrc-tmux.sh' $rcfile | head -n 1 | awk -F: '{print $1}')
+		tot=$(wc -l < $rcfile)
+		let diff=$tot-$line
+		txt=$(tail -n $diff $rcfile)
+
+		if [[ ! $txt =~ [^[:space:]] ]] ; then
+			# this script is last
+
+			# Now, check to make sure that we are in a fresh interactive non-tmux terminal
+			if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ "$TERM" == "xterm-256color" ]] && [[ $- = *i* ]]; then
+				# start tmux with 256 colors
+				tmux -2 && exit
+			fi
+		else
+			echo -e "\e[1;31;48m"
+			echo "ERROR: In this file:"
+			echo "    $rcfile"
+			echo "There cannot be any commands after this line:"
+			echo "    source $this"
+			echo "Move all commands before this (line $line)."
+			echo -e "\e[m"
+			echo "This message is coming from $this."
+		fi
+	fi
 fi
