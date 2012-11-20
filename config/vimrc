@@ -223,8 +223,8 @@ nmap <c-s> <esc>:w<cr>
 " :w!! : Save with sudo
 cmap w!! w !sudo tee % >/dev/null
 
-" ctrl+a : select all
-nnoremap <c-a> 1GVG
+" <leader>sa : select all
+nnoremap <leader>sa 1GVG
 
 " backspace in normal mode
 nmap <bs> X
@@ -237,6 +237,15 @@ command! W :w
 command! Wq :wq
 command! WQ :wq
 command! E :e
+
+" Quickfix window -- open/close
+nnoremap <leader>qo <esc>:copen<cr>
+nnoremap <leader>qc <esc>:ccl<cr>
+" jump to next/previous error
+nnoremap <leader>qn <esc>:cn<cr>
+nnoremap <leader>qp <esc>:cn<cr>
+" jump to errors in next file
+nnoremap <leader>qf <esc>:cnf<cr>
 
 " <leader>sf -- style-format code
 "    C/C++  -- ANSI style (A1), with tabs
