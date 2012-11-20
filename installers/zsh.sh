@@ -34,12 +34,6 @@ fi
 if [ -d ~/.oh-my-zsh ]; then
 	cd ~/.oh-my-zsh
 
-	if [ -d custom.backup ]; then
-		rm -rf custom
-	else
-		mv custom custom.backup
-	fi
-
 	ln $@ -s ~/term-tools/oh-my-zsh-custom/zsh-syntax-highlighting plugins/zsh-syntax-highlighting
 	ln $@ -s ~/term-tools/config/sbell.zsh-theme themes/sbell.zsh-theme
 	ln $@ -s ~/term-tools/config/sbell-screen.zsh-theme themes/sbell-screen.zsh-theme
