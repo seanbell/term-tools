@@ -102,9 +102,11 @@ execute "set <xLeft>=\e[1;*D"
 
 " Windows and tabs {{{
 
-" Left/right -- switch tabs
+" Left/right or c-h/c-l -- switch tabs
 noremap <left>  gT
+noremap <c-h>   gT
 noremap <right> gt
+noremap <c-l>   gt
 
 " Ctrl+left/right -- move tabs
 noremap <c-left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
@@ -112,7 +114,9 @@ noremap <c-right> :execute 'silent! tabmove ' . tabpagenr()<cr>
 
 " Up/down -- switch windows
 noremap <down> <c-w>w
-noremap <up> <c-w>W
+noremap <c-j>  <c-w>w
+noremap <up>   <c-w>W
+noremap <c-k>  <c-w>W
 
 " Ctrl+up/down -- move windows
 noremap <c-down> <c-w>r
@@ -165,6 +169,10 @@ noremap <leader>ve :vsp<space>
 noremap <leader>et :tabe<space>
 noremap <leader>te :tabe<space>
 
+" New buffer in split
+nnoremap <leader>sn <esc>:below new<cr>
+nnoremap <leader>vn <esc>:vert belowright new<cr>
+
 " Merge current window ino a vert-split with prev/next tab
 " (defined in ~/.vim/bundle/sbell/plugin/sbell.vim
 nnoremap <leader>tj <esc>:call MoveToNextTab()<cr>
@@ -181,10 +189,6 @@ nnoremap <leader>tl gt
 " Make Y more consistent with C and D
 call yankstack#setup()
 nmap Y y$
-
-" Move easily between ^ (line beginning) and $ (line end)
-noremap <c-h> ^
-noremap <c-l> $
 
 " Move by displayed lines, not physical lines
 noremap j gj
@@ -341,6 +345,7 @@ autocmd FileTYpe c,cpp,h,hpp setlocal smartindent cindent
 
 " Coffeescript -- 2-space tabs
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
 " }}}
 
 " Plugin config {{{
@@ -565,6 +570,9 @@ let g:Tex_FoldedMisc='preamble,<<<'
 
 " Directory to scan for latex figure images
 let g:Tex_ImageDir='.'
+
+" Don't map <c-j> to jump to next <++>
+nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
 
 " Use PDF instead of DVI by default
 let g:Tex_DefaultTargetFormat='pdf'
