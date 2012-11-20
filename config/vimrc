@@ -461,6 +461,10 @@ let g:NERDTreeWinSize = 30
 " NERDTree -- hide files
 let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
 
+" NERDTree -- open horiz/vert
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenVSplit = 'v'
+
 
 " CloseTag -- close html tags automagically
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
