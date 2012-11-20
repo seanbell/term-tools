@@ -5,7 +5,10 @@
 # This important restriction should be commented in ~/.zshrc when you add the line.
 #
 
-# make sure that this script is last
+# make sure that tmux is installed and configured
+if [[ -s ~/.tmux.conf ]] && command -v tmux >/dev/null 2>&1; then
+
+# make sure that this script is included last
 line=$(grep -n -E 'source\s+.*config/shrc-tmux.sh' ~/.zshrc | head -n 1 | awk -F: '{print $1}')
 tot=$(wc -l < ~/.zshrc)
 let diff=$tot-$line
@@ -16,6 +19,7 @@ if [[ ! $txt =~ [^[:space:]] ]] ; then
 
 	# Now, check to make sure that we are in a fresh interactive non-tmux terminal
 	if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ "$TERM" == "xterm-256color" ]] && [[ $- = *i* ]]; then
+		# start tmux with 256 colors
 		tmux -2 && exit
 	fi
 else
@@ -27,4 +31,6 @@ else
 	echo "Move all commands before this (line $line)."
 	echo -e "\e[m"
 	echo "This message is coming from $0."
+fi
+
 fi
