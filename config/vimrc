@@ -485,6 +485,12 @@ let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
 
+" NERDTree -- I want to use C-j and C-k to jump windows, so re-map these:
+let g:NERDTreeMapJumpNextSibling = 'J'
+let g:NERDTreeMapJumpPrevSibling = 'K'
+let g:NERDTreeMapJumpFirstChild = ''
+let g:NERDTreeMapJumpLastChild = ''
+
 
 " CloseTag -- close html tags automagically
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
@@ -572,6 +578,7 @@ let g:Tex_FoldedMisc='preamble,<<<'
 let g:Tex_ImageDir='.'
 
 " Don't map <c-j> to jump to next <++>
+" (unfortunately we have to give it a bogus mapping)"
 nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
 
 " Use PDF instead of DVI by default
