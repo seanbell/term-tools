@@ -4,10 +4,11 @@
 " Many (but not all) of the plugins have mini-documentation
 " where they are configured.
 "
+
 " Must be first since this sets some options as a side effect
 set nocompatible
 
-" Pathogen : package manager {{{
+" Pathogen : plugin package manager {{{
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
@@ -16,11 +17,7 @@ filetype plugin indent on
 
 " Global config {{{
 
-" Color scheme -- dark, 256 color, desert theme
-"set background=dark
-"set t_Co=256
-"syntax on
-"colorscheme desert
+" Color scheme -- Solarized dark
 set background=dark
 set t_Co=16
 syntax on
