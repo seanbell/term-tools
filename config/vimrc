@@ -44,7 +44,7 @@ set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
 set ttyfast            " smoother changes
 
-if has('unix') && system("uname") == "Linux\n"
+if has('unnamedplus')
 	set clipboard=unnamedplus  " Share X windows clipboard.
 else
 	set clipboard=unnamed  " Share system clipboard.
@@ -52,7 +52,7 @@ endif
 
 " Appearance
 set number             " enable line numbers
-set scrolloff=3        " keep 3 lines below and above cursor
+set scrolloff=8        " keep 8 lines below and above cursor
 set linebreak          " show wrap at word boundaries
 set showbreak=\ ↪\     " prefix wrap with ↪
 
@@ -92,13 +92,21 @@ autocmd GUIEnter * set visualbell t_vb=
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
+" Fix tmux ctrl-arrows
+execute "set <xUp>=\e[1;*A"
+execute "set <xDown>=\e[1;*B"
+execute "set <xRight>=\e[1;*C"
+execute "set <xLeft>=\e[1;*D"
+
 " }}}
 
 " Windows and tabs {{{
 
-" Left/right -- switch tabs
+" Left/right or c-h/c-l -- switch tabs
 noremap <left>  gT
+noremap <c-h>   gT
 noremap <right> gt
+noremap <c-l>   gt
 
 " Ctrl+left/right -- move tabs
 noremap <c-left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
@@ -106,7 +114,9 @@ noremap <c-right> :execute 'silent! tabmove ' . tabpagenr()<cr>
 
 " Up/down -- switch windows
 noremap <down> <c-w>w
-noremap <up> <c-w>W
+noremap <c-j>  <c-w>w
+noremap <up>   <c-w>W
+noremap <c-k>  <c-w>W
 
 " Ctrl+up/down -- move windows
 noremap <c-down> <c-w>r
@@ -159,10 +169,18 @@ noremap <leader>ve :vsp<space>
 noremap <leader>et :tabe<space>
 noremap <leader>te :tabe<space>
 
+" New buffer in split
+nnoremap <leader>sn <esc>:below new<cr>
+nnoremap <leader>vn <esc>:vert belowright new<cr>
+
 " Merge current window ino a vert-split with prev/next tab
 " (defined in ~/.vim/bundle/sbell/plugin/sbell.vim
-nnoremap <leader>tl <esc>:call MoveToNextTab()<cr>
-nnoremap <leader>th <esc>:call MoveToPrevTab()<cr>
+nnoremap <leader>tj <esc>:call MoveToNextTab()<cr>
+nnoremap <leader>tk <esc>:call MoveToPrevTab()<cr>
+
+" Another shortcut for move left/right tab (for symmetry with window commands)
+nnoremap <leader>th gT
+nnoremap <leader>tl gt
 
 " }}}
 
@@ -171,10 +189,6 @@ nnoremap <leader>th <esc>:call MoveToPrevTab()<cr>
 " Make Y more consistent with C and D
 call yankstack#setup()
 nmap Y y$
-
-" Move easily between ^ (line beginning) and $ (line end)
-noremap <c-h> ^
-noremap <c-l> $
 
 " Move by displayed lines, not physical lines
 noremap j gj
@@ -204,8 +218,8 @@ noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " <leader>sp : toggle check SPelling
 noremap <leader>sp <esc>:setlocal spell!<cr>
 
-" <leader>sc : search clear highlight
-noremap <leader>sc <esc>:noh<cr>
+" // : clear search
+noremap // <esc>:noh<cr>
 
 " ctrl+s : save (you have to enable passing ctrl+s from the terminal)
 nmap <c-s> <esc>:w<cr>
@@ -213,8 +227,8 @@ nmap <c-s> <esc>:w<cr>
 " :w!! : Save with sudo
 cmap w!! w !sudo tee % >/dev/null
 
-" ctrl+a : select all
-nnoremap <c-a> 1GVG
+" <leader>sa : select all
+nnoremap <leader>sa 1GVG
 
 " backspace in normal mode
 nmap <bs> X
@@ -227,6 +241,15 @@ command! W :w
 command! Wq :wq
 command! WQ :wq
 command! E :e
+
+" Quickfix window -- open/close
+nnoremap <leader>qo <esc>:copen<cr>
+nnoremap <leader>qc <esc>:ccl<cr>
+" jump to next/previous error
+nnoremap <leader>qn <esc>:cn<cr>
+nnoremap <leader>qp <esc>:cn<cr>
+" jump to errors in next file
+nnoremap <leader>qf <esc>:cnf<cr>
 
 " <leader>sf -- style-format code
 "    C/C++  -- ANSI style (A1), with tabs
@@ -322,6 +345,7 @@ autocmd FileTYpe c,cpp,h,hpp setlocal smartindent cindent
 
 " Coffeescript -- 2-space tabs
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
 " }}}
 
 " Plugin config {{{
@@ -441,14 +465,14 @@ nnoremap <leader>bf :TagbarOpen fj<cr><c-w>=2H:call EasyMotion#JK(0, 0)<cr>
 nnoremap <leader>bc :TagbarClose<cr><c-w>=
 
 " NERDTree -- file browser on left (mnemonic: All files)
-"   -- at : toggle
 "   -- ao : open
-"   -- af : find (custom function in plugins/sbell.vim)
 "   -- ac : close
-noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
-noremap <leader>ao <esc>:NERDTree<cr><c-w>=
-noremap <leader>af <esc>:call NERDOpen()<cr>
+"   -- at : toggle
+"   -- af : find (custom function in plugins/sbell.vim)
+noremap <leader>ao <esc>:NERDTreeFind<cr><c-w>=
 noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
+noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
+noremap <leader>af <esc>:call NERDOpen()<cr>
 
 " NERDTree -- open if no files are listed and set width to 30
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -456,6 +480,16 @@ let g:NERDTreeWinSize = 30
 
 " NERDTree -- hide files
 let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
+
+" NERDTree -- open horiz/vert
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenVSplit = 'v'
+
+" NERDTree -- I want to use C-j and C-k to jump windows, so re-map these:
+let g:NERDTreeMapJumpNextSibling = 'J'
+let g:NERDTreeMapJumpPrevSibling = 'K'
+let g:NERDTreeMapJumpFirstChild = ''
+let g:NERDTreeMapJumpLastChild = ''
 
 
 " CloseTag -- close html tags automagically
@@ -475,10 +509,16 @@ noremap <leader>gc <esc>:Gcommit<cr>
 noremap <leader>gp <esc>:Gpush<cr>
 
 " Visual selection
-vnoremap <silent> <leader>f :call VisualSelection('f')<CR>
-vnoremap <silent> <leader>F :call VisualSelection('b')<CR>
+vnoremap <silent> <leader>f :call VisualSelection('f')<cr>
+vnoremap <silent> <leader>F :call VisualSelection('b')<cr>
 
-" ShowMarks -- toggle with <leader>mt
+" ShowMarks
+"   -- enable with <leader>mo
+"   -- close  with <leader>mc
+"   -- toggle with <leader>mt
+noremap <leader>mc <esc>:ShowMarksClearAll<cr>
+
+" ShowMarks fixes
 "  -- only include letters (I'm not sure what 0123456789.'`^<>[]{}()\" refers to but they
 "     don't seem to match up with what ShowMarks shows in the side bar)
 "  -- fix the default colors (default has foreground == background for me)
@@ -536,6 +576,10 @@ let g:Tex_FoldedMisc='preamble,<<<'
 
 " Directory to scan for latex figure images
 let g:Tex_ImageDir='.'
+
+" Don't map <c-j> to jump to next <++>
+" (unfortunately we have to give it a bogus mapping)"
+nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
 
 " Use PDF instead of DVI by default
 let g:Tex_DefaultTargetFormat='pdf'

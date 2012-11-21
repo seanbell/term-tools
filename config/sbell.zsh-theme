@@ -1,4 +1,5 @@
-# https://github.com/blinks zsh theme
+# This is a small modification of the blinks zsh theme:
+# https://github.com/blinks
 
 function _prompt_char() {
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
