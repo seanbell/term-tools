@@ -17,11 +17,12 @@ filetype plugin indent on
 
 " Global config {{{
 
-" Color scheme -- Solarized dark
+" Color scheme -- Solarized dark, toggle with F6
 set background=dark
 set t_Co=16
 syntax on
 colorscheme solarized
+call togglebg#map("<F6>")
 
 " Misc
 let is_bash=1          " we are using bash
