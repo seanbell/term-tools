@@ -97,6 +97,3 @@
 [submodule "vim/bundle/less"]
 	path = vim/bundle/less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "vim/bundle/vimux"]
-	path = vim/bundle/vimux
-	url = https://github.com/benmills/vimux
