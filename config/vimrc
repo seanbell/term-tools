@@ -44,8 +44,6 @@ set ttyfast            " smoother changes
 
 if has('unnamedplus')
 	set clipboard=unnamedplus  " Share X windows clipboard.
-else
-	set clipboard=unnamed  " Share system clipboard.
 endif
 
 " Appearance
