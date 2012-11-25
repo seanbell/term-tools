@@ -7,8 +7,11 @@ elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
 	sudo apt-get install -y git-all
 elif command -v /opt/local/bin/port >/dev/null 2>&1; then
-	# macport
-	sudo port install git-core +svn+bash_completion+mp_completion
+	# macports
+	sudo port clean git-core
+	sudo port selfupdate
+	sudo port install                       git-core +svn+bash_completion+mp_completion
+	sudo port -n upgrade --enforce-variants git-core +svn+bash_completion+mp_completion
 else
 	echo "ERROR: git is not installed"
 	exit 1

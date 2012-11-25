@@ -1,6 +1,22 @@
 #!/bin/bash
 set -e
 
+if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
+	if command -v apt-get >/dev/null 2>&1; then
+		# vim-gnome integration
+		sudo apt-get install -y vim-gnome
+	fi
+elif [[ $(vim --version | grep -c "+conceal") == "0" ]]; then
+	if command -v /opt/local/bin/port >/dev/null 2>&1; then
+		# macports
+		sudo port selfupdate
+		sudo port clean vim
+		sudo port install                       vim +huge+python27+ruby
+		sudo port -n upgrade --enforce-variants vim +huge+python27+ruby
+	fi
+fi
+
+# Handle old dotfiles
 if [ -d ~/.vim ]; then
 	if [ "$1" == "-f" ]; then
 		echo "Note: deleting ~/.vim"
@@ -8,13 +24,6 @@ if [ -d ~/.vim ]; then
 	else
 		echo "Error: .vim exists.  Move or delete ~/.vim"
 		exit 1
-	fi
-fi
-
-if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
-	if command -v apt-get >/dev/null 2>&1; then
-		# vim-gnome integration
-		sudo apt-get install -y vim-gnome
 	fi
 fi
 
