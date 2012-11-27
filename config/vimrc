@@ -4,10 +4,11 @@
 " Many (but not all) of the plugins have mini-documentation
 " where they are configured.
 "
+
 " Must be first since this sets some options as a side effect
 set nocompatible
 
-" Pathogen : package manager {{{
+" Pathogen : plugin package manager {{{
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
@@ -16,15 +17,12 @@ filetype plugin indent on
 
 " Global config {{{
 
-" Color scheme -- dark, 256 color, desert theme
-"set background=dark
-"set t_Co=256
-"syntax on
-"colorscheme desert
+" Color scheme -- Solarized dark, toggle with F6
 set background=dark
 set t_Co=16
 syntax on
 colorscheme solarized
+call togglebg#map("<F6>")
 
 " Misc
 let is_bash=1          " we are using bash
@@ -46,8 +44,6 @@ set ttyfast            " smoother changes
 
 if has('unnamedplus')
 	set clipboard=unnamedplus  " Share X windows clipboard.
-else
-	set clipboard=unnamed  " Share system clipboard.
 endif
 
 " Appearance

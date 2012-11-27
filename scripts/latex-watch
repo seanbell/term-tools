@@ -23,7 +23,7 @@ def print_msg(s):
 
 def is_cmd(cmd):
     """ Returns true if the command is available to the shell """
-    return os.system("command -v %s >/dev/null 2>&1" % cmd) == 0
+    return os.system("command -v %s >/dev/null 2>&1" % cmd.split()[0]) == 0
 
 
 def is_ubuntu():
@@ -99,7 +99,7 @@ else:
 
 ###
 # find pdf viewer -- prefer evince since it auto-refereshes
-for cmd in ("evince", "gnome-open", "gvfs-open", "xdg-open", "open", "acroread", "xpdf"):
+for cmd in ("evince", "gnome-open", "gvfs-open", "xdg-open", "open -g", "acroread", "xpdf"):
     if is_cmd(cmd):
         view = lambda x, cmd=cmd: os.system("%s \"%s\" &" % (cmd, x))
         print_msg('Viewer: %s' % cmd)
