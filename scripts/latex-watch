@@ -53,20 +53,6 @@ def ensure_cmds(commands):
             exit(1)
 
 
-def file_md5(path):
-    """ Returns the md5 hash of the file """
-    if not os.path.isfile(path):
-        return ""
-    md5 = hashlib.md5()
-    with open(path, 'rb') as f:
-        while True:
-            data = f.read(16384)
-            if not data:
-                break
-            md5.update(data)
-        return md5.digest()
-
-
 def get_dependencies(path):
     """ Returns a set of dependencies """
     deps = set()
@@ -134,18 +120,14 @@ class File:
     """ Helper for watching files """
     def __init__(self, path):
         self._path = path
-        self._md5 = None
-        self._mtime = None
+        self._mtime = os.path.getmtime(self._path)
 
     def changed(self):
         """ Returns true if the file has changed since the last call """
         new_mtime = os.path.getmtime(self._path)
         if new_mtime != self._mtime:
-            new_md5 = file_md5(self._path)
-            if new_md5 != self._md5:
-                self._md5 = new_md5
-                self._mtime = new_mtime
-                return True
+            self._mtime = new_mtime
+            return True
         return False
 
 if __name__ == '__main__':
