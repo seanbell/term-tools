@@ -56,7 +56,7 @@ def ensure_cmds(commands):
 def get_dependencies(path):
     """ Returns a set of dependencies """
     deps = set()
-    output = os.popen("latexmk -pdf -deps %s 2>/dev/null" % path).read()
+    output = os.popen("latexmk -pdf -pdflatex='pdflatex -interaction=nonstopmode' -deps %s 2>/dev/null" % path).read()
     for f in output.replace('\\\n', ' ').split():
         if os.path.isfile(f):
             deps.add(f)
