@@ -414,7 +414,7 @@ noremap <c-f> <esc>:CtrlPLine<cr>             " find in file (by line)
 " CtrlP -- ignore files
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-	\ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.d$\|\.swp$',
+	\ 'file': '\.exe$\|\.so$\|\.os$\|\.dll$\|\.o$\|\.d$\|\.pyc$\|\.swp$',
 	\ }
 
 " CtrlP -- only search current directory
