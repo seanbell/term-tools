@@ -103,23 +103,27 @@ noremap <left>  gT
 noremap <c-h>   gT
 noremap <right> gt
 noremap <c-l>   gt
-
-" Ctrl+left/right -- move tabs
-noremap <c-left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
-noremap <c-right> :execute 'silent! tabmove ' . tabpagenr()<cr>
+inoremap <left>  <esc>gT
+inoremap <right> <esc>gt
 
 " Up/down -- switch windows
 noremap <down> <c-w>w
 noremap <c-j>  <c-w>w
 noremap <up>   <c-w>W
 noremap <c-k>  <c-w>W
+inoremap <down> <esc><c-w>w
+inoremap <up>   <esc><c-w>W
+
+" Ctrl+left/right -- move tabs
+noremap <c-left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
+noremap <c-right> :execute 'silent! tabmove ' . tabpagenr()<cr>
 
 " Ctrl+up/down -- move windows
 noremap <c-down> <c-w>r
-noremap <c-up> <c-w>R
+noremap <c-up>   <c-w>R
 
-" Ctrl+alt+left/right -- move window into new tab left or right
-map <c-s-left> <c-w>T<c-left>
+" Ctrl+shift+left/right -- move window into new tab left or right
+map <c-s-left>  <c-w>T<c-left>
 map <c-s-right> <c-w>T<c-right>
 
 let g:lasttab = 1
