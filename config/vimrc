@@ -17,8 +17,15 @@ filetype plugin indent on
 
 " Global config {{{
 
-" Color scheme -- Solarized dark, toggle with F6
-set background=dark
+" Dark mode unless there is a flag file
+" (useful for when you toggle modes often)
+if filereadable($HOME . "/.vim-background-light")
+	set background=light
+else
+	set background=dark
+endif
+
+" Color scheme -- Solarized, toggle with F6
 set t_Co=16
 syntax on
 colorscheme solarized
