@@ -16,9 +16,11 @@
 [submodule "vim/bundle/showmarks"]
 	path = vim/bundle/showmarks
 	url = git://github.com/vim-scripts/ShowMarks.git
+	ignore = dirty
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
 	url = git://github.com/tsaleh/vim-matchit.git
+	ignore = dirty
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
@@ -70,6 +72,7 @@
 [submodule "oh-my-zsh-custom/zsh-syntax-highlighting"]
 	path = oh-my-zsh-custom/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+	ignore = dirty
 [submodule "guake-colors-solarized"]
 	path = guake-colors-solarized
 	url = git://github.com/coolwanglu/guake-colors-solarized.git
@@ -88,6 +91,7 @@
 [submodule "vim/bundle/yankstack"]
 	path = vim/bundle/yankstack
 	url = git://github.com/maxbrunsfeld/vim-yankstack.git
+	ignore = dirty
 [submodule "cdd"]
 	path = cdd
 	url = git://github.com/jestor/cdd.git

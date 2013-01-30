@@ -258,24 +258,23 @@ nnoremap <leader>qp <esc>:cn<cr>
 " jump to errors in next file
 nnoremap <leader>qf <esc>:cnf<cr>
 
-" <leader>sf -- style-format code
+" <leader>l -- lint code (format and then show errors)
 "    C/C++  -- ANSI style (A1), with tabs
 "    Python -- PEP8 style
-autocmd FileType c,cpp,h,hpp nnoremap <leader>sf <esc>:%!astyle -A1 -t<cr>
-autocmd FileType python nnoremap <leader>sf <esc>:PyLintAuto<cr><esc>:PyLint<cr>
-
-" <leader>l -- lint code
-"    Python -- PEP8 style
 "    Coffee
-autocmd FileType coffee nnoremap <leader>l <esc>:PyLint<cr>
+autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A1 -t<cr>
+autocmd FileType python nnoremap <leader>l <esc>:PyLintAuto<cr><esc>:PyLint<cr>
 autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
 
 " <leader>r -- run/compile code
 "     C/C++  -- run make
 "     Python -- set up by python-mode
 "     Coffee -- watch live compilation
-autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:make<cr>
-autocmd FileType coffee nnoremap <leader>r <esc>:CoffeeCompile watch<cr>
+autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:w<cr><esc>:make<cr>
+autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
+
+" Save file
+nnoremap <leader>sf <esc>:w<cr>
 
 " }}}
 
