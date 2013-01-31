@@ -16,7 +16,7 @@ else
 	echo "ERROR: pip is not installed"
 fi
 
-sudo pip install rope pep8 pylint
+sudo pip install rope pep8 pyflakes
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
 ln $@ -s ~/term-tools/config/inputrc ~/.inputrc
