@@ -558,8 +558,10 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " Python -- check on the fly instead of on write
+let g:pymode_rope = 1
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
+let g:pymode_breakpoint_key = '<leader>bp'
 
 " }}}
 
