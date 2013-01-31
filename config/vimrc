@@ -155,13 +155,18 @@ noremap <leader>wj <c-w>j " move down a window
 noremap <leader>wk <c-w>k " move up a window
 
 " Managing windows
+noremap <leader>wt <c-w>T " move window to its own tab
 noremap <leader>wn <c-w>n " create a new window with empty file
 noremap <leader>ws <c-w>s " split current window
 noremap <leader>wv <c-w>v " split current window vertically
 noremap <leader>wq <c-w>q " quit current window
 noremap <leader>wc <c-w>c " close current window
 noremap <leader>wo <c-w>o " make current window only one on screen
-noremap <leader>wf <c-w>v:CtrlP<cr>
+
+noremap <leader>wH <c-w>H " move window to left
+noremap <leader>wL <c-w>L " move window to right
+noremap <leader>wJ <c-w>J " move window to bottom
+noremap <leader>wK <c-w>K " move window to topw
 
 " Edit file in current window
 noremap <leader>ew :e<space>
@@ -465,10 +470,19 @@ hi link EasyMotionShade Normal
 "   -- bo : open
 "   -- bf : find
 "   -- bc : close
-nnoremap <leader>bt :TagbarToggle<cr><c-w=
-nnoremap <leader>bo :TagbarOpen<cr><c-w>=
-nnoremap <leader>bf :TagbarOpen fj<cr><c-w>=2H:call EasyMotion#JK(0, 0)<cr>
-nnoremap <leader>bc :TagbarClose<cr><c-w>=
+nnoremap <leader>bt <esc>:TagbarToggle<cr>
+nnoremap <leader>bo <esc>:TagbarOpen fj<cr>
+nnoremap <leader>bf <esc>:TagbarOpen fj<cr>2H:call EasyMotion#JK(0, 0)<cr>
+nnoremap <leader>bc <esc>:TagbarClose<cr>
+
+let g:tagbar_width = 30
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 0
+let g:tagbar_foldlevel = 0
+let g:tagbar_autoshowtag = 1
+let g:tagbar_systemenc = 'utf-8'
 
 " NERDTree -- file browser on left (mnemonic: All files)
 "   -- ao : open
