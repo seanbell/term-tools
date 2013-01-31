@@ -64,7 +64,7 @@ set wildmenu                 " completion with menu
 set wildmode=list:longest    " list instead of fill in options
 set wildignore=*~,*.o,*.d,*.obj,*.class,*.pyc,*.bak,*.swp,.svn,.git
 set suffixes=~,.o,.d,.obj,.class,.bak,.swp,.pyc
-set completeopt=menu,preview " Completion with a menu
+set completeopt=longest,menuone
 
 " Indentation -- width of 4 spaces
 set autoindent     " automatic indentation
@@ -380,7 +380,6 @@ autocmd FileType c,cpp,h,hpp hi Special ctermfg=4
 "   -- enter : search context
 "   -- <leader>vc : validate c++ code
 "   -- <leader>fc : find c++ tag
-set completeopt=longest,menuone
 inoremap <nul> <C-x><C-u><C-n>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
@@ -557,11 +556,17 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" Python -- check on the fly instead of on write
-let g:pymode_rope = 1
+" Python pymode -- check for errors
+let g:pymode_rope = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
 let g:pymode_breakpoint_key = '<leader>bp'
+let g:pymode_lint_checker = "pylint,pep8,mccabe"
+let g:pymode_lint_ignore = "R0912,W0511,E501"
+let g:pymode_lint_jump = 1
+
+" Python jedi -- fancy autocomplete
+let g:jedi#auto_vim_configuration = 0
 
 " }}}
 

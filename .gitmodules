@@ -101,3 +101,6 @@
 [submodule "vim/bundle/less"]
 	path = vim/bundle/less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "vim/bundle/jedi"]
+	path = vim/bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim

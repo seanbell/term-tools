@@ -16,7 +16,8 @@ else
 	echo "ERROR: pip is not installed"
 fi
 
-sudo pip install rope pep8 pyflakes
+# checkers for vim plugins
+sudo pip install pep8 pyflakes jedi
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
 ln $@ -s ~/term-tools/config/inputrc ~/.inputrc
