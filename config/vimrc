@@ -557,15 +557,19 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " Python pymode -- check for errors
+"   <leader>bp -- set breakpoint
 let g:pymode_rope = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
-let g:pymode_breakpoint_key = '<leader>bp'
 let g:pymode_lint_checker = "pylint,pep8,mccabe"
 let g:pymode_lint_ignore = "R0912,W0511,E501"
 let g:pymode_lint_jump = 1
+let g:pymode_breakpoint_key = '<leader>bp'
 
 " Python jedi -- fancy autocomplete
+"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
+"   the top which I don't want)
+"   <ctrl+space> or <tab> -- autocomplete
 let g:jedi#auto_vim_configuration = 0
 
 " }}}
