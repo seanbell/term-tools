@@ -37,7 +37,7 @@ set encoding=utf-8     " use UTF-8 (default latin1)
 set autoread           " auto-reload modified files (with no local changes)
 set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
-set mouse=a            " enable mouse (set mouse= to disable mouse)
+set mouse=nicr         " enable mouse (set mouse= to disable mouse)
 set foldmethod=syntax  " fold using syntax by default
 set foldminlines=4     " require a medium size to fold
 set foldnestmax=3      " max 3 fold levels for syntax/indent folding
@@ -562,7 +562,7 @@ let g:pymode_rope = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
 let g:pymode_lint_checker = "pylint,pep8,mccabe"
-let g:pymode_lint_ignore = "R0912,W0511,E501"
+let g:pymode_lint_ignore = "R0912,W0511,W0702,W0704,W0622,E501,R0914,R0911"
 let g:pymode_lint_jump = 1
 let g:pymode_breakpoint_key = '<leader>bp'
 
