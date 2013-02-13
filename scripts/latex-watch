@@ -93,8 +93,8 @@ def get_watcher():
         if is_ubuntu():
             print_err("Suggested: install inotifywait with "
                       "'sudo apt-get install inotify-tools'")
-        # loop fallback:
 
+        # loop fallback
         def watch(paths):
             files = [File(p) for p in paths]
             while True:
