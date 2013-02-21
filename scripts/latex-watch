@@ -14,7 +14,7 @@ import sys
 import time
 import glob
 import signal
-import hashlib
+import subprocess
 
 
 def print_err(s):
@@ -84,25 +84,30 @@ def get_compiler():
 
 def get_watcher():
     """ Returns a function to watch a list of files """
-    if is_cmd("inotifywait"):
-        print_msg("Watch: inotifywait")
-        return lambda x: os.popen(
-            "inotifywait -e modify %s 2>/dev/null" % ' '.join(x))
-    else:
-        print_msg("Watch: sleep(1) loop")
-        if is_ubuntu():
-            print_err("Suggested: install inotifywait with "
-                      "'sudo apt-get install inotify-tools'")
+    try:
+        if (is_cmd("inotifywait") and
+            not subprocess.check_output(["inotifywait"]).startswith("Couldn't initialize inotify")):
 
-        # loop fallback
-        def watch(paths):
-            files = [File(p) for p in paths]
-            while True:
-                for f in files:
-                    if f.changed():
-                        return
-                time.sleep(1)
-        return watch
+            print_msg("Watch: inotifywait")
+            return lambda x: os.popen("inotifywait -e modify %s" % ' '.join(x))
+    except subprocess.CalledProcessError:
+        print_msg("Error with inotifywait installation")
+        pass
+
+    # fallback
+    print_msg("Watch: sleep(1) loop")
+    if is_ubuntu():
+        print_err("Suggested: install inotifywait with "
+                    "'sudo apt-get install inotify-tools'")
+
+    def watch(paths):
+        files = [File(p) for p in paths]
+        while True:
+            for f in files:
+                if f.changed():
+                    return
+            time.sleep(1)
+    return watch
 
 
 def get_view_cmd():
