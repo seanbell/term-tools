@@ -419,7 +419,6 @@ noremap <leader>fb <esc>:CtrlPBuffer<cr>      " find buffer
 noremap <leader>fq <esc>:CtrlPQuickfix<cr>    " find in quickfix
 noremap <leader>fu <esc>:CtrlPUndo<cr>        " find in undo
 noremap <leader>fl <esc>:CtrlPLine<cr>        " find in file (by line)
-noremap <c-f> <esc>:CtrlPLine<cr>             " find in file (by line)
 
 " CtrlP -- ignore files
 let g:ctrlp_custom_ignore = {
