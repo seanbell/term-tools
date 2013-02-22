@@ -569,7 +569,13 @@ let g:pymode_breakpoint_key = '<leader>bp'
 "   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
 "   the top which I don't want)
 "   <ctrl+space> or <tab> -- autocomplete
+"   <enter>         -- jump to declaration
+"   <leader><enter> -- jump to definition
+"   <leader>rn      -- rename
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_command = "<cr>"
+let g:jedi#get_definition_command = "<leader><cr>"
+let g:jedi#rename_command = "<leader>rn"
 
 " }}}
 
