@@ -34,6 +34,7 @@ call togglebg#map("<F6>")
 " Misc
 let is_bash=1          " we are using bash
 set encoding=utf-8     " use UTF-8 (default latin1)
+set termencoding=utf-8
 set autoread           " auto-reload modified files (with no local changes)
 set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
@@ -48,7 +49,6 @@ set title              " change terminal title
 set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
 set ttyfast            " smoother changes
-set cursorline         " highlight current line
 
 if has('unnamedplus')
 	set clipboard=unnamedplus  " Share X windows clipboard.
@@ -83,6 +83,7 @@ set hlsearch       " enable search highlighting (change to nohlsearch to disable
                    " clear highlight with :noh
 
 " Show more things
+set cursorline     " highlight current line
 set showmode       " show which mode we are in
 set showcmd        " show state of keyboard input
 set showmatch      " show brace match
@@ -258,9 +259,6 @@ cmap w!! w !sudo tee % >/dev/null
 " <leader>sa : select all
 nnoremap <leader>sa 1GVG
 
-" backspace in normal mode
-nmap <bs> X
-
 " <leader>mk : run make
 noremap <leader>mk :make<cr>
 
@@ -321,6 +319,9 @@ set backspace=indent,eol,start
 if has('mac')
 	fixdel
 endif
+
+" Backspace in normal mode
+nmap <bs> X
 
 " Jump to last known line when opening a file (change ' to ` to do column too)
 autocmd BufReadPost *
