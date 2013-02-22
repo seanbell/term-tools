@@ -102,6 +102,13 @@ autocmd BufWinEnter * normal zR
 autocmd CursorHold * checktime
 autocmd WinEnter * checktime
 
+" Store swapfiles in a central location
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
