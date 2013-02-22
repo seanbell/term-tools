@@ -343,10 +343,6 @@ fun! DeleteTrailingWS()
 	exe "normal `q"
 	":ShowMarksClearMark
 endfun
-" commented out: vim seems to hang on save with this
-"autocmd BufWrite *.py :call DeleteTrailingWS()
-"autocmd BufWrite *.sh :call DeleteTrailingWS()
-"autocmd BufWrite *.coffee :call DeleteTrailingWS()
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
