@@ -92,6 +92,9 @@ set ruler          " show position in bottom right
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Open folds by default
+autocmd BufWinEnter * normal zR
+
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
@@ -558,12 +561,14 @@ let g:html_indent_style1 = "inc"
 " Python pymode -- check for errors
 "   <leader>bp -- set breakpoint
 let g:pymode_rope = 0
+let g:pymode_doc = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
 let g:pymode_lint_checker = "pylint,pep8,mccabe"
 let g:pymode_lint_ignore = "R0912,W0511,W0702,W0704,W0622,E501,R0914,R0911"
 let g:pymode_lint_jump = 1
 let g:pymode_breakpoint_key = '<leader>bp'
+let g:pymode_folding = 1
 
 " Python jedi -- fancy autocomplete
 "   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
