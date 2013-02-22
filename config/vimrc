@@ -108,6 +108,9 @@ execute "set <xLeft>=\e[1;*D"
 
 " Windows and tabs {{{
 
+" Quit vim
+noremap <leader>qa <esc>:qa<cr>
+
 " Left/right or c-h/c-l -- switch tabs
 noremap <left>  gT
 noremap <c-h>   gT
@@ -208,6 +211,10 @@ nmap Y y$
 " Move by displayed lines, not physical lines
 noremap j gj
 noremap k gk
+
+" Scroll slightly faster
+noremap <c-e> <c-e><c-e>
+noremap <c-y> <c-y><c-y>
 
 " Indent with tab, unindent with shift-tab
 nnoremap <tab> >>
