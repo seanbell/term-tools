@@ -19,7 +19,7 @@ filetype plugin indent on
 
 " Dark mode unless there is a flag file
 " (useful for when you toggle modes often)
-if filereadable($HOME . "/.vim-background-light")
+if filereadable($HOME . "/.vim-light")
 	set background=light
 else
 	set background=dark
