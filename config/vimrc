@@ -48,6 +48,7 @@ set title              " change terminal title
 set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
 set ttyfast            " smoother changes
+set cursorline         " highlight current line
 
 if has('unnamedplus')
 	set clipboard=unnamedplus  " Share X windows clipboard.
@@ -68,6 +69,7 @@ set completeopt=longest,menuone
 
 " Indentation -- width of 4 spaces
 set autoindent     " automatic indentation
+set copyindent     " indent new lines by current indent
 set nosmartindent  " disable C-style indenting by default (only useful for C/C++)
 set tabstop=4      " Number of spaces that a <Tab> in the file counts for (default 8)
 set shiftwidth=4   " Number of spaces to use for each step of (auto)indent.
