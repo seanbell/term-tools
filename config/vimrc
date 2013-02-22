@@ -95,6 +95,10 @@ autocmd GUIEnter * set visualbell t_vb=
 " Open folds by default
 autocmd BufWinEnter * normal zR
 
+" Detect file changes when idle or siwtching windows
+autocmd CursorHold * checktime
+autocmd WinEnter * checktime
+
 " Use , instead of \ for leader key (must be defined first)
 let mapleader=','
 
