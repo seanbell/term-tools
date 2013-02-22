@@ -95,7 +95,7 @@ autocmd GUIEnter * set visualbell t_vb=
 " Open folds by default
 autocmd BufWinEnter * normal zR
 
-" Monitor file when idle or siwtching windows
+" Detect file changes when idle or siwtching windows
 autocmd CursorHold * checktime
 autocmd WinEnter * checktime
 
