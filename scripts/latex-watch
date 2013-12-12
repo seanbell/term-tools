@@ -92,7 +92,7 @@ def get_watcher():
         except subprocess.CalledProcessError as e:
             if e.output:
                 output = e.output
-        if output and not output.startswith("Couldn't initialize inotify"):
+        if output.strip() == "No files specified to watch!":
             print_msg("Watch: inotifywait")
             return lambda x: os.popen("inotifywait -e modify %s" % ' '.join(x))
 
