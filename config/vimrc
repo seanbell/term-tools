@@ -517,7 +517,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 let g:NERDTreeWinSize = 30
 
 " NERDTree -- hide files
-let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
+let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$', '\.aux$', '\.bbl$', '\.aux$', '\.blg$', '\.fdb_latexmk$']
 
 " NERDTree -- open horiz/vert
 let g:NERDTreeMapOpenSplit = 's'
