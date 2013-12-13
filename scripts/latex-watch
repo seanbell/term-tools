@@ -178,12 +178,9 @@ class WatcherThread(Thread):
 
     def run(self):
         while True:
-            try:
-                deps = self.monitor.get_deps()
-                self.watch(deps)
-                self.monitor.inc_count()
-            except KeyboardInterrupt:
-                sys.exit(0)
+            deps = self.monitor.get_deps()
+            self.watch(deps)
+            self.monitor.inc_count()
 
 
 if __name__ == '__main__':
@@ -225,24 +222,21 @@ if __name__ == '__main__':
     viewed = False
     print ''
     while True:
-        try:
-            make(sources)
+        make(sources)
 
-            # view pdfs
-            if not viewed or view_cmd != 'evince':
-                viewed = True
-                for f in pdfs:
-                    if os.system("%s \"%s\" 1>/dev/null 2>/dev/null &" % (view_cmd, f)) != 0:
-                        viewed = False
+        # view pdfs
+        if not viewed or view_cmd != 'evince':
+            viewed = True
+            for f in pdfs:
+                if os.system("%s \"%s\" 1>/dev/null 2>/dev/null &" % (view_cmd, f)) != 0:
+                    viewed = False
 
-            # compute dependencies
-            deps = set()
-            for f in sources:
-                deps.update(get_dependencies(f))
+        # compute dependencies
+        deps = set()
+        for f in sources:
+            deps.update(get_dependencies(f))
 
-            watcher_monitor.set_deps(list(deps))
-            watcher_monitor.dec_count()
-        except KeyboardInterrupt:
-            sys.exit(0)
+        watcher_monitor.set_deps(list(deps))
+        watcher_monitor.dec_count()
 
     print_err('Exiting')
