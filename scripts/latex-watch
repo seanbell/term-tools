@@ -128,11 +128,17 @@ class File:
     """ Helper for watching files """
     def __init__(self, path):
         self._path = path
-        self._mtime = os.path.getmtime(self._path)
+        if os.path.exists(self._path):
+            self._mtime = os.path.getmtime(self._path)
+        else:
+            self._mtime = None
 
     def changed(self):
         """ Returns true if the file has changed since the last call """
-        new_mtime = os.path.getmtime(self._path)
+        if not os.path.exists(self._path):
+            new_mtime = os.path.getmtime(self._path)
+        else:
+            new_mtime = None
         if new_mtime != self._mtime:
             self._mtime = new_mtime
             return True
