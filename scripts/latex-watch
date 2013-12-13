@@ -136,9 +136,8 @@ class File:
     def changed(self):
         """ Returns true if the file has changed since the last call """
         if not os.path.exists(self._path):
-            new_mtime = os.path.getmtime(self._path)
-        else:
-            new_mtime = None
+            return True
+        new_mtime = os.path.getmtime(self._path)
         if new_mtime != self._mtime:
             self._mtime = new_mtime
             return True
