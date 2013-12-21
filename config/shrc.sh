@@ -90,6 +90,11 @@ if [ "$ZSH_VERSION" ]; then
 	# Better delete key and search with ctrl-R
 	bindkey '\e[3~' delete-char
 	bindkey '^R' history-incremental-pattern-search-backward
+
+	# don't autocorrect move and mkdir commands
+	alias cp='nocorrect cp '
+	alias mv='nocorrect mv '
+	alias mkdir='nocorrect mkdir '
 fi
 
 # BASH-SPECIFIC CONFIG
