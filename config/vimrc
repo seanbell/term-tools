@@ -288,9 +288,9 @@ nnoremap <leader>qf <esc>:cnf<cr>
 "    C/C++  -- ANSI style (A1), with tabs
 "    Python -- PEP8 style
 "    Coffee
-autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A1 -t<cr>
-autocmd FileType python nnoremap <leader>l <esc>:PyLintAuto<cr><esc>:PyLint<cr>
 autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
+autocmd FileType python nnoremap <leader>l <esc>:PyLintAuto<cr><esc>:PyLint<cr>
+autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A1 -t<cr>
 
 " <leader>r -- run/compile code
 "     C/C++  -- run make
@@ -517,7 +517,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 let g:NERDTreeWinSize = 30
 
 " NERDTree -- hide files
-let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$']
+let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$', '\.aux$', '\.bbl$', '\.aux$', '\.blg$', '\.fdb_latexmk$']
 
 " NERDTree -- open horiz/vert
 let g:NERDTreeMapOpenSplit = 's'
@@ -583,7 +583,7 @@ let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
 let g:pymode_lint_checker = "pylint,pep8,mccabe"
 let g:pymode_lint_ignore = "R0912,W0511,W0702,W0704,W0622,E501,R0914,R0911"
-let g:pymode_lint_jump = 1
+let g:pymode_lint_jump = 0
 let g:pymode_breakpoint_key = '<leader>bp'
 let g:pymode_folding = 1
 

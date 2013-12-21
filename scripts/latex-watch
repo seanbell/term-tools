@@ -9,12 +9,14 @@
 #    inotify-tools (recommended)
 #
 
+import re
 import os
 import sys
 import time
 import glob
 import signal
 import subprocess
+from threading import Thread, Lock, Condition
 
 
 def print_err(s):
@@ -84,21 +86,22 @@ def get_compiler():
 
 def get_watcher():
     """ Returns a function to watch a list of files """
-    try:
-        if (is_cmd("inotifywait") and
-            not subprocess.check_output(["inotifywait"]).startswith("Couldn't initialize inotify")):
+    #if is_cmd("inotifywait"):
+        #output = None
+        #try:
+            #output = subprocess.check_output("inotifywait 2>&1", shell=True)
+        #except subprocess.CalledProcessError as e:
+            #if e.output:
+                #output = e.output
+        #if output.strip() == "No files specified to watch!":
+            #print_msg("Watch: inotifywait")
+            #return lambda x: os.popen("inotifywait -e close_write %s" % ' '.join(x))
 
-            print_msg("Watch: inotifywait")
-            return lambda x: os.popen("inotifywait -e modify %s" % ' '.join(x))
-    except subprocess.CalledProcessError:
-        print_msg("Error with inotifywait installation")
-        pass
-
-    # fallback
-    print_msg("Watch: sleep(1) loop")
-    if is_ubuntu():
-        print_err("Suggested: install inotifywait with "
-                    "'sudo apt-get install inotify-tools'")
+    ## fallback
+    #print_msg("Watch: sleep(1) loop")
+    #if is_ubuntu():
+        #print_err("Suggested: install inotifywait with "
+                    #"'sudo apt-get install inotify-tools'")
 
     def watch(paths):
         files = [File(p) for p in paths]
@@ -125,15 +128,65 @@ class File:
     """ Helper for watching files """
     def __init__(self, path):
         self._path = path
-        self._mtime = os.path.getmtime(self._path)
+        if os.path.exists(self._path):
+            self._mtime = os.path.getmtime(self._path)
+        else:
+            self._mtime = None
 
     def changed(self):
         """ Returns true if the file has changed since the last call """
+        if not os.path.exists(self._path):
+            return True
         new_mtime = os.path.getmtime(self._path)
         if new_mtime != self._mtime:
             self._mtime = new_mtime
             return True
         return False
+
+
+class WatcherMonitor():
+    def __init__(self):
+        self.count = 0
+        self.deps = None
+        self.lock = Lock()
+        self.count_nz = Condition(self.lock)
+        self.has_deps = Condition(self.lock)
+
+    def set_deps(self, deps):
+        with self.lock:
+            self.deps = deps
+            self.has_deps.notifyAll()
+
+    def get_deps(self):
+        with self.lock:
+            while self.deps is None:
+                self.has_deps.wait()
+            return self.deps
+
+    def inc_count(self):
+        with self.lock:
+            self.count += 1
+            self.count_nz.notifyAll()
+
+    def dec_count(self):
+        with self.lock:
+            while self.count == 0:
+                self.count_nz.wait()
+            self.count -= 1
+
+
+class WatcherThread(Thread):
+    def __init__(self, watch, monitor):
+        super(WatcherThread, self).__init__()
+        self.watch = watch
+        self.monitor = monitor
+
+    def run(self):
+        while True:
+            deps = self.monitor.get_deps()
+            self.watch(deps)
+            self.monitor.inc_count()
+
 
 if __name__ == '__main__':
     # fix ctrl+c issues
@@ -143,7 +196,13 @@ if __name__ == '__main__':
     ensure_cmds(['latexmk', 'rubber'])
 
     # parse arguments
-    arglist = (sys.argv[1:] if len(sys.argv) > 1 else glob.glob('*.tex'))
+    if len(sys.argv) > 1:
+        arglist = sys.argv[1:]
+    else:
+        arglist = [re.sub(r'\.latexmain$', '', f) for f in glob.glob('*.tex.latexmain')]
+        if not arglist:
+            arglist = glob.glob('*.tex')
+
     sources = list(set([os.path.splitext(f)[0] + '.tex' for f in arglist]))
     pdfs = [os.path.splitext(f)[0] + '.pdf' for f in sources]
     print_msg('Sources: %s' % sources)
@@ -157,8 +216,12 @@ if __name__ == '__main__':
     # find commands to use
     make = get_compiler()
     view_cmd = get_view_cmd()
-    watch = get_watcher()
     ubuntu = is_ubuntu()
+    watch = get_watcher()
+
+    watcher_monitor = WatcherMonitor()
+    watcher_thread = WatcherThread(watch, watcher_monitor)
+    watcher_thread.start()
 
     # go!
     viewed = False
@@ -170,13 +233,15 @@ if __name__ == '__main__':
         if not viewed or view_cmd != 'evince':
             viewed = True
             for f in pdfs:
-                if os.system("%s \"%s\" &" % (view_cmd, f)) != 0:
+                if os.system("%s \"%s\" 1>/dev/null 2>/dev/null &" % (view_cmd, f)) != 0:
                     viewed = False
 
         # compute dependencies
         deps = set()
         for f in sources:
             deps.update(get_dependencies(f))
-        watch(list(deps))
+
+        watcher_monitor.set_deps(list(deps))
+        watcher_monitor.dec_count()
 
     print_err('Exiting')
