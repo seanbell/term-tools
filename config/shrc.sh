@@ -11,9 +11,6 @@ export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 
-# enable core dumps
-ulimit -c unlimited 2>/dev/null
-
 # if no editor is specified, assume vim
 if [ ! "$EDITOR" ]; then
 	export EDITOR="vim"
