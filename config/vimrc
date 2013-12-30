@@ -350,10 +350,14 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Delete trailing white space
 fun! DeleteTrailingWS()
-	let l = line(".")
-    let c = col(".")
+	" save last search and cursor
+	let _s=@/
+    let pos = getpos('.')
+	" delete with regex
 	%s/\s\+$//ge
-	call cursor(l, c)
+	" restore search and cursor
+	let @/=_s
+    call setpos('.', pos)
 endfun
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 

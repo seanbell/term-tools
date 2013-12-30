@@ -56,6 +56,12 @@ else
 	}
 fi
 
+# send ctrl-s to vim
+# see http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
+stty stop undef
+stty -ixon
+stty 115200
+
 # ZSH-SPECIFIC CONFIG
 if [ "$ZSH_VERSION" ]; then
 
@@ -129,4 +135,3 @@ if [ "$BASH_VERSION" ]; then
 	shopt -s cdspell
 
 fi
-
