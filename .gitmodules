@@ -110,3 +110,6 @@
 [submodule "vim/bundle/startify"]
 	path = vim/bundle/startify
 	url = git@github.com:mhinz/vim-startify.git
+[submodule "vim/bundle/hugefile"]
+	path = vim/bundle/hugefile
+	url = git@github.com:mhinz/vim-hugefile.git
