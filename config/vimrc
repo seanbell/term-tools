@@ -419,25 +419,24 @@ function! s:insert_gates()
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
-" Startify
-" -- fix colors
+" Startify -- fix colors
 hi StartifySection ctermfg=3
 hi StartifyBracket ctermfg=10
-" -- work with NERDTree
+" Startify -- work with NERDTree
 autocmd VimEnter *
 	\ if !argc() |
 	\   Startify |
 	\   NERDTree |
 	\   execute "normal \<c-w>w" |
 	\ endif
-" -- unimportant files
+" Startify -- unimportant files
 let g:startify_skiplist = [
    \ 'COMMIT_EDITMSG',
    \ $VIMRUNTIME .'/doc',
    \ 'bundle/.*/doc',
    \ '\.DS_Store'
    \ ]
-" -- header
+" Startify -- header
 if executable('fortune') && executable('cowsay')
 	" show a cow with a quote (if installed)
 	let g:startify_custom_header =
