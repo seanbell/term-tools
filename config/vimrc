@@ -463,7 +463,7 @@ endif
 "  -- <leader>gh -- toggle line highlighting
 "  -- fix the default colors: make the background match the gutter
 "  -- change the modify sign from ! to ~
-"  -- only handle git and hg (all other VCS)
+"  -- only handle git and hg (exclude all other VCS)
 hi SignifySignAdd    ctermbg=darkgray  ctermfg=2
 hi SignifySignDelete ctermbg=darkgray  ctermfg=5
 hi SignifySignChange ctermbg=darkgray  ctermfg=3
