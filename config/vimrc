@@ -348,10 +348,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Delete trailing white space
 fun! DeleteTrailingWS()
-	exe "normal mq"
+	let l = line(".")
+    let c = col(".")
 	%s/\s\+$//ge
-	exe "normal `q"
-	":ShowMarksClearMark
+	call cursor(l, c)
 endfun
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
