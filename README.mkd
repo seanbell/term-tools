@@ -20,11 +20,12 @@ released their scripts!
  * Autocomplete in Python shell
  * Shortcuts for `git`
  * Improved `~/.vimrc` key mappings
- * Packages the best Vim plugins: `closetag` `coffee-script` `ctrlp`
-   `easymotion` `fswitch` `fugitive` `gitignore` `gundo` `javascript` `latex`
-   `less` `matchit` `nerdcommenter` `nerdtree` `powerline` `python-mode`
-   `rainbow-parentheses` `showmarks` `solarized` `supertab` `surround`
-   `syntastic` `tabman` `tagbar` `tomorrow-night` `yankstack` `vimux`
+ * Packages the best Vim plugins: `ack` `closetag` `coffee-script` `ctrlp`
+   `easymotion` `fswitch` `fugitive` `gitignore` `gundo` `hugefile`
+   `javascript` `jedi` `latex` `less` `matchit` `nerdcommenter` `nerdtree`
+   `powerline` `python-mode` `rainbow-parentheses` `sbell` `seek` `showmarks`
+   `signify` `solarized` `startify` `supertab` `surround` `syntastic` `tabman`
+   `tagbar` `tomorrow-night`
  * Custom vim scripts: improved text-wrapping with `Q`,
    delete-trailing-whitespace, render python `lambda` as `λ`, other things I
    forget
