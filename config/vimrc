@@ -443,13 +443,13 @@ hi StartifyPath ctermfg=10
 hi StartifySlash ctermfg=10
 hi StartifyBracket ctermfg=10
 hi StartifySpecial ctermfg=10
-" Startify -- work with NERDTree
-autocmd VimEnter *
-	\ if !argc() |
-	\   Startify |
-	\   NERDTree |
-	\   execute "normal \<c-w>w" |
-	\ endif
+" Startify -- start NERDTree
+"autocmd VimEnter *
+	"\ if !argc() |
+	"\   Startify |
+	"\   NERDTree |
+	"\   execute "normal \<c-w>w" |
+	"\ endif
 " Startify -- unimportant files
 let g:startify_skiplist = [
    \ 'COMMIT_EDITMSG',
