@@ -420,8 +420,12 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Startify -- fix colors
+hi StartifyHeader ctermfg=3
 hi StartifySection ctermfg=3
+hi StartifyPath ctermfg=10
+hi StartifySlash ctermfg=10
 hi StartifyBracket ctermfg=10
+hi StartifySpecial ctermfg=10
 " Startify -- work with NERDTree
 autocmd VimEnter *
 	\ if !argc() |
