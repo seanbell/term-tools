@@ -280,20 +280,29 @@ command! WQ :wq
 command! E :e
 
 " Quickfix window -- open/close
-nnoremap <leader>qo <esc>:lop<cr>
-nnoremap <leader>qc <esc>:lcl<cr><esc>:qcl<cr>
+nnoremap <leader>qo <esc>:cope<cr>
+nnoremap <leader>qc <esc>:ccl<cr>
 " jump to next/previous error
-nnoremap <leader>qn <esc>:lne<cr>
-nnoremap <leader>qp <esc>:lp<cr>
+nnoremap <leader>qn <esc>:cn<cr>
+nnoremap <leader>qp <esc>:cp<cr>
 " jump to errors in next file
-nnoremap <leader>qf <esc>:lnf<cr>
+nnoremap <leader>qf <esc>:cnf<cr>
+
+" Location list window -- open/close
+nnoremap <leader>lo <esc>:lop<cr>
+nnoremap <leader>lc <esc>:lcl<cr>
+" jump to next/previous error
+nnoremap <leader>ln <esc>:lne<cr>
+nnoremap <leader>lp <esc>:lp<cr>
+" jump to errors in next file
+nnoremap <leader>lf <esc>:lnf<cr>
 
 " <leader>l -- lint code (format and then show errors)
 "    C/C++  -- ANSI style (A1), with tabs
 "    Python -- PEP8 style
 "    Coffee
 autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
-autocmd FileType python nnoremap <leader>l <esc>:PyLintAuto<cr><esc>:PyLint<cr>
+autocmd FileType python nnoremap <leader>l <esc>:PymodeLintAuto<cr><esc>:PymodeLint<cr>
 autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A1 -t<cr>
 
 " <leader>r -- run/compile code
@@ -662,7 +671,7 @@ let g:pymode_doc = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_onfly = 0
 let g:pymode_lint_checker = "pylint,pep8,mccabe"
-let g:pymode_lint_ignore = "R0912,W0511,W0702,W0704,W0622,E501,R0914,R0911"
+let g:pymode_lint_ignore = "R0912,W0511,W0702,W0704,W0622,E309,E501,R0914,R0911,C901"
 let g:pymode_lint_jump = 0
 let g:pymode_breakpoint_key = '<leader>bp'
 let g:pymode_folding = 1
