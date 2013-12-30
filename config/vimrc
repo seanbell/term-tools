@@ -457,7 +457,7 @@ let g:startify_skiplist = [
 if executable('fortune') && executable('cowsay')
 	" show a random character with a random quote (if installed)
 	let g:startify_custom_header =
-	  \ map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | shuf -n1) | sed -r "s/\s+*$//"'), '\n'), '"   ". v:val') + ['','']
+	  \ map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | shuf -n1) | sed -r "s/\s+$//"'), '\n'), '"   ". v:val') + ['','']
 else
 	" default header
 	let g:startify_custom_header = [
