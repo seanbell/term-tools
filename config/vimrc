@@ -481,7 +481,6 @@ hi SignifySignAdd    ctermbg=darkgray  ctermfg=2
 hi SignifySignDelete ctermbg=darkgray  ctermfg=9
 hi SignifySignChange ctermbg=darkgray  ctermfg=3
 let g:signify_sign_change = '~'
-let g:signify_sign_overwrite = 0
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
 " NERDCommenter -- use default mappings; some of them are:
