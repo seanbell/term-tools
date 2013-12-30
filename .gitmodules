@@ -113,3 +113,6 @@
 [submodule "vim/bundle/hugefile"]
 	path = vim/bundle/hugefile
 	url = git@github.com:mhinz/vim-hugefile.git
+[submodule "vim/bundle/seek"]
+	path = vim/bundle/seek
+	url = git@github.com:goldfeld/vim-seek.git
