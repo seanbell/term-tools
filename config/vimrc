@@ -378,15 +378,9 @@ autocmd FileType c,cpp,h,hpp setlocal smartindent cindent
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 " Configuration files
-au BUfNewFile,BufRead *.conf                  setf conf
 au BufNewFile,BufRead /etc/nginx/*            setf nginx
 au BufNewFile,BufRead /etc/apache2/*          setf apache
 au BufNewFile,BufRead /etc/hosts              setf hostconf
-
-" Git messages
-au BufNewFile,BufRead .git/COMMIT_EDITMSG     setf gitcommit
-au BufNewFile,BufRead .git/config,.gitconfig  setf gitconfig
-au BufNewFile,BufRead git-rebase-todo         setf gitrebase
 
 " }}}
 
