@@ -372,10 +372,21 @@ autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType crontab setlocal backupcopy=yes
 
 " C/C++ -- smart indentation
-autocmd FileTYpe c,cpp,h,hpp setlocal smartindent cindent
+autocmd FileType c,cpp,h,hpp setlocal smartindent cindent
 
 " Coffeescript -- 2-space tabs
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+" Configuration files
+au BUfNewFile,BufRead *.conf                  setf conf
+au BufNewFile,BufRead /etc/nginx/*            setf nginx
+au BufNewFile,BufRead /etc/apache2/*          setf apache
+au BufNewFile,BufRead /etc/hosts              setf hostconf
+
+" Git messages
+au BufNewFile,BufRead .git/COMMIT_EDITMSG     setf gitcommit
+au BufNewFile,BufRead .git/config,.gitconfig  setf gitconfig
+au BufNewFile,BufRead git-rebase-todo         setf gitrebase
 
 " }}}
 
@@ -468,7 +479,7 @@ hi SignifySignAdd    ctermbg=darkgray  ctermfg=2
 hi SignifySignDelete ctermbg=darkgray  ctermfg=5
 hi SignifySignChange ctermbg=darkgray  ctermfg=3
 let g:signify_sign_change = '~'
-let g:signify_sign_overwrite = 1
+let g:signify_sign_overwrite = 0
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
 " NERDCommenter -- use default mappings; some of them are:
