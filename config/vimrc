@@ -281,7 +281,7 @@ command! E :e
 
 " Quickfix window -- open/close
 nnoremap <leader>qo <esc>:lop<cr>
-nnoremap <leader>qc <esc>:lcl<cr>
+nnoremap <leader>qc <esc>:lcl<cr><esc>:qcl<cr>
 " jump to next/previous error
 nnoremap <leader>qn <esc>:lne<cr>
 nnoremap <leader>qp <esc>:lp<cr>
@@ -621,7 +621,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
 
 " turn off default checking for c/c++
-let g:syntastic_mode_map = { i
+let g:syntastic_mode_map = {
 	\ 'mode': 'active',
 	\ 'active_filetypes': [],
 	\ 'passive_filetypes': ['c', 'cpp', 'h', 'hpp'] }
