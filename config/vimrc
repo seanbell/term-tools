@@ -620,6 +620,7 @@ autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bu
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
 
+" turn off default checking for c/c++
 let g:syntastic_mode_map = { 'mode': 'active',
 						   \ 'active_filetypes': [],
 						   \ 'passive_filetypes': ['c', 'cpp', 'h', 'hpp'] }
