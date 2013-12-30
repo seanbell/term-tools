@@ -104,3 +104,6 @@
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim
+[submodule "vim/bundle/signify"]
+	path = vim/bundle/signify
+	url = https://github.com/mhinz/vim-signify

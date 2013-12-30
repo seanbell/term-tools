@@ -570,6 +570,18 @@ hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=light
 hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
 
+" Signify
+"  -- <leader>gh -- toggle line highlighting
+"  -- fix the default colors: make the background match the gutter
+"  -- change the modify sign from ! to ~
+"  -- only handle git and hg (all other VCS)
+hi SignifySignAdd    cterm=bold ctermbg=darkgray  ctermfg=2
+hi SignifySignDelete cterm=bold ctermbg=darkgray  ctermfg=5
+hi SignifySignChange cterm=bold ctermbg=darkgray  ctermfg=3
+let g:signify_sign_change = '~'
+let g:signify_sign_overwrite = 1
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
 " html indentation + vim javascript
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
