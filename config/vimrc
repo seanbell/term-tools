@@ -425,7 +425,7 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Startify -- don't change to file's directory
-let g:startify_change_to_dir = 1
+let g:startify_change_to_dir = 0
 " Startify -- fix colors
 hi StartifyHeader ctermfg=3
 hi StartifySection ctermfg=3
