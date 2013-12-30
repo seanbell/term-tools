@@ -332,7 +332,7 @@ nmap <bs> X
 
 " Jump to last known line when opening a file (change ' to ` to do column too)
 autocmd BufReadPost *
-  \ if &ft =~ 'COMMIT_EDITMSG' |
+  \ if &ft !~ 'COMMIT_EDITMSG' |
   \   if line("'\"") > 0 && line("'\"") <= line("$") |
   \     exe "normal g`\"" |
   \     if foldlevel('.') > 0 |
