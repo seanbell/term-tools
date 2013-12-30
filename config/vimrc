@@ -63,7 +63,7 @@ set showbreak=\ ↪\     " prefix wrap with ↪
 " Autocompletion
 set wildmenu                 " completion with menu
 set wildmode=list:longest    " list instead of fill in options
-set wildignore=*~,*.o,*.d,*.obj,*.class,*.pyc,*.bak,*.swp,.svn,.git
+set wildignore=*~,*.o,*.d,*.obj,*.class,*.pyc,*.bak,*.swp,.svn,.git,.hg
 set suffixes=~,.o,.d,.obj,.class,.bak,.swp,.pyc
 set completeopt=longest,menuone
 
