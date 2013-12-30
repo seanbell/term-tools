@@ -464,9 +464,9 @@ endif
 "  -- fix the default colors: make the background match the gutter
 "  -- change the modify sign from ! to ~
 "  -- only handle git and hg (all other VCS)
-hi SignifySignAdd    cterm=bold ctermbg=darkgray  ctermfg=2
-hi SignifySignDelete cterm=bold ctermbg=darkgray  ctermfg=5
-hi SignifySignChange cterm=bold ctermbg=darkgray  ctermfg=3
+hi SignifySignAdd    ctermbg=darkgray  ctermfg=2
+hi SignifySignDelete ctermbg=darkgray  ctermfg=5
+hi SignifySignChange ctermbg=darkgray  ctermfg=3
 let g:signify_sign_change = '~'
 let g:signify_sign_overwrite = 1
 let g:signify_vcs_list = [ 'git', 'hg' ]
