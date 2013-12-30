@@ -56,18 +56,6 @@ else
 	}
 fi
 
-# autojump wrapper (I've renamed "function j" in
-#   autojump.sh to "function j_impl")
-function j {
-	local _p=$PWD
-	j_impl $@
-
-	if [[ "$PWD" == "$_p" ]] && [ -d "$1" ]; then
-		cd $1
-		echo -e "\\033[31m${PWD}\\033[0m"
-	fi
-}
-
 # ZSH-SPECIFIC CONFIG
 if [ "$ZSH_VERSION" ]; then
 
