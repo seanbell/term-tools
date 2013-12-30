@@ -103,4 +103,16 @@
 	url = git://github.com/groenewege/vim-less.git
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
-	url = https://github.com/davidhalter/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
+[submodule "vim/bundle/signify"]
+	path = vim/bundle/signify
+	url = git@github.com:mhinz/vim-signify.git
+[submodule "vim/bundle/startify"]
+	path = vim/bundle/startify
+	url = git@github.com:mhinz/vim-startify.git
+[submodule "vim/bundle/hugefile"]
+	path = vim/bundle/hugefile
+	url = git@github.com:mhinz/vim-hugefile.git
+[submodule "vim/bundle/seek"]
+	path = vim/bundle/seek
+	url = git@github.com:goldfeld/vim-seek.git

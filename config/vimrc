@@ -348,10 +348,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Delete trailing white space
 fun! DeleteTrailingWS()
-	exe "normal mq"
+	let l = line(".")
+    let c = col(".")
 	%s/\s\+$//ge
-	exe "normal `q"
-	":ShowMarksClearMark
+	call cursor(l, c)
 endfun
 noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
@@ -419,7 +419,57 @@ function! s:insert_gates()
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
-" ScmDiff -- <leader>d : inline diff with GIT version
+" Startify -- fix colors
+hi StartifyHeader ctermfg=3
+hi StartifySection ctermfg=3
+hi StartifyPath ctermfg=10
+hi StartifySlash ctermfg=10
+hi StartifyBracket ctermfg=10
+hi StartifySpecial ctermfg=10
+" Startify -- work with NERDTree
+autocmd VimEnter *
+	\ if !argc() |
+	\   Startify |
+	\   NERDTree |
+	\   execute "normal \<c-w>w" |
+	\ endif
+" Startify -- unimportant files
+let g:startify_skiplist = [
+   \ 'COMMIT_EDITMSG',
+   \ $VIMRUNTIME .'/doc',
+   \ 'bundle/.*/doc',
+   \ '\.DS_Store'
+   \ ]
+" Startify -- header
+if executable('fortune') && executable('cowsay')
+	" show a cow with a quote (if installed)
+	let g:startify_custom_header =
+	  \ map(split(system('fortune | cowsay | sed "s/ *$//"'), '\n'), '"   ". v:val') + ['','']
+else
+	" default header
+	let g:startify_custom_header = [
+		\ '   __      ___',
+		\ '   \ \    / (_)',
+		\ '    \ \  / / _ _ __ ___',
+		\ '     \ \/ / | | ''_ ` _ \',
+		\ '      \  /  | | | | | | |',
+		\ '       \/   |_|_| |_| |_|',
+		\ '',
+		\ '',
+		\ ]
+endif
+
+" Signify
+"  -- <leader>gh -- toggle line highlighting
+"  -- fix the default colors: make the background match the gutter
+"  -- change the modify sign from ! to ~
+"  -- only handle git and hg (all other VCS)
+hi SignifySignAdd    cterm=bold ctermbg=darkgray  ctermfg=2
+hi SignifySignDelete cterm=bold ctermbg=darkgray  ctermfg=5
+hi SignifySignChange cterm=bold ctermbg=darkgray  ctermfg=3
+let g:signify_sign_change = '~'
+let g:signify_sign_overwrite = 1
+let g:signify_vcs_list = [ 'git', 'hg' ]
 
 " NERDCommenter -- use default mappings; some of them are:
 "   -- <leader>ci : toggle comment
@@ -483,6 +533,10 @@ nmap <leader>k <esc>:call EMNerd(1)<cr>
 hi link EasyMotionTarget WarningMsg
 hi link EasyMotionShade Normal
 
+" Seek
+"  -- s -- expects 2 characters: seek to that pair of characters
+"  -- works like f or t
+
 " TagBar -- ctags on right (mnemonic: tagBar)
 "   -- bt : toggle
 "   -- bo : open
@@ -512,8 +566,7 @@ noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
 noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
 noremap <leader>af <esc>:call NERDOpen()<cr>
 
-" NERDTree -- open if no files are listed and set width to 30
-autocmd vimenter * if !argc() | NERDTree | endif
+" NERDTree -- set width to 30
 let g:NERDTreeWinSize = 30
 
 " NERDTree -- hide files
@@ -529,6 +582,19 @@ let g:NERDTreeMapJumpPrevSibling = 'K'
 let g:NERDTreeMapJumpFirstChild = ''
 let g:NERDTreeMapJumpLastChild = ''
 
+" NERDTree -- Close all open buffers on entering a window if the only buffer
+" that's left is the NERDTree buffer
+" (https://github.com/scrooloose/nerdtree/issues/21)
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
 
 " CloseTag -- close html tags automagically
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
@@ -549,10 +615,6 @@ noremap <leader>gd <esc>:Gdiff<cr>
 noremap <leader>gl <esc>:Glog<cr>
 noremap <leader>gc <esc>:Gcommit<cr>
 noremap <leader>gp <esc>:Gpush<cr>
-
-" Visual selection
-vnoremap <silent> <leader>f :call VisualSelection('f')<cr>
-vnoremap <silent> <leader>F :call VisualSelection('b')<cr>
 
 " ShowMarks
 "   -- enable with <leader>mo

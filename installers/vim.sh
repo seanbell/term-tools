@@ -5,6 +5,8 @@ if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
 	if command -v apt-get >/dev/null 2>&1; then
 		# vim-gnome integration
 		sudo apt-get install -y vim-gnome ctags
+		# header for vim startify
+		sudo apt-get install -y fortune cowsay
 	fi
 elif [[ $(vim --version | grep -c "+conceal") == "0" ]]; then
 	if command -v /opt/local/bin/port >/dev/null 2>&1; then
