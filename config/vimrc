@@ -8,6 +8,11 @@
 " Must be first since this sets some options as a side effect
 set nocompatible
 
+" UTF-8 encoding (default is latin1)
+scriptencoding utf-8
+set encoding=utf-8
+set termencoding=utf-8
+
 " Pathogen : plugin package manager {{{
 filetype off
 call pathogen#infect()
@@ -33,8 +38,6 @@ call togglebg#map("<F6>")
 
 " Misc
 let is_bash=1          " we are using bash
-set encoding=utf-8     " use UTF-8 (default latin1)
-set termencoding=utf-8
 set autoread           " auto-reload modified files (with no local changes)
 set undolevels=65536   " lots of undo (default 1000)
 set history=1024       " lots of history (default 20)
@@ -49,10 +52,6 @@ set title              " change terminal title
 set nostartofline      " don't move cursor when switching buffers/files
 set nobackup           " that's what git is for
 set ttyfast            " smoother changes
-
-if has('unnamedplus')
-	set clipboard=unnamedplus  " Share X windows clipboard.
-endif
 
 " Appearance
 set number             " enable line numbers
@@ -90,6 +89,11 @@ set showmatch      " show brace match
 set matchtime=2    " faster brace match
 set report=0       " report all changes
 set ruler          " show position in bottom right
+
+" Share X windows clipboard
+if has('unnamedplus')
+	set clipboard=unnamedplus
+endif
 
 " STFU
 set noerrorbells visualbell t_vb=
@@ -302,6 +306,19 @@ autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<
 " Save file
 nnoremap <leader>sf <esc>:w<cr>
 
+" <leader>dw -- delete trailing white space
+fun! DeleteTrailingWS()
+  " save last search and cursor
+  let l:_s=@/
+  let l:saved_pos = getpos('.')
+  " delete with regex
+  silent! %s/\s\+$//ge
+  " restore search and cursor
+  let @/=l:_s
+  call setpos('.', l:saved_pos)
+endfun
+nnoremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
+
 " }}}
 
 " Global fixes {{{
@@ -347,19 +364,6 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Delete trailing white space
-fun! DeleteTrailingWS()
-	" save last search and cursor
-	let _s=@/
-    let pos = getpos('.')
-	" delete with regex
-	%s/\s\+$//ge
-	" restore search and cursor
-	let @/=_s
-    call setpos('.', pos)
-endfun
-noremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
 
 " }}}
 
@@ -457,7 +461,7 @@ let g:startify_skiplist = [
 if executable('fortune') && executable('cowsay')
 	" show a random character with a random quote (if installed)
 	let g:startify_custom_header =
-	  \ map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | shuf -n1) | sed -r "s/\s+$//"'), '\n'), '"   ". v:val') + ['','']
+	  \ map(split(system("fortune | cowsay -f $(cowsay -l | tail -n +2 | tr ' ' '\n' | shuf -n1) | sed -r 's/\\s+$//g' | sed '/^$/d'"), '\n'), '"   ". v:val') + ['','']
 else
 	" default header
 	let g:startify_custom_header = [
