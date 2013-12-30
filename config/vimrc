@@ -533,6 +533,10 @@ nmap <leader>k <esc>:call EMNerd(1)<cr>
 hi link EasyMotionTarget WarningMsg
 hi link EasyMotionShade Normal
 
+" Seek
+"  -- s -- expects 2 characters: seek to that pair of characters
+"  -- works like f or t
+
 " TagBar -- ctags on right (mnemonic: tagBar)
 "   -- bt : toggle
 "   -- bo : open
@@ -611,10 +615,6 @@ noremap <leader>gd <esc>:Gdiff<cr>
 noremap <leader>gl <esc>:Glog<cr>
 noremap <leader>gc <esc>:Gcommit<cr>
 noremap <leader>gp <esc>:Gpush<cr>
-
-" Visual selection
-vnoremap <silent> <leader>f :call VisualSelection('f')<cr>
-vnoremap <silent> <leader>F :call VisualSelection('b')<cr>
 
 " ShowMarks
 "   -- enable with <leader>mo
