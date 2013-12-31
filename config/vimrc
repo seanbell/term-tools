@@ -715,6 +715,9 @@
 		" Stop (interrupt) any command running in the runner pane
 		nnoremap <Leader>rs <esc>:VimuxInterruptRunner<CR>
 
+		" Commit and push current progress
+		nnoremap <Leader>rg :call VimuxRunCommand('clear; git add --all . && git commit -a -m "$(git log -1 --pretty=%B)" && git push && exit')<CR>
+
 		" defaults, but here for reference:
 		"let g:VimuxOrientation = "v"
 		"let g:VimuxHeight = "20"
