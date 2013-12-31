@@ -6,7 +6,7 @@
 " where they are configured.
 "
 
-" Environment {{{
+" MUST BE FIRST: Environment {{{
 
 	" Must be first since this sets some options as a side effect
 	set nocompatible
@@ -695,6 +695,32 @@
 
 	" }}}
 
+	" Vimux {{{
+
+		" Prompt for a command to run
+		nnoremap <Leader>rp <esc>:VimuxPromptCommand<CR>
+
+		" Run last command executed by VimuxRunCommand
+		nnoremap <Leader>rl <esc>:VimuxRunLastCommand<CR>
+
+		" Yank from runner pane (enter tmux copy mode in the other window)
+		nnoremap <Leader>ry <esc>:VimuxInspectRunner<CR>
+
+		" Close all other tmux panes in current window
+		nnoremap <Leader>rx <esc>:VimuxClosePanes<CR>
+
+		" Close vim tmux runner opened by VimuxRunCommand
+		nnoremap <Leader>rc <esc>:VimuxCloseRunner<CR>
+
+		" Stop (interrupt) any command running in the runner pane
+		nnoremap <Leader>rs <esc>:VimuxInterruptRunner<CR>
+
+		" defaults, but here for reference:
+		"let g:VimuxOrientation = "v"
+		"let g:VimuxHeight = "20"
+
+	" }}}
+
 	" HTML {{{
 
 		" html indentation + vim javascript
@@ -822,3 +848,9 @@
 
 " }}}
 
+" MUST BE LAST: Project-specific ~/.vimrc files {{{
+
+    set exrc
+    set secure
+
+" }}}

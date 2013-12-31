@@ -122,3 +122,9 @@
 [submodule "vim/bundle/django-support"]
 	path = vim/bundle/django-support
 	url = git@github.com:lambdalisue/vim-django-support.git
+[submodule "vim/bundle/vimux"]
+	path = vim/bundle/vimux
+	url = git@github.com:benmills/vimux.git
+[submodule "vim/bundle/vimux-pyutils"]
+	path = vim/bundle/vimux-pyutils
+	url = git@github.com:julienr/vimux-pyutils.git
