@@ -119,3 +119,6 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = git@github.com:mileszs/ack.vim.git
+[submodule "vim/bundle/django-support"]
+	path = vim/bundle/django-support
+	url = git@github.com:lambdalisue/vim-django-support.git

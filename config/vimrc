@@ -733,6 +733,10 @@
 		let g:jedi#goto_command = "<cr>"
 		let g:jedi#get_definition_command = "<leader><cr>"
 		let g:jedi#rename_command = "<leader>rn"
+
+		" Django (django-support)
+		" -- Automatically sets DJANGO_SETTINGS_MODULE
+
 	" }}}
 
 	" C/C++ {{{
