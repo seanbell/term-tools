@@ -716,7 +716,7 @@
 		nnoremap <Leader>rs <esc>:VimuxInterruptRunner<CR>
 
 		" Commit and push current progress, repeating the last commit message
-		nnoremap <Leader>rgp :call VimuxRunCommand('clear; git add --all . && git commit -a -m "$(git log -1 --pretty=%B)" && git push && exit')<CR>
+		nnoremap <Leader>rgp <esc>:w<CR>:call VimuxRunCommand('clear; git add --all . && git commit -a -m "$(git log -1 --pretty=%B)" && git push && exit')<CR>:w<CR>
 
 		" defaults, but here for reference:
 		"let g:VimuxOrientation = "v"
