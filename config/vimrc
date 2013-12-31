@@ -420,29 +420,13 @@
 	" }}}
 
 	" Powerline -- fancy status line {{{
-"
+
 		let g:Powerline_symbols = 'fancy'
 		set laststatus=2  " 2 means always show status
 
 	" }}}
 
-	" YankStack -- paste older items on stack {{{
-
-		nmap <leader>p <Plug>yankstack_substitute_older_paste
-		nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-	" }}}
-
-	" NERDCommenter {{{
-
-		" -- use default mappings; some of them are:
-		"   -- <leader>ci : toggle comment
-		"   -- <leader>cc : comment;
-		"   -- <leader>cs : comment 'sexily';
-
-	" }}}
-
-	" Stify (home screen) {{{
+	" Startify (home screen) {{{
 
 		" Startify -- don't change to file's directory
 		let g:startify_change_to_dir = 0
@@ -485,6 +469,31 @@
 				\ '',
 				\ ]
 		endif
+
+	" }}}
+
+	" YankStack -- paste older items on stack {{{
+
+		nmap <leader>p <Plug>yankstack_substitute_older_paste
+		nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+	" }}}
+
+	" NERDCommenter {{{
+
+		" use default mappings; some of them are:
+		" -- <leader>ci : toggle comment
+		" -- <leader>cc : comment;
+		" -- <leader>cs : comment 'sexily';
+
+	" }}}
+
+	" Surround {{{
+
+		" This plugin adds/modifies 'surroundings', some of them are:
+		" -- ds.  : delete .
+		" -- cs., : change . to ,
+		" -- S. (visual) : wrap with .
 
 	" }}}
 
