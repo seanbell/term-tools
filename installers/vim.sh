@@ -16,7 +16,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 	else
 		if command -v brew >/dev/null 2>&1; then
 			brew install ack
-		elif command -v port >/dev/null 2>&1; then
+		elif command -v /opt/local/bin/port >/dev/null 2>&1; then
 			sudo port install p5-app-ack
 		else
 			echo "Please install: ack-grep"
@@ -25,7 +25,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 	fi
 
 	if [[ $(vim --version | grep -c "+conceal") == "0" ]]; then
-		if command -v port >/dev/null 2>&1; then
+		if command -v /opt/local/bin/port >/dev/null 2>&1; then
 			# macports
 			sudo port selfupdate
 			sudo port clean vim
