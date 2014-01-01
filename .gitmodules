@@ -76,12 +76,6 @@
 [submodule "guake-colors-solarized"]
 	path = guake-colors-solarized
 	url = git://github.com/coolwanglu/guake-colors-solarized.git
-[submodule "tomorrow-theme"]
-	path = tomorrow-theme
-	url = git://github.com/chriskempson/tomorrow-theme.git
-[submodule "vim/bundle/tomorrow-night"]
-	path = vim/bundle/tomorrow-night
-	url = git://github.com/ootoovak/vim-tomorrow-night.git
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git

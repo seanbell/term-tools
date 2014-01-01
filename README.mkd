@@ -14,8 +14,7 @@ released their scripts!
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
- * Installs and configures `autojump`, `guake`, `solarized`, `tomorrow`, `zsh`,
-   `oh-my-zsh`
+ * Installs and configures `autojump`, `guake`, `solarized`, `zsh`, `oh-my-zsh`
  * Syntax highlighting in `less`
  * Autocomplete in Python shell
  * Shortcuts for `git`
@@ -25,7 +24,7 @@ released their scripts!
    `javascript` `jedi` `latex` `less` `matchit` `nerdcommenter` `nerdtree`
    `powerline` `python-mode` `rainbow-parentheses` `sbell` `seek` `showmarks`
    `signify` `solarized` `startify` `supertab` `surround` `syntastic` `tabman`
-   `tagbar` `tomorrow-night`
+   `tagbar`
  * Custom vim scripts: improved text-wrapping with `Q`,
    delete-trailing-whitespace, render python `lambda` as `λ`, other things I
    forget
