@@ -1,3 +1,7 @@
 #!/bin/bash
 set -e
-./autojump/install.sh > /dev/null
+
+p=$(pwd)
+cd autojump
+./install.sh > /dev/null
+cd "$p"
