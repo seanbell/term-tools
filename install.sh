@@ -30,7 +30,8 @@ trap print_err ERR
 set -e
 
 # Load submodules
-git pull
+git checkout origin/master
+git reset --hard origin/master
 git submodule init
 git submodule update
 
