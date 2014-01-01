@@ -32,7 +32,7 @@
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/latex"]
 	path = vim/bundle/latex
-	url = https://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+	url = git://git.code.sf.net/p/vim-latex/vim-latex
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
