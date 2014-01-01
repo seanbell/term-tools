@@ -5,6 +5,15 @@
 # This important restriction should be commented in ~/.zshrc (or ~/.bashrc) when you add the line.
 #
 
+# teamocil autocomplete
+if [[ -d ~/.teamocil/ ]]; then
+	if [ "$BASH_VERSION" ]; then
+		complete -W "$(teamocil --list)" teamocil
+	elif [ "$ZSH_VERSION" ]; then
+		compctl -g '~/.teamocil/*(:t:r)' teamocil
+	fi
+fi
+
 # make sure that tmux is installed and configured
 if [[ -s ~/.tmux.conf ]] && command -v tmux >/dev/null 2>&1; then
 
