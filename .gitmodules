@@ -97,28 +97,28 @@
 	url = https://github.com/groenewege/vim-less.git
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
-	url = https://github.com:davidhalter/jedi-vim.git
+	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "vim/bundle/signify"]
 	path = vim/bundle/signify
-	url = https://github.com:mhinz/vim-signify.git
+	url = https://github.com/mhinz/vim-signify.git
 [submodule "vim/bundle/startify"]
 	path = vim/bundle/startify
-	url = https://github.com:mhinz/vim-startify.git
+	url = https://github.com/mhinz/vim-startify.git
 [submodule "vim/bundle/hugefile"]
 	path = vim/bundle/hugefile
-	url = https://github.com:mhinz/vim-hugefile.git
+	url = https://github.com/mhinz/vim-hugefile.git
 [submodule "vim/bundle/seek"]
 	path = vim/bundle/seek
-	url = https://github.com:goldfeld/vim-seek.git
+	url = https://github.com/goldfeld/vim-seek.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
-	url = https://github.com:mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/django-support"]
 	path = vim/bundle/django-support
-	url = https://github.com:lambdalisue/vim-django-support.git
+	url = https://github.com/lambdalisue/vim-django-support.git
 [submodule "vim/bundle/vimux"]
 	path = vim/bundle/vimux
-	url = https://github.com:benmills/vimux.git
+	url = https://github.com/benmills/vimux.git
 [submodule "vim/bundle/vimux-pyutils"]
 	path = vim/bundle/vimux-pyutils
-	url = https://github.com:julienr/vimux-pyutils.git
+	url = https://github.com/julienr/vimux-pyutils.git
