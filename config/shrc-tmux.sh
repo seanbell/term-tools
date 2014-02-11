@@ -41,7 +41,7 @@ if [[ -s ~/.tmux.conf ]] && command -v tmux >/dev/null 2>&1; then
 			# (if not, fall through since we're already in a shell)
 			if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ "$TERM" == "xterm-256color" ]] && [[ $- = *i* ]]; then
 				# attach to dangling sessions if there are any
-				unattached=$(tmux ls | grep -v "attached" | head -n 1 | awk -F: '{print $1}')
+				unattached=$(tmux ls | grep -E "^[0-9]+:" | grep -v "(attached)$" | head -n 1 | awk -F: '{print $1}')
 				if [[ -n "$unattached" ]]; then
 					echo "Re-attaching to session $unattached"
 					sleep 1
