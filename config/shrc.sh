@@ -44,6 +44,9 @@ if [ "$BASH_VERSION" ]; then
 	complete -F _cd j
 fi
 
+# ack
+alias ack='ack-grep'
+
 # ls with a 1-second timeout
 if uname | grep Darwin > /dev/null; then
 	# Mac version
