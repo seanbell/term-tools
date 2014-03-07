@@ -12,6 +12,8 @@ if [[ ! -d ~/term-tools ]]; then
 	exit
 fi
 
+cd ~/term-tools
+
 # if -f, make sure it is intended
 for f in $@; do
 	if [ "$f" == "-f" ]; then
