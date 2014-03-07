@@ -77,6 +77,8 @@ If on a remote server, you can use this to more quickly run the installer:
 
 	wget --no-check-certificate https://raw.github.com/seanbell/term-tools/master/install.sh -O - | bash
 
+This will clone the repository to `~/term-tools` and then run the installer
+
 ## USAGE
 
 1. The Vim commands are detailed in `~/.vimrc`
