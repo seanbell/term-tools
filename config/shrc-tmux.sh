@@ -30,7 +30,7 @@ if [[ -s ~/.tmux.conf ]] && command -v tmux >/dev/null 2>&1; then
 
 		# make sure that this script is included last
 		line=$(grep -n -E 'source\s+.*config/shrc-tmux.sh' $rcfile | head -n 1 | awk -F: '{print $1}')
-		if [[ ! -z "line" ]]; then
+		if [[ ! -z "$line" ]]; then
 			tot=$(wc -l < $rcfile)
 			let diff=$tot-$line
 			txt=$(tail -n $diff $rcfile)
