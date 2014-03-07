@@ -43,35 +43,41 @@ have `term-tools` working on both OSX and Ubuntu.
    If you want to install these elsewhere, you need to search the scripts for
    `~/term-tools` and change them to the new location (sorry).
 
-1. Install vim: <pre>sudo apt-get install vim-nox</pre>
-
-2. Install patched Ubuntu fonts for the `powerline` plugin.  Open
+1. Install patched Ubuntu fonts for the `powerline` plugin.  Open
    `ubuntu-font-family-0.80/` using the file manager, open each of
    `UbuntuMono-*-Powerline.ttf` and click install.
 
-3. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
+2. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
    `~/.vim`, and `~/.tmux.conf` files if you have them.
 
-4. Install everything with `./install.sh`.  You shouldn't need to run it with
+3. Install everything with `./install.sh`.  You shouldn't need to run it with
    `sudo`, though the script will make calls to `sudo` internally.  It will ask
    whether each component should be installed.  Run with `-f` to overwrite any
    existing config you may have.
 
-5. Add this line to your `~/.bashrc` and `~/.zshrc`:
+4. Add this line to your `~/.bashrc` and `~/.zshrc`:
    <pre>source ~/term-tools/config/shrc.sh</pre>
    (`shrc.sh` already includes the autojump include code -- no need to include
    it twice).  Note that if you use install `zsh`, so you should include the
    above line in both `~/.bashrc` and `~/.zshrc`.
 
-6. Create a Gnome Terminal profile "solarized", run the installer
+5. Create a Gnome Terminal profile "solarized", run the installer
    (`installer.sh`) in `gnome-terminal-colors-solarized`, and then make
    "solarized" the default Gnome Terminal profile.  In that profile, make the
    font `Ubuntu Mono for Powerline 13`.
 
-7. Suggested: remap caps lock to escape -- open "keyboard layout" from the
+6. Suggested: remap caps lock to escape -- open "keyboard layout" from the
    Ubuntu menu (super key) choose "options..." then "Caps lock key behavior".
    Select "make caps lock an additional escape".  This is probably the single
    best improvement I've done to my workflow.
+
+## REMOTE SERVER INSTALL
+
+If on a remote server, you can use this to more quickly run the installer:
+
+	<pre>
+	wget --no-check-certificate https://raw.github.com/seanbell/term-tools/master/install.sh -O - | bash
+	</pre>
 
 ## USAGE
 

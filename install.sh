@@ -2,6 +2,14 @@
 echo "$0: TERM-TOOLS INSTALLER"
 echo ""
 
+# allow for remote installation
+if [[ ! -d ~/term-tools ]]; then
+	echo "Cloning into term-tools"
+	sudo apt-get install -y git
+	git clone https://github.com/seanbell/term-tools ~/term-tools
+fi
+cd ~/term-tools
+
 # if -f, make sure it is intended
 for f in $@; do
 	if [ "$f" == "-f" ]; then
