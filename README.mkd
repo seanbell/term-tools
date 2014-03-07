@@ -75,9 +75,7 @@ have `term-tools` working on both OSX and Ubuntu.
 
 If on a remote server, you can use this to more quickly run the installer:
 
-	<pre>
 	wget --no-check-certificate https://raw.github.com/seanbell/term-tools/master/install.sh -O - | bash
-	</pre>
 
 ## USAGE
 
