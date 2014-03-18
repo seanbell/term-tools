@@ -746,6 +746,10 @@
 
 	" Python {{{
 
+		" python-syntax
+		let python_highlight_all = 1
+		let python_version_2 = 1
+
 		" Autopep8
 		let g:autopep8_disable_show_diff = 1
 
