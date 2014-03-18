@@ -748,7 +748,7 @@
 		" Autopep8
 		let g:autopep8_disable_show_diff = 1
 
-		" Python jedi -- fancy autocomplete
+		" Python jedi
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
 		"   the top which I don't want)
 		"   <ctrl+space> or <tab> -- autocomplete
@@ -756,9 +756,11 @@
 		"   <leader><enter> -- jump to definition
 		"   <leader>rn      -- rename
 		let g:jedi#auto_vim_configuration = 0
-		let g:jedi#goto_command = "<cr>"
-		let g:jedi#get_definition_command = "<leader><cr>"
+		let g:jedi#goto_assignments_command = "<cr>"
+		let g:jedi#goto_definitions_command = "<leader><cr>"
 		let g:jedi#rename_command = "<leader>rn"
+		" Use YouCompleteMe for completions, not jedi
+		let g:jedi#completions_enabled = 0
 
 		" Django (django-support)
 		" -- Automatically sets DJANGO_SETTINGS_MODULE

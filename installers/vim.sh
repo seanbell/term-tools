@@ -3,12 +3,61 @@ set -e
 
 if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
 	if command -v apt-get >/dev/null 2>&1; then
-		# install vim
-		sudo apt-get install -y vim-gnome ctags ack-grep
+		# install utilities
+		sudo apt-get install -y ctags ack-grep
 		# header for vim startify
 		sudo apt-get install -y cowsay fortune fortunes-off fortunes-bofh-excuses
-		# install checkbashisms
-		sudo apt-get install -y devscripts
+
+		read -r -p "Install newest vim from source (recommended)? [Y/n] " response
+		if [ -z "$response" ] || [[ $response =~ ^[Yy]$ ]] ;  then
+
+			####
+			# BUILD NEWEST VIM FROM SOURCE
+			# Based on: https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+			# uninstall repo version
+
+			echo "Uninstall old vim..."
+			sudo apt-get remove -y vim vim-runtime vim-gnome gvim \
+				vim-tiny vim-common vim-gui-common
+
+			echo "Install vim prerequisites..."
+			sudo apt-get install -y \
+				libncurses5-dev libgnome2-dev libgnomeui-dev \
+				libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+				libcairo2-dev libx11-dev libxpm-dev libxt-dev \
+				python-dev ruby-dev mercurial
+
+			echo "Clone newest vim source code to vim-src/..."
+			sudo rm -rf vim-src
+			hg clone https://code.google.com/p/vim/ vim-src
+
+			echo "Build vim from source..."
+			P="$(pwd)"
+			cd vim-src
+			./configure \
+				--with-features=huge \
+				--enable-rubyinterp \
+				--enable-pythoninterp \
+				--with-python-config-dir=/usr/lib/python2.7-config \
+				--enable-perlinterp \
+				--enable-luainterp \
+				--enable-gui=gtk2 \
+				--enable-cscope \
+				--prefix=/usr
+			make VIMRUNTIMEDIR=/usr/share/vim/vim74
+			sudo make install
+			cd "$P"
+
+			echo "Update alternatives"
+			sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
+			sudo update-alternatives --set editor /usr/bin/vim
+			sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
+			sudo update-alternatives --set vi /usr/bin/vim
+
+			echo "Done building vim"
+		else
+			sudo apt-get install -y vim-gnome
+		fi
 	else
 		echo "Cannot find apt-get"
 		exit 1

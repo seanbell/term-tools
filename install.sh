@@ -44,7 +44,7 @@ set -e
 # Load submodules
 git pull
 git submodule init
-git submodule update
+git submodule update --init --recursive
 
 # update apt-get
 sudo apt-get update -y
