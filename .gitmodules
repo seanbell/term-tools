@@ -119,3 +119,6 @@
 [submodule "vim/bundle/vimux-pyutils"]
 	path = vim/bundle/vimux-pyutils
 	url = https://github.com/julienr/vimux-pyutils.git
+[submodule "vim/bundle/autopep8"]
+	path = vim/bundle/autopep8
+	url = https://github.com/tell-k/vim-autopep8

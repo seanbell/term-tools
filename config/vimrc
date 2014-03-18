@@ -306,7 +306,7 @@
 	"    Python  -- PEP8 style
 	"    Coffee
 	autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
-	autocmd FileType python nnoremap <leader>l <esc>:autopep8 -i expand("%")
+	autocmd FileType python nnoremap <leader>l <esc>:call Autopep8()<cr><esc>:redraw!<cr>
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A2 -t<cr>
 
 	" <leader>r -- run/compile code
@@ -744,6 +744,9 @@
 	" }}}
 
 	" Python {{{
+
+		" Autopep8
+		let g:autopep8_disable_show_diff = 1
 
 		" Python jedi -- fancy autocomplete
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
