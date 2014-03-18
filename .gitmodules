@@ -76,9 +76,6 @@
 [submodule "guake-colors-solarized"]
 	path = guake-colors-solarized
 	url = https://github.com/coolwanglu/guake-colors-solarized.git
-[submodule "vim/bundle/python-mode"]
-	path = vim/bundle/python-mode
-	url = https://github.com/klen/python-mode.git
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
