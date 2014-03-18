@@ -643,7 +643,11 @@
 
 	" Syntastic -- inline syntax errors {{{
 
-		let g:syntastic_enable_signs=1
+		" fancy warning symbols
+		let g:syntastic_error_symbol = '✗'
+		let g:syntastic_warning_symbol = '⚠'
+
+		" uncomment this to hide warning messages:
 		" let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 		" turn off default checking for c/c++
