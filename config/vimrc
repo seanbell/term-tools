@@ -771,7 +771,8 @@
 		" -- Automatically sets DJANGO_SETTINGS_MODULE
 		"
 
-		" Helper to show what the current highlight group is
+		" Helper to show what the current highlight group is.  Press F9 over a
+		" token to print the current highlight group to the status bar.
 		autocmd FileType python map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
