@@ -316,7 +316,7 @@
 	autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
 
 	" Save file
-	nnoremap <leader>sf <esc>:w<cr>
+	nnoremap <leader>sf <esc>:w<cr><esc>:redraw!<cr>
 
 	" <leader>dw -- delete trailing white space
 	fun! DeleteTrailingWS()
@@ -330,6 +330,7 @@
 		call setpos('.', l:saved_pos)
 	endfun
 	nnoremap <leader>dw <esc>:call DeleteTrailingWS()<cr>
+	autocmd FileType c,cpp,python,ruby,java autocmd BufWritePre <buffer> :call DeleteTrailingWS()
 
 " }}}
 
@@ -764,6 +765,12 @@
 
 		" Django (django-support)
 		" -- Automatically sets DJANGO_SETTINGS_MODULE
+		"
+
+		" Helper to show what the current highlight group is
+		autocmd FileType python map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 	" }}}
 
