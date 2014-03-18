@@ -17,7 +17,7 @@ else
 fi
 
 # checkers for vim plugins
-sudo pip install pep8 pyflakes jedi
+sudo pip install --upgrade pep8 pyflakes jedi
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
 ln $@ -s ~/term-tools/config/inputrc ~/.inputrc
