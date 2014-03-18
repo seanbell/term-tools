@@ -16,8 +16,12 @@ else
 	echo "ERROR: pip is not installed"
 fi
 
+if command -v apt-get >/dev/null 2>&1; then
+	sudo apt-get install -y pylint
+fi
+
 # checkers for vim plugins
-sudo pip install --upgrade pep8 pyflakes jedi
+sudo pip install --upgrade flake8 pep8 pyflakes jedi rstcheck
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
 ln $@ -s ~/term-tools/config/inputrc ~/.inputrc

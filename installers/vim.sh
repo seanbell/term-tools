@@ -3,9 +3,12 @@ set -e
 
 if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
 	if command -v apt-get >/dev/null 2>&1; then
+		# install vim
 		sudo apt-get install -y vim-gnome ctags ack-grep
 		# header for vim startify
 		sudo apt-get install -y cowsay fortune fortunes-off fortunes-bofh-excuses
+		# install checkbashisms
+		sudo apt-get install -y devscripts
 	else
 		echo "Cannot find apt-get"
 		exit 1
