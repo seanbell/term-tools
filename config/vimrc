@@ -744,6 +744,9 @@
 
 	" Python {{{
 
+		" Don't use syntastic for python (use python-mode instead)
+		let g:syntastic_python_checkers = []
+
 		" python-mode
 		let g:pymode_doc = 0
 		let g:pymode_lint_write = 0
@@ -761,9 +764,6 @@
 		let g:pymode_lint_visual_symbol = '⚠'
 		let g:pymode_lint_info_symbol = '⚠'
 		let g:pymode_lint_pyflakes_symbol = '⚠'
-
-		" Don't use syntastic for python (we have pymode)
-		let g:syntastic_python_checkers = []
 
 		" Python jedi
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
