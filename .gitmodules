@@ -122,6 +122,6 @@
 [submodule "vim/bundle/autopep8"]
 	path = vim/bundle/autopep8
 	url = https://github.com/tell-k/vim-autopep8
-[submodule "vim/bundle/python-syntax"]
-	path = vim/bundle/python-syntax
-	url = https://github.com/seanbell/python-syntax
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
+	url = https://github.com/klen/python-mode

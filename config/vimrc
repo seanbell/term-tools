@@ -306,12 +306,13 @@
 	"    Python  -- PEP8 style
 	"    Coffee
 	autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
-	autocmd FileType python nnoremap <leader>l <esc>:call Autopep8()<cr><esc>:redraw!<cr>
+	autocmd FileType python nnoremap <leader>l <esc>:PymodeLintAuto<cr><esc>:PymodeLint<cr>
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A2 -t<cr>
 
 	" <leader>r -- run/compile code
 	"     C/C++  -- run make
 	"     Coffee -- watch live compilation
+	"     Python -- setup by python-mode
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:w<cr><esc>:make<cr>
 	autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
 
@@ -746,12 +747,17 @@
 
 	" Python {{{
 
-		" python-syntax
-		let python_highlight_all = 1
-		let python_version_2 = 1
-
-		" Autopep8
-		let g:autopep8_disable_show_diff = 1
+		" python-mode
+		let g:pymode_doc = 0
+		let g:pymode_lint_write = 0
+		let g:pymode_lint_onfly = 0
+		let g:pymode_lint_checker = "pylint,pep8,mccabe"
+		let g:pymode_lint_ignore = "R0912,W0401,W0511,W0622,W0702,W0704,E309,E501,R0914,R0911,C901"
+		let g:pymode_lint_jump = 0
+		let g:pymode_breakpoint_key = '<leader>bp'
+		let g:pymode_rope = 0
+		let g:pymode_rope_completion = 0
+		let g:pymode_folding = 1
 
 		" Python jedi
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
