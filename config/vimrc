@@ -512,8 +512,10 @@
 		nmap <leader>k <esc>:call EMNerd(1)<cr>
 
 		" EasyMotion & Solarized fix
+		hi link EasyMotionShade  Comment
 		hi link EasyMotionTarget WarningMsg
-		hi link EasyMotionShade Normal
+		hi link EasyMotionTarget2First DiffAdd
+		hi link EasyMotionTarget2Second DiffChange
 
 		" FSwitch -- <leader>h or H
 		"   -- <leader>h -- open in vertical split
