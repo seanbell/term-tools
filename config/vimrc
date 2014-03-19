@@ -317,7 +317,7 @@
 	autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
 
 	" Save file
-	nnoremap <leader>sf <esc>:w<cr><esc>:redraw!<cr>
+	nnoremap <leader>sf <esc>:w<cr>
 
 	" <leader>dw -- delete trailing white space
 	fun! DeleteTrailingWS()
@@ -648,9 +648,6 @@
 		let g:syntastic_error_symbol = '✗'
 		let g:syntastic_warning_symbol = '⚠'
 
-		" uncomment this to hide warning messages:
-		" let g:syntastic_quiet_messages = {'level': 'warnings'}
-
 		" turn off default checking for c/c++
 		let g:syntastic_mode_map = {
 			\ 'mode': 'active',
@@ -758,6 +755,15 @@
 		let g:pymode_rope = 0
 		let g:pymode_rope_completion = 0
 		let g:pymode_folding = 1
+		let g:pymode_lint_error_symbol = '✗'
+		let g:pymode_lint_todo_symbol = '⚠'
+		let g:pymode_lint_comment_symbol = '⚠'
+		let g:pymode_lint_visual_symbol = '⚠'
+		let g:pymode_lint_info_symbol = '⚠'
+		let g:pymode_lint_pyflakes_symbol = '⚠'
+
+		" Don't use syntastic for python (we have pymode)
+		let g:syntastic_python_checkers = []
 
 		" Python jedi
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
