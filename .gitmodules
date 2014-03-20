@@ -19,7 +19,7 @@
 	ignore = dirty
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
-	url = https://github.com/tsaleh/vim-matchit.git
+	url = https://github.com/vim-scripts/vim-matchit.git
 	ignore = dirty
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
