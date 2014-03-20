@@ -59,25 +59,31 @@ function FSNerd(cmd)
 	endif
 endfunction
 
-" EasyMotion -- jump repeatedly if inside NERDTree (dir=0 : down, 1 : up)
-function EMNerd(dir)
-	let orig_pos = [line('.'), col('.')]
-	call EasyMotion#JK(0, a:dir)
-	let new_pos = [line('.'), col('.')]
-	if orig_pos != new_pos && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) == winnr()
-		silent exec 'normal o'
-		if a:dir == 0 && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) == winnr()
-			call EMNerd(a:dir)
-		endif
-	endif
-endfunction
+"" EasyMotion -- jump repeatedly if inside NERDTree (dir=0 : down, 1 : up)
+"function EMNerd(dir)
+	"let orig_pos = [line('.'), col('.')]
+	"call EasyMotion#JK(0, a:dir)
+	"let new_pos = [line('.'), col('.')]
+	"if orig_pos != new_pos && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) == winnr()
+		"silent exec 'normal o'
+		"if a:dir == 0 && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) == winnr()
+			"call EMNerd(a:dir)
+		"endif
+	"endif
+"endfunction
 
-" NERDTree -- open files from file tree with <leader>o
-function NERDOpen()
-	call NERDTreeFocus()
-	exec 'normal 2H'
-	wincmd =
-	call EMNerd(0)
+"" NERDTree -- open files from file tree with <leader>ao
+"function NERDOpenEM()
+	"call NERDTreeFocus()
+	"exec 'normal 2H'
+	"wincmd =
+	"call EMNerd(0)
+"endfunction
+
+function NERDTreeTabsFind()
+	silent NERDTreeTabsOpen
+	silent NERDTreeSteppedClose
+	silent NERDTreeFind
 endfunction
 
 " Move a window (if more than one window) to the previous/next tab

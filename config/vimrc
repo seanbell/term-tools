@@ -450,11 +450,11 @@
 			"\ endif
 		" Startify -- unimportant files
 		let g:startify_skiplist = [
-		\ 'COMMIT_EDITMSG',
-		\ $VIMRUNTIME .'/doc',
-		\ 'bundle/.*/doc',
-		\ '\.DS_Store'
-		\ ]
+			\ 'COMMIT_EDITMSG',
+			\ $VIMRUNTIME .'/doc',
+			\ 'bundle/.*/doc',
+			\ '\.DS_Store'
+			\ ]
 		" Startify -- header
 		if executable('fortune') && executable('cowsay')
 			" show a random character with a random fortune (if installed)
@@ -569,17 +569,18 @@
 
 	" NERDTree -- file browser on left (mnemonic: All files) {{{
 
-		"   -- ao : open
+		"   -- ao : open (custom function in plugins/sbell.vi)
 		"   -- ac : close
 		"   -- at : toggle
-		"   -- af : find (custom function in plugins/sbell.vim)
-		noremap <leader>ao <esc>:NERDTreeFind<cr><c-w>=
-		noremap <leader>ac <esc>:NERDTreeClose<cr><c-w>=
-		noremap <leader>at <esc>:NERDTreeToggle<cr><c-w>=
-		noremap <leader>af <esc>:call NERDOpen()<cr>
+		noremap <leader>ao <esc>:call NERDTreeTabsFind()<cr><c-w>=
+		noremap <leader>ac <esc>:NERDTreeTabsClose<cr><c-w>=
+		noremap <leader>at <esc>:NERDTreeTabsToggle<cr><c-w>=
 
 		" NERDTree -- set width to 30
 		let g:NERDTreeWinSize = 30
+
+		" NERDTree -- don't ask to confirm buffer issues when renaming/deleting
+		let NERDTreeAutoDeleteBuffer=1
 
 		" NERDTree -- hide files
 		let NERDTreeIgnore=['\.swp$', '\.pyc$', '\.o$', '\.class$', '\~$', '\.aux$', '\.bbl$', '\.aux$', '\.blg$', '\.fdb_latexmk$']
@@ -597,16 +598,19 @@
 		" NERDTree -- Close all open buffers on entering a window if the only buffer
 		" that's left is the NERDTree buffer
 		" (https://github.com/scrooloose/nerdtree/issues/21)
-		autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-		function! s:CloseIfOnlyNerdTreeLeft()
-		if exists("t:NERDTreeBufName")
-			if bufwinnr(t:NERDTreeBufName) != -1
-			if winnr("$") == 1
-				q
-			endif
-			endif
-		endif
-		endfunction
+		"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+		"function! s:CloseIfOnlyNerdTreeLeft()
+		"if exists("t:NERDTreeBufName")
+			"if bufwinnr(t:NERDTreeBufName) != -1
+			"if winnr("$") == 1
+				"q
+			"endif
+			"endif
+		"endif
+		"endfunction
+
+		" NERDTreeTabs
+		let g:nerdtree_tabs_focus_on_files = 1
 
 	" }}}
 
