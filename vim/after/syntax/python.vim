@@ -24,3 +24,7 @@ if has('conceal')
 	hi! link Conceal Operator
 	setlocal conceallevel=2
 endif
+
+" Trailing comma warning
+syn match PythonTrailingCommaWarning    " [=] .*\(,\)\s*\(#.*\)*$" display
+hi! link PythonTrailingCommaWarning Error
