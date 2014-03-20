@@ -51,3 +51,6 @@ else
 	echo "ERROR: ~/.oh-my-zsh does not exist"
 	exit 1
 fi
+
+# change default shell
+sudo chsh $USER -s /bin/zsh
