@@ -7,9 +7,6 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/bundle/solarized"]
-	path = vim/bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -124,3 +121,6 @@
 [submodule "vim/bundle/nerdtree-tabs"]
 	path = vim/bundle/nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs
+[submodule "vim/bundle/colors-solarized"]
+	path = vim/bundle/colors-solarized
+	url = https://github.com/seanbell/vim-colors-solarized
