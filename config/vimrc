@@ -668,9 +668,11 @@
 		"  -- fix the default colors: make the background match the gutter
 		"  -- change the modify sign from ! to ~
 		"  -- only handle git and hg (exclude all other VCS)
-		hi SignifySignAdd    ctermbg=darkgray  ctermfg=2
-		hi SignifySignDelete ctermbg=darkgray  ctermfg=9
-		hi SignifySignChange ctermbg=darkgray  ctermfg=3
+		if g:colors_name == "solarized"
+			exe "hi! SignifySignAdd"    .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_green']  .g:solarized_vars['bg_none']
+			exe "hi! SignifySignDelete" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_red']    .g:solarized_vars['bg_none']
+			exe "hi! SignifySignChange" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_yellow'] .g:solarized_vars['bg_none']
+		endif
 		let g:signify_sign_change = '~'
 		let g:signify_vcs_list = [ 'git', 'hg' ]
 
@@ -699,10 +701,12 @@
 		"     don't seem to match up with what ShowMarks shows in the side bar)
 		"  -- fix the default colors (default has foreground == background for me)
 		let g:showmarks_include='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-		hi ShowMarksHLl ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
-		hi ShowMarksHLu ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
-		hi ShowMarksHLo ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
-		hi ShowMarksHLm ctermfg=white ctermbg=darkgray cterm=bold guifg=blue guibg=lightblue gui=bold
+		if g:colors_name == "solarized"
+			exe "hi! ShowMarksHLl" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLu" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLo" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLm" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
+		endif
 
 	" }}}
 
