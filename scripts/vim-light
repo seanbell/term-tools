@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Enables "light" mode in vim, then starts vim
+#
+
+touch ~/.vim-light
+exec vim "$@"
