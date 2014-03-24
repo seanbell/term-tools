@@ -415,11 +415,10 @@
 
 	" Solarized {{{
 
-		" -- change some color assignments to use less eye-bleeding red
-		" tex : eye-bleeding red --> dark gray (note that 2 or 3 also work pretty well)
-		autocmd FileType tex hi Special ctermfg=10
-		" cpp : eye-bleeding red --> bright blue
-		autocmd FileType c,cpp,h,hpp hi Special ctermfg=4
+		if g:colors_name == "solarized"
+			" LaTeX uses way too much red --> replace it with blue
+			autocmd FileType tex exe "hi! Special" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_blue'] .g:solarized_vars['bg_none']
+		endif
 
 	" }}}
 
@@ -435,12 +434,14 @@
 		" Startify -- don't change to file's directory
 		let g:startify_change_to_dir = 0
 		" Startify -- fix colors
-		hi StartifyHeader ctermfg=3
-		hi StartifySection ctermfg=3
-		hi StartifyPath ctermfg=10
-		hi StartifySlash ctermfg=10
-		hi StartifyBracket ctermfg=10
-		hi StartifySpecial ctermfg=10
+		if g:colors_name == "solarized"
+			exe "hi! StartifyHeader"  .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_yellow'] .g:solarized_vars['bg_none']
+			exe "hi! StartifySection" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_yellow'] .g:solarized_vars['bg_none']
+			exe "hi! StartifyPath"    .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_base00'] .g:solarized_vars['bg_none']
+			exe "hi! StartifySlash"   .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_base00'] .g:solarized_vars['bg_none']
+			exe "hi! StartifyBracket" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_base0']  .g:solarized_vars['bg_none']
+			exe "hi! StartifySpecial" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_base0']  .g:solarized_vars['bg_none']
+		endif
 		" Startify -- start NERDTree
 		"autocmd VimEnter *
 			"\ if !argc() |
@@ -702,10 +703,10 @@
 		"  -- fix the default colors (default has foreground == background for me)
 		let g:showmarks_include='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 		if g:colors_name == "solarized"
-			exe "hi! ShowMarksHLl" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
-			exe "hi! ShowMarksHLu" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
-			exe "hi! ShowMarksHLo" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
-			exe "hi! ShowMarksHLm" .g:solarized_vars['fg_base1'] .g:solarized_vars['fmt_bold'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLl" .g:solarized_vars['fmt_bold'] .g:solarized_vars['fg_base1'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLu" .g:solarized_vars['fmt_bold'] .g:solarized_vars['fg_base1'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLo" .g:solarized_vars['fmt_bold'] .g:solarized_vars['fg_base1'] .g:solarized_vars['bg_none']
+			exe "hi! ShowMarksHLm" .g:solarized_vars['fmt_bold'] .g:solarized_vars['fg_base1'] .g:solarized_vars['bg_none']
 		endif
 
 	" }}}
