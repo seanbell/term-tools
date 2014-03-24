@@ -373,7 +373,11 @@
 	\ endif
 
 	" Highlight trailing whitespace in the most annoying way possible.
-	highlight ExtraWhitespace ctermbg=red guibg=red
+	if g:colors_name == "solarized"
+		exe "hi! ExtraWhitespace" .g:solarized_vars['fmt_none'] .g:solarized_vars['fg_red'] .g:solarized_vars['bg_red']
+	else
+		hi! ExtraWhitespace ctermbg=red guibg=red
+	endif
 	match ExtraWhitespace /\s\+$/
 	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
