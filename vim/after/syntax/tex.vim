@@ -97,7 +97,15 @@ if has('conceal')
 
 	syn region texBoldMathText matchgroup=texStatement start='\\\(mathbf\|bm\){' end='}' concealends keepend contains=@texMathZoneGroup
 	syn cluster texMathZoneGroup add=texBoldMathText
-
-	hi texBoldMathText ctermfg=white guifg=white
 	"""
+
+	if g:colors_name == "solarized"
+		exe "hi! texBoldMathText" .g:solarized_vars['fmt_bold'] .g:solarized_vars['fg_base0'] .g:solarized_vars['bg_none']
+	else
+		if &background == "light"
+			hi texBoldMathText ctermfg=black guifg=black
+		else
+			hi texBoldMathText ctermfg=white guifg=white
+		endif
+	endif
 endif

@@ -798,7 +798,7 @@
 
 		" Helper to show what the current highlight group is.  Press F9 over a
 		" token to print the current highlight group to the status bar.
-		autocmd FileType python map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+		autocmd FileType tex map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
@@ -834,8 +834,11 @@
 
 	" Latex {{{
 
+		" Show symbol for accents, delimiters, greek, and math symbols
+		" --> see ~/.vim/ftplugin/tex.vim
+
 		" Replace latex with their math symbol
-		" --> see bundle/sbell/syntax/tex.vim
+		" --> see ~/.vim/syntax/tex.vim
 
 		" Disable the <++> that normally gets inserted with this latex plugin
 		let g:Imap_UsePlaceHolders = 0
