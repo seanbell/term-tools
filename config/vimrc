@@ -385,7 +385,10 @@
 
 " }}}
 
-" FileType tabs, folding, wrapping {{{
+" FileType tabs, folding, wrapping, spelling {{{
+
+	" Enable spell-check on text-like filetypes
+	autocmd FileType txt,tex,html,rst,*.mkd,*.md set spell
 
 	" Python -- whitespace sensitive
 	autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
