@@ -94,9 +94,6 @@
 [submodule "vim/bundle/startify"]
 	path = vim/bundle/startify
 	url = https://github.com/mhinz/vim-startify.git
-[submodule "vim/bundle/hugefile"]
-	path = vim/bundle/hugefile
-	url = https://github.com/mhinz/vim-hugefile.git
 [submodule "vim/bundle/seek"]
 	path = vim/bundle/seek
 	url = https://github.com/goldfeld/vim-seek.git
