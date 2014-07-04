@@ -316,9 +316,6 @@
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:w<cr><esc>:make<cr>
 	autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
 
-	" <leader>i -- fix imports
-	autocmd FileType python nnoremap <leader>i <esc>:Isort<cr>
-
 	" Save file
 	nnoremap <leader>sf <esc>:w<cr>
 
@@ -797,6 +794,11 @@
 		let g:jedi#goto_assignments_command = "<cr>"
 		let g:jedi#goto_definitions_command = "<leader><cr>"
 		let g:jedi#rename_command = "<leader>rn"
+
+		" Isort
+		"   <leader>i -- sort imports (either whole file or selection)
+		autocmd FileType python nnoremap <leader>i <esc>:Isort<cr>
+		let g:vim_isort_map = '<leader>i'
 
 		" Django (django-support)
 		" -- Automatically sets DJANGO_SETTINGS_MODULE

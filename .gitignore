@@ -1,3 +1,4 @@
 .*.swp
 fix-git-user.sh
 vim-src
+.DS_Store
