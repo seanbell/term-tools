@@ -316,6 +316,9 @@
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>r <esc>:w<cr><esc>:make<cr>
 	autocmd FileType coffee nnoremap <leader>r <esc>:w<cr><esc>:CoffeeCompile watch<cr>
 
+	" <leader>i -- fix imports
+	autocmd FileType python nnoremap <leader>i <esc>:Isort<cr>
+
 	" Save file
 	nnoremap <leader>sf <esc>:w<cr>
 

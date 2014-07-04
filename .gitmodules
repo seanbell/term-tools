@@ -124,3 +124,6 @@
 [submodule "vim/bundle/colors-solarized"]
 	path = vim/bundle/colors-solarized
 	url = https://github.com/seanbell/vim-colors-solarized
+[submodule "vim/bundle/isort"]
+	path = vim/bundle/isort
+	url = https://github.com/fisadev/vim-isort

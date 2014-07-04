@@ -21,7 +21,7 @@ if command -v apt-get >/dev/null 2>&1; then
 fi
 
 # checkers for vim plugins
-sudo pip install --upgrade flake8 pep8 autopep8 pyflakes jedi rstcheck
+sudo pip install --upgrade flake8 pep8 autopep8 pyflakes jedi rstcheck isort
 
 ln $@ -s ~/term-tools/config/pythonrc ~/.pythonrc
 ln $@ -s ~/term-tools/config/inputrc ~/.inputrc
