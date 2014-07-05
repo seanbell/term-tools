@@ -766,6 +766,7 @@
 		let g:syntastic_python_checkers = []
 
 		" python-mode
+		let g:pymode_options = 0
 		let g:pymode_doc = 0
 		let g:pymode_lint_write = 0
 		let g:pymode_lint_onfly = 0
