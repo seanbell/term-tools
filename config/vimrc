@@ -771,7 +771,7 @@
 		let g:pymode_lint_write = 0
 		let g:pymode_lint_onfly = 0
 		let g:pymode_lint_checker = "pylint,pep8,mccabe"
-		let g:pymode_lint_ignore = "R0912,W0401,W0511,W0622,W0702,W0704,E309,E501,R0914,R0911,C901"
+		let g:pymode_lint_ignore = "R0912,W0401,W0511,W0622,W0702,W0704,E309,E501,R0914,R0911,C901,E265,E114,E116,E266,W391"
 		let g:pymode_lint_jump = 0
 		let g:pymode_breakpoint_key = '<leader>bp'
 		let g:pymode_rope = 0
