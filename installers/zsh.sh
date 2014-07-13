@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # tmp file for this script
 ZSHRC_TMP=~/term-tools/zshrc.tmp
