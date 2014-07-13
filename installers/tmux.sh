@@ -30,7 +30,17 @@ if command -v teamocil >/dev/null 2>&1; then
 elif command -v gem >/dev/null 2>&1; then
 	sudo gem install teamocil
 elif command -v apt-get >/dev/null 2>&1; then
-	sudo apt-get install -y ruby1.9.3 rubygems
+
+	sudo apt-get install -y base-files
+	source /etc/os-release
+	if [[ ${VERSION%%.*} -ge 14 ]]; then
+		# Ubuntu 14.04
+		sudo apt-get install -y ruby
+	else
+		# Ubuntu 12.04
+		sudo apt-get install -y ruby1.9.3 rubygems
+	fi
+
 	sudo gem install teamocil
 else
 	echo "ERROR: rubygems is not installed"
