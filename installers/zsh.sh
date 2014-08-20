@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # tmp file for this script
 ZSHRC_TMP=~/term-tools/zshrc.tmp
@@ -18,7 +17,7 @@ else
 fi
 
 if [ ! -d ~/.oh-my-zsh ]; then
-	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 fi
 
 if [ -s /etc/zsh/zshrc ]; then
