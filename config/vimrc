@@ -484,12 +484,6 @@
 
 	" }}}
 
-	" Ack {{{
-
-		let g:ack_default_options = " -H --nocolor --nogroup --column"
-
-	" }}}
-
 	" YankStack -- paste older items on stack {{{
 
 		nmap <leader>p <Plug>yankstack_substitute_older_paste
