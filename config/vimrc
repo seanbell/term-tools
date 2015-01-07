@@ -306,7 +306,7 @@
 	"    Python  -- PEP8 style
 	"    Coffee
 	autocmd FileType coffee nnoremap <leader>l <esc>:CoffeeLint\|cwindow<cr>
-	autocmd FileType python nnoremap <leader>l <esc>:Isort<cr><esc>:PymodeLintAuto<cr><esc>:PymodeLint<cr>
+	autocmd FileType python nnoremap <leader>l <esc>:retab<cr><esc>:Isort<cr><esc>:PymodeLintAuto<cr><esc>:PymodeLint<cr>
 	autocmd FileType c,cpp,h,hpp nnoremap <leader>l <esc>:%!astyle -A2 -t<cr>
 
 	" <leader>r -- run/compile code
