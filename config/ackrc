@@ -1,2 +1,2 @@
---type-set coffee=.coffee
---type-set rst=.rst
+--type-set=coffee:ext:.coffee
+--type-set=rst:ext:.rst
