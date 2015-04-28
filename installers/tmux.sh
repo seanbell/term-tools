@@ -9,7 +9,7 @@ elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
 	sudo add-apt-repository -y ppa:pi-rho/dev
 	sudo apt-get update
-	sudo apt-get install -y tmux xclip
+	sudo apt-get install -y 'tmux=1.9a-1~ppa1~t' xclip
 elif command -v brew >/dev/null 2>&1; then
 	# homebrew
 	brew install tmux
