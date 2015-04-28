@@ -3,8 +3,8 @@ set -e
 
 ## tmux
 
-if command -v tmux >/dev/null 2>&1; then
-	echo "tmux: exists"
+if command -v tmux >/dev/null 2>&1 && [[ $(tmux -V) == "tmux 1.9a" ]]; then
+	echo "tmux 1.9a: exists"
 elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
 	sudo add-apt-repository -y ppa:pi-rho/dev
@@ -17,7 +17,7 @@ elif command -v /opt/local/bin/port >/dev/null 2>&1; then
 	# macport
 	sudo port install tmux
 else
-	echo "ERROR: tmux is not installed"
+	echo "ERROR: tmux 1.9a is not installed"
 	exit 1
 fi
 
