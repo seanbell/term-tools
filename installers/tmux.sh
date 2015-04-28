@@ -21,6 +21,7 @@ else
 	exit 1
 fi
 
+tmux -V
 ln $@ -sn ~/term-tools/config/tmux.conf ~/.tmux.conf
 
 ### teamocil
