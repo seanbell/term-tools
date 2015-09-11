@@ -75,7 +75,7 @@ if [ "$ZSH_VERSION" ]; then
 	}
 
 	# terminal editor mode -- vim or emacs
-	if [[ "$TERM_EDITOR" == "vim" ]]; then
+	if [[ "$TERM_EDITOR" == "vim" ]] || [[ "$TERM_EDITOR" == "nvim" ]]; then
 		bindkey -v
 	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
 		bindkey -e
@@ -95,7 +95,7 @@ fi
 if [ "$BASH_VERSION" ]; then
 
 	# terminal editor mode -- vim or emacs
-	if [[ "$TERM_EDITOR" == "vim" ]]; then
+	if [[ "$TERM_EDITOR" == "vim" ]] || [[ "$TERM_EDITOR" == "nvim" ]]; then
 		set -o vi
 	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
 		set -o emacs
