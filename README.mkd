@@ -14,7 +14,7 @@ released their scripts!
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
- * Installs and configures `autojump`, `guake`, `solarized`, `zsh`, `oh-my-zsh`
+ * Installs and configures `autojump`, `solarized`, `zsh`, `oh-my-zsh`
  * Syntax highlighting in `less`
  * Autocomplete in Python shell
  * Shortcuts for `git`
