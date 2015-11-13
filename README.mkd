@@ -100,3 +100,6 @@ This will clone the repository to `~/term-tools` and then run the installer
 	export EDITOR="vim"
 	export TERM_EDITOR="emacs"
 	</pre>
+
+ * Editing Python hangs sometimes; jedi is a little buggy.  You can disable
+   these features by entering paste mode (F2).
