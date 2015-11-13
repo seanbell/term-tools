@@ -101,5 +101,5 @@ This will clone the repository to `~/term-tools` and then run the installer
 	export TERM_EDITOR="emacs"
 	</pre>
 
- * Editing Python hangs sometimes; jedi is a little buggy.  You can disable
-   these features by entering paste mode (F2).
+ * Editing Python hangs sometimes, since jedi is a little buggy.  You can
+   disable these features by entering paste mode (F2).
