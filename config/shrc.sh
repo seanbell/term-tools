@@ -8,8 +8,9 @@ export TERM_TOOLS_DIR=~/term-tools
 export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
 
 # store more shell history
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
+export HISTSIZE=10000000
+export SAVEHIST=10000000
+export HISTFILESIZE=10000000
 
 # if no editor is specified, assume vim
 if [ ! "$EDITOR" ]; then
