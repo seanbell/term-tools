@@ -2,7 +2,6 @@
 set -e
 
 if [ -f /proc/version ] && [ $(grep -c Ubuntu /proc/version) -gt 0 ]; then
-	echo test
 	if command -v apt-get >/dev/null 2>&1; then
 		# install utilities
 		sudo apt-get install -y ctags ack-grep
