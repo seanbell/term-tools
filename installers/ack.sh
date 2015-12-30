@@ -13,4 +13,4 @@ else
 	exit 1
 fi
 
-ln $@ -s ~/term-tools/config/acrc ~/.ackrc
+ln $@ -s ~/term-tools/config/ackrc ~/.ackrc

@@ -12,8 +12,9 @@ fi
 export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
 
 # store more shell history
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
+export HISTSIZE=10000000
+export SAVEHIST=10000000
+export HISTFILESIZE=10000000
 
 # if no editor is specified, assume vim
 if [ ! "$EDITOR" ]; then
@@ -63,7 +64,7 @@ else
 	}
 fi
 
-# send ctrl-s to vim
+# Disable flow-control with ctrl-s
 # see http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty stop undef
 stty -ixon
@@ -79,7 +80,7 @@ if [ "$ZSH_VERSION" ]; then
 	}
 
 	# terminal editor mode -- vim or emacs
-	if [[ "$TERM_EDITOR" == "vim" ]]; then
+	if [[ "$TERM_EDITOR" == "vim" ]] || [[ "$TERM_EDITOR" == "nvim" ]]; then
 		bindkey -v
 	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
 		bindkey -e
@@ -99,7 +100,7 @@ fi
 if [ "$BASH_VERSION" ]; then
 
 	# terminal editor mode -- vim or emacs
-	if [[ "$TERM_EDITOR" == "vim" ]]; then
+	if [[ "$TERM_EDITOR" == "vim" ]] || [[ "$TERM_EDITOR" == "nvim" ]]; then
 		set -o vi
 	elif [[ "$TERM_EDITOR" == "emacs" ]]; then
 		set -o emacs

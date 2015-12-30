@@ -15,7 +15,6 @@ import sys
 import time
 import glob
 import signal
-import subprocess
 from threading import Thread, Lock, Condition
 
 
@@ -191,6 +190,11 @@ class WatcherThread(Thread):
 if __name__ == '__main__':
     # fix ctrl+c issues
     signal.signal(signal.SIGINT, lambda x, y: exit(1))
+
+    # fix DISPLAY variable issues
+    if 'DISPLAY' not in os.environ:
+        print 'setting DISPLAY=":0.0" (was unset)'
+        os.environ['DISPLAY'] = ":0.0"
 
     # make sure we have latexmk and rubber
     ensure_cmds(['latexmk', 'rubber'])

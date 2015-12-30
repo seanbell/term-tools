@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ "$DESKTOP_SESSION" == "ubuntu" ]]; then
+if [ -f /proc/version ] && [ $(grep -c Ubuntu /proc/version) -gt 0 ]; then
 	if command -v apt-get >/dev/null 2>&1; then
 		# install utilities
 		sudo apt-get install -y ctags ack-grep
