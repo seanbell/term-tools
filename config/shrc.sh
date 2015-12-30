@@ -1,8 +1,12 @@
 # TERMINAL CONFIG
 # source from ~/.bashrc or ~/.zshrc
 
-# directory containing these tools
-export TERM_TOOLS_DIR=~/term-tools
+# find term-tools directory
+if [ "$BASH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
+elif [ "$ZSH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
+fi
 
 # add scripts to path
 export PATH="$PATH:$TERM_TOOLS_DIR/scripts"
@@ -51,11 +55,11 @@ alias ack='ack-grep'
 if uname | grep Darwin > /dev/null; then
 	# Mac version
 	function ls_safe {
-		~/term-tools/config/timeout3.sh -t 1 ls -G
+		$TERM_TOOLS_DIR/config/timeout3.sh -t 1 ls -G
 	}
 else
 	function ls_safe {
-		~/term-tools/config/timeout3.sh -t 1 ls --color=auto
+		$TERM_TOOLS_DIR/config/timeout3.sh -t 1 ls --color=auto
 	}
 fi
 
@@ -108,8 +112,8 @@ if [ "$BASH_VERSION" ]; then
 
 	# cdd browser: navigate with hjkl, esc: cancel, enter: use that dir
 	# (unfortunately this does not work in zsh)
-	if [ -s ~/term-tools/cdd/cdd.sh ]; then
-		alias cdd=". ~/term-tools/cdd/cdd.sh"
+	if [ -s $TERM_TOOLS_DIR/cdd/cdd.sh ]; then
+		alias cdd=". $TERM_TOOLS_DIR/cdd/cdd.sh"
 	fi
 
 	# Custom terminal: blue path and yellow git branch
