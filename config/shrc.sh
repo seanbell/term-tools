@@ -60,7 +60,7 @@ else
 	}
 fi
 
-# send ctrl-s to vim
+# Disable flow-control with ctrl-s
 # see http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty stop undef
 stty -ixon
