@@ -57,9 +57,6 @@ git pull origin master
 git submodule init
 git submodule update --init --recursive
 
-# update apt-get
-# sudo apt-get update -y
-
 # run through the installers
 for f in $(ls -1 installers/*.sh); do
 	inst="y"
