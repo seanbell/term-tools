@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# find term-tools directory
+if [ "$BASH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
+elif [ "$ZSH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
+fi
+builtin cd "$TERM_TOOLS_DIR"
+
 ## tmux
 
 if command -v tmux >/dev/null 2>&1 && [[ $(tmux -V) == "tmux 1.9a" ]]; then
@@ -23,7 +31,7 @@ else
 fi
 
 tmux -V
-ln $@ -sn ~/term-tools/config/tmux.conf ~/.tmux.conf
+ln $@ -sn $TERM_TOOLS_DIR/config/tmux.conf ~/.tmux.conf
 
 ### teamocil
 #

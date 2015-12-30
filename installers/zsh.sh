@@ -1,7 +1,15 @@
 #!/bin/bash
 
+# find term-tools directory
+if [ "$BASH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
+elif [ "$ZSH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
+fi
+builtin cd "$TERM_TOOLS_DIR"
+
 # tmp file for this script
-ZSHRC_TMP=~/term-tools/zshrc.tmp
+ZSHRC_TMP="$TERM_TOOLS_DIR/zshrc.tmp"
 
 if command -v zsh >/dev/null 2>&1; then
 	echo "zsh: exists"
@@ -33,9 +41,9 @@ fi
 if [ -d ~/.oh-my-zsh ]; then
 	cd ~/.oh-my-zsh
 
-	ln $@ -s ~/term-tools/oh-my-zsh-custom/zsh-syntax-highlighting plugins/zsh-syntax-highlighting
-	ln $@ -s ~/term-tools/config/sbell.zsh-theme themes/sbell.zsh-theme
-	ln $@ -s ~/term-tools/config/sbell-screen.zsh-theme themes/sbell-screen.zsh-theme
+	ln $@ -s $TERM_TOOLS_DIR/oh-my-zsh-custom/zsh-syntax-highlighting plugins/zsh-syntax-highlighting
+	ln $@ -s $TERM_TOOLS_DIR/config/sbell.zsh-theme themes/sbell.zsh-theme
+	ln $@ -s $TERM_TOOLS_DIR/config/sbell-screen.zsh-theme themes/sbell-screen.zsh-theme
 
 	cd -
 

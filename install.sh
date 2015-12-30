@@ -20,6 +20,7 @@ if [ ! -t 0 ]; then
 	fi
 fi
 
+# find term-tools
 export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 echo "TERM_TOOLS_DIR=$TERM_TOOLS_DIR"
 cd $TERM_TOOLS_DIR
@@ -77,14 +78,17 @@ done
 
 for f in ~/.zshrc ~/.bashrc; do
 	if [[ -s $f ]]; then
-		if [[ $(grep -c "source ~/$TERM_TOOLS_DIR/config/shrc.sh" $f) == "0" ]]; then
-			echo "[[ -s ~/$TERM_TOOLS_DIR/config/shrc.sh ]] && source ~/$TERM_TOOLS_DIR/config/shrc.sh" >> $f
-		fi
-		if [[ $(grep -c "source ~/$TERM_TOOLS_DIR/config/shrc-tmux.sh" $f) == "0" ]]; then
+		print "Patching $f..."
+		if [[ $(grep -c "source $TERM_TOOLS_DIR/config/shrc.sh" $f) == "0" ]]; then
 			echo '' >> $f
-			echo "# This line starts all new shells inside tmux (if tmux is installed and set up)." >> $f
-			echo "# It must be the last command in this file." >> $f
-			echo "[[ -s ~/$TERM_TOOLS_DIR/config/shrc-tmux.sh ]] && source ~/$TERM_TOOLS_DIR/config/shrc-tmux.sh" >> $f
+			echo "[[ -s $TERM_TOOLS_DIR/config/shrc.sh ]] && source $TERM_TOOLS_DIR/config/shrc.sh" >> $f
+		fi
+		# the single-quote is intentional, since shrc.sh will set TERM_TOOLS_DIR
+		if [[ $(grep -c 'source $TERM_TOOLS_DIR/config/shrc-tmux.sh' $f) == "0" ]]; then
+			echo '' >> $f
+			echo '# This line starts all new shells inside tmux (if tmux is installed and set up).' >> $f
+			echo '# It must be the last command in this file.' >> $f
+			echo '[[ -s $TERM_TOOLS_DIR/config/shrc-tmux.sh ]] && source $TERM_TOOLS_DIR/config/shrc-tmux.sh' >> $f
 		fi
 	fi
 done
