@@ -39,13 +39,13 @@ fi
 
 # install oh-my-zsh config if it exists
 if [ -d ~/.oh-my-zsh ]; then
-	cd ~/.oh-my-zsh
 
+	P="$(pwd)"
+	builtin cd ~/.oh-my-zsh
 	ln $@ -s "$TERM_TOOLS_DIR/oh-my-zsh-custom/zsh-syntax-highlighting" plugins/zsh-syntax-highlighting
 	ln $@ -s "$TERM_TOOLS_DIR/config/sbell.zsh-theme" themes/sbell.zsh-theme
 	ln $@ -s "$TERM_TOOLS_DIR/config/sbell-screen.zsh-theme" themes/sbell-screen.zsh-theme
-
-	cd -
+	builtin cd "$P"
 
 	# set theme and add syntax plugin
 	sed -e 's/^ZSH_THEME=.*$/if [[ $TERM == "screen-256color" ]]; then ZSH_THEME="sbell-screen" else ZSH_THEME="sbell" fi/' \
