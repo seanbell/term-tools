@@ -52,7 +52,7 @@ trap print_err ERR
 
 set -e
 
-# Load submodules
+echo "Update submodules..."
 git pull origin master
 git submodule init
 git submodule update --init --recursive
