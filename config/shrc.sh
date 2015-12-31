@@ -56,11 +56,11 @@ alias ack='ack-grep'
 if uname | grep Darwin > /dev/null; then
 	# Mac version
 	function ls_safe {
-		$TERM_TOOLS_DIR/config/timeout3.sh -t 1 ls -G
+		$TERM_TOOLS_DIR/scripts/timeout3.sh -t 1 ls -G
 	}
 else
 	function ls_safe {
-		$TERM_TOOLS_DIR/config/timeout3.sh -t 1 ls --color=auto
+		$TERM_TOOLS_DIR/scripts/timeout3.sh -t 1 ls --color=auto
 	}
 fi
 
