@@ -29,7 +29,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 if [ -s /etc/zsh/zshrc ]; then
-	# This fixes the  up arrow key for ZSH default config.  The default is to
+	# This fixes the up arrow key for ZSH default config.  The default is to
 	# have the cursor go to th END of the line, but Ubuntu has overwritten this
 	# ZSH default to go to the beginning of the line.  I think that's stupid,
 	# so I'm reverting back to the default behavior
