@@ -75,7 +75,7 @@ done
 
 for f in ~/.zshrc ~/.bashrc; do
 	if [[ -s $f ]]; then
-		print "Patching $f..."
+		echo "Patching $f..."
 		if [[ $(grep -c "source \"$TERM_TOOLS_DIR/config/shrc.sh\"" $f) == "0" ]]; then
 			echo '' >> $f
 			echo "[[ -s \"$TERM_TOOLS_DIR/config/shrc.sh\" ]] && source \"$TERM_TOOLS_DIR/config/shrc.sh\"" >> $f
