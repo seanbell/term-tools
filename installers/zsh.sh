@@ -48,7 +48,7 @@ if [ -d ~/.oh-my-zsh ]; then
 	builtin cd "$P"
 
 	# set theme and add syntax plugin
-	sed -e 's/^ZSH_THEME=.*$/if [[ $TERM == "screen-256color" ]]; then ZSH_THEME="sbell-screen" else ZSH_THEME="sbell" fi/' \
+	sed -e 's/^ZSH_THEME=.*$/if [[ "$TERM" == "screen-256color" ]]; then ZSH_THEME="sbell-screen" else ZSH_THEME="sbell" fi/' \
 		-e 's/^plugins=(\(.*\))/plugins=(\1 zsh-syntax-highlighting)/' \
 		-e 's/zsh-syntax-highlighting zsh-syntax-highlighting/zsh-syntax-highlighting/' \
 		~/.zshrc > $ZSHRC_TMP

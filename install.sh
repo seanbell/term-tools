@@ -84,8 +84,7 @@ for f in ~/.zshrc ~/.bashrc; do
 			echo "[[ -s \"$TERM_TOOLS_DIR/config/shrc.sh\" ]] && source \"$TERM_TOOLS_DIR/config/shrc.sh\"" >> $f
 		fi
 		if [[ $(grep -c 'source "$TERM_TOOLS_DIR/config/shrc-tmux.sh"' $f) == "0" ]]; then
-			echo '# This line starts all new shells inside tmux (if tmux is installed and set up).' >> $f
-			echo '# It must be the last command in this file.' >> $f
+			echo '# Start all new shells inside tmux (if installed).  It must be the last command in this file.' >> $f
 			echo '[[ -s "$TERM_TOOLS_DIR/config/shrc-tmux.sh" ]] && source "$TERM_TOOLS_DIR/config/shrc-tmux.sh"' >> $f
 		fi
 	fi
