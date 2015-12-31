@@ -81,7 +81,6 @@ for f in ~/.zshrc ~/.bashrc; do
 			echo '' >> $f
 			echo '# TERM-TOOLS' >> $f
 			echo "# (patched by $TERM_TOOLS_DIR/install.sh on $(date))" >> $f
-			echo '' >> $f
 			echo "[[ -s \"$TERM_TOOLS_DIR/config/shrc.sh\" ]] && source \"$TERM_TOOLS_DIR/config/shrc.sh\"" >> $f
 		fi
 		if [[ $(grep -c 'source "$TERM_TOOLS_DIR/config/shrc-tmux.sh"' $f) == "0" ]]; then
