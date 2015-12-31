@@ -33,7 +33,9 @@ if [ -s /etc/zsh/zshrc ]; then
 	# have the cursor go to th END of the line, but Ubuntu has overwritten this
 	# ZSH default to go to the beginning of the line.  I think that's stupid,
 	# so I'm reverting back to the default behavior
-	sed -e 's/vi-up-line-or-history/up-line-or-history/g' -e 's/vi-down-line-or-history/down-line-or-history/' /etc/zsh/zshrc > $ZSHRC_TMP
+	sed -e 's/vi-up-line-or-history/up-line-or-history/g' \
+		-e 's/vi-down-line-or-history/down-line-or-history/' \
+		/etc/zsh/zshrc > $ZSHRC_TMP
 	sudo mv $ZSHRC_TMP /etc/zsh/zshrc
 fi
 
