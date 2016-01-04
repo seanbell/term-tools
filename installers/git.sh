@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# find term-tools directory
+if [ "$BASH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
+elif [ "$ZSH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
+fi
+builtin cd "$TERM_TOOLS_DIR"
+
 if command -v git >/dev/null 2>&1; then
 	echo "git: exists"
 elif command -v apt-get >/dev/null 2>&1; then
@@ -18,15 +26,14 @@ else
 fi
 
 # store git user info
-FIX_GIT_USER=~/term-tools/fix-git-user.sh
-git config -l | grep "^user" | sed 's/^/git config --global /' | sed 's/=/ "/' | sed 's/$/"/' > $FIX_GIT_USER
+FIX_GIT_USER="$TERM_TOOLS_DIR/fix-git-user.sh"
+git config -l | grep "^user" | sed 's/^/git config --global /' | sed 's/=/ "/' | sed 's/$/"/' > "$FIX_GIT_USER"
 
 # use template
-cp -f ~/term-tools/config/gitconfig-template ~/term-tools/config/gitconfig
+cp -f "$TERM_TOOLS_DIR/config/gitconfig-template" "$TERM_TOOLS_DIR/config/gitconfig"
 
 # this will fail if it already exists, so we are safe
-ln $@ -s ~/term-tools/config/gitconfig ~/.gitconfig
+ln $@ -s "$TERM_TOOLS_DIR/config/gitconfig" ~/.gitconfig
 
-source $FIX_GIT_USER
-rm $FIX_GIT_USER
-
+source "$FIX_GIT_USER"
+rm "$FIX_GIT_USER"

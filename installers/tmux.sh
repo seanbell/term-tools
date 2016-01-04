@@ -1,10 +1,18 @@
 #!/bin/bash
 set -e
 
+# find term-tools directory
+if [ "$BASH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
+elif [ "$ZSH_VERSION" ]; then
+	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
+fi
+builtin cd "$TERM_TOOLS_DIR"
+
 ## tmux
 
-if command -v tmux >/dev/null 2>&1 && [[ $(tmux -V) == "tmux 1.9a" ]]; then
-	echo "tmux 1.9a: exists"
+if command -v tmux >/dev/null 2>&1 && [[ "$(tmux -V)" == "tmux 2.0" ]]; then
+	echo "tmux 2.0: exists"
 elif command -v apt-get >/dev/null 2>&1; then
 	# ubuntu
 	sudo add-apt-repository -y ppa:pi-rho/dev
@@ -18,12 +26,12 @@ elif command -v /opt/local/bin/port >/dev/null 2>&1; then
 	# macport
 	sudo port install tmux
 else
-	echo "ERROR: tmux 1.9a is not installed"
+	echo "ERROR: tmux 2.0 is not installed"
 	exit 1
 fi
 
 tmux -V
-ln $@ -sn ~/term-tools/config/tmux.conf ~/.tmux.conf
+ln $@ -sn "$TERM_TOOLS_DIR/config/tmux.conf" ~/.tmux.conf
 
 ### teamocil
 #

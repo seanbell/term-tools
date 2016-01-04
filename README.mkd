@@ -103,3 +103,9 @@ This will clone the repository to `~/term-tools` and then run the installer
 
  * Editing Python hangs sometimes, since jedi is a little buggy.  You can
    disable these features by entering paste mode (F2).
+
+## INSTALLING VIM FROM SOURCE (UBUNTU ONLY)
+
+The `installers/vim.sh` installer optionally installs vim from source on
+Ubuntu.  It uses `checkinstall` which creates a fake Debian package to track
+what was installed.  To uninstall, run `sudo dpkg -r vim`.

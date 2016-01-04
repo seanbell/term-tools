@@ -1,7 +1,7 @@
 # Starts tmux for new terminals (Bash or Zsh)
 #
 # Put this at the END of your ~/.zshrc (or ~/.bashrc) -- NOTE that any commands after this line will not run.
-#    source ~/term-tools/config/shrc-tmux.sh
+#    source "$TERM_TOOLS_DIR/config/shrc-tmux.sh"
 # This important restriction should be commented in ~/.zshrc (or ~/.bashrc) when you add the line.
 #
 
