@@ -41,6 +41,22 @@ def is_cmd(cmd):
     return os.system("command -v %s >/dev/null 2>&1" % cmd.split()[0]) == 0
 
 
+def has_rubber():
+    try:
+        import rubber
+    except ImportError:
+        return False
+    try:
+        from rubber.cmdline import Main
+        return True
+    except ImportError:
+        print_err("WARNING: rubber is installed, but rubber.cmdline does not "
+                  "exist.  This could mean that rubber is installed with BOTH "
+                  "apt-get and with pip.  If that is the case, uninstall the pip "
+                  "version and only keep the apt-get version.")
+        return False
+
+
 def ensure_cmds(commands):
     """ Makes sure that the given commands are available """
     for cmd in commands:
@@ -66,13 +82,16 @@ def get_dependencies(path):
 
 def get_compiler():
     """ Returns a function that compiles a list of files """
-    if is_cmd("rubber"):
-        return lambda x: 0 == os.system("rubber --pdf %s" % ' '.join(x))
+    if has_rubber():
+        def ret(x):
+            from rubber.cmdline import Main
+            return Main()(*(['--pdf'] + x))
         print_msg('Compiler: rubber')
+        return ret
     elif is_cmd("latexmk"):
+        print_msg('Compiler: latexmk')
         return lambda x: 0 == os.system("latexmk -pdf -pdflatex='pdflatex "
                                         "-interaction=nonstopmode' -use-make %s" % ' '.join(x))
-        print_msg('Compiler: latexmk')
     else:
         print_err("Error: no LaTeX make-style compiler")
         if is_ubuntu():
@@ -216,6 +235,11 @@ if __name__ == '__main__':
         print_msg(
             'Note: if there is only one .tex file, you can omit the argument')
         exit(1)
+
+    for source in sources:
+        if not os.path.exists(source):
+            print_err("Error: could not find '%s'" % source)
+            exit(1)
 
     # find commands to use
     make = get_compiler()
