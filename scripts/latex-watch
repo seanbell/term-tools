@@ -85,7 +85,7 @@ def get_compiler():
     if has_rubber():
         def ret(x):
             from rubber.cmdline import Main
-            return Main()(*(['--pdf'] + x))
+            return Main()(['--pdf'] + x)
         print_msg('Compiler: rubber')
         return ret
     elif is_cmd("latexmk"):
@@ -222,13 +222,19 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         arglist = sys.argv[1:]
     else:
+        # otherwise a file designated as latexmain
         arglist = [re.sub(r'\.latexmain$', '', f) for f in glob.glob('*.tex.latexmain')]
         if not arglist:
-            arglist = glob.glob('*.tex')
+            # otherwise look for a documentclass file
+            arglist = []
+            for f in glob.glob('*.tex'):
+                for line in open(f):
+                    if line.strip().startswith(r'\documentclass'):
+                        arglist.append(f)
+                        break
 
     sources = list(set([os.path.splitext(f)[0] + '.tex' for f in arglist]))
     pdfs = [os.path.splitext(f)[0] + '.pdf' for f in sources]
-    print_msg('Sources: %s' % sources)
 
     if len(sources) < 1:
         print_err('\nUsage: %s <file1.tex> [<file2.tex> ...]' % sys.argv[0])
@@ -236,6 +242,7 @@ if __name__ == '__main__':
             'Note: if there is only one .tex file, you can omit the argument')
         exit(1)
 
+    print_msg('Sources: %s' % sources)
     for source in sources:
         if not os.path.exists(source):
             print_err("Error: could not find '%s'" % source)
