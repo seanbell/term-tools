@@ -388,7 +388,7 @@
 " FileType tabs, folding, wrapping, spelling {{{
 
 	" Enable spell-check on text-like filetypes
-	autocmd FileType txt,tex,html,rst,*.mkd,*.md set spell
+	autocmd FileType txt,tex,html,rst,markdown set spell
 
 	" Python -- whitespace sensitive
 	autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
@@ -410,6 +410,9 @@
 
 	" Javascript -- 2-space tabs
 	autocmd FileType javascript setl expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+	" Markdown
+	au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.md  set filetype=markdown
 
 	" Config files
 	au BufNewFile,BufRead /etc/nginx/*   set filetype=nginx
