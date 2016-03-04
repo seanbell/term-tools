@@ -412,9 +412,12 @@
 	autocmd FileType javascript setl expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 	" Config files
-	au BufNewFile,BufRead /etc/nginx/*   setf nginx
-	au BufNewFile,BufRead /etc/apache2/* setf apache
-	au BufNewFile,BufRead /etc/hosts     setf hostconf
+	au BufNewFile,BufRead /etc/nginx/*   set filetype=nginx
+	au BufNewFile,BufRead /etc/apache2/* set filetype=apache
+	au BufNewFile,BufRead /etc/hosts     set filetype=hostconf
+
+	" Django: template-aware html
+	au BufNewFile,BufRead *.html  set filetype=htmldjango
 
 " }}}
 
