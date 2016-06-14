@@ -419,6 +419,9 @@
 	au BufNewFile,BufRead /etc/apache2/* set filetype=apache
 	au BufNewFile,BufRead /etc/hosts     set filetype=hostconf
 
+	" Django: template-aware html
+	au BufNewFile,BufRead *.html  set filetype=htmldjango
+
 " }}}
 
 " Plugin config {{{
