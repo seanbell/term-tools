@@ -16,62 +16,64 @@ if [ -f /proc/version ] && [ $(grep -c Ubuntu /proc/version) -gt 0 ]; then
 		# header for vim startify
 		sudo apt-get install -y cowsay fortune fortunes-off fortunes-bofh-excuses
 
-		# version to install
-		VIMVERSION="v7.4.1004"
-		VIMRUNTIMEDIR="/usr/share/vim/vim74"
+		sudo apt-get install -y vim-gnome
 
-		read -r -p "Install vim $VIMVERSION from source? [Y/n] " response
-		if [ -z "$response" ] || [[ $response =~ ^[Yy]$ ]] ;  then
-
-			####
-			# BUILD NEWER VIM FROM SOURCE
-			# Based on: https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
-			# uninstall repo version
-
-			echo "Uninstall old vim..."
-			sudo apt-get remove -y vim vim-runtime vim-gnome gvim \
-				vim-tiny vim-common vim-gui-common
-			sudo dpkg -r vim
-
-			echo "Install vim prerequisites..."
-			sudo apt-get install -y \
-				libncurses5-dev libgnome2-dev libgnomeui-dev \
-				libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-				libcairo2-dev libx11-dev libxpm-dev libxt-dev \
-				python-dev ruby-dev mercurial checkinstall
-
-			echo "Clone vim source code to vim-src/..."
-			sudo rm -rf "$TERM_TOOLS_DIR/vim-src"
-			git clone https://github.com/vim/vim.git "$TERM_TOOLS_DIR/vim-src"
-			git checkout "$VIMVERSION"
-
-			echo "Build vim from source..."
-			P="$(pwd)"
-			cd "$TERM_TOOLS_DIR/vim-src"
-			./configure \
-				--with-features=huge \
-				--enable-rubyinterp \
-				--enable-pythoninterp \
-				--with-python-config-dir=/usr/lib/python2.7-config \
-				--enable-perlinterp \
-				--enable-luainterp \
-				--enable-gui=gtk2 \
-				--enable-cscope \
-				--prefix=/usr
-			make VIMRUNTIMEDIR="$VIMRUNTIMEDIR"
-			sudo checkinstall --pkgname=vim --pkgversion="$VIMVERSION" --pkgsrc="$(pwd)"
-			cd "$P"
-
-			echo "Update alternatives"
-			sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
-			sudo update-alternatives --set editor /usr/bin/vim
-			sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
-			sudo update-alternatives --set vi /usr/bin/vim
-
-			echo "Done building vim"
-		else
-			sudo apt-get install -y vim-gnome
-		fi
+#		# version to install
+#		VIMVERSION="v7.4.1004"
+#		VIMRUNTIMEDIR="/usr/share/vim/vim74"
+#
+#		read -r -p "Install vim $VIMVERSION from source? [Y/n] " response
+#		if [ -z "$response" ] || [[ $response =~ ^[Yy]$ ]] ;  then
+#
+#			####
+#			# BUILD NEWER VIM FROM SOURCE
+#			# Based on: https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+#			# uninstall repo version
+#
+#			echo "Uninstall old vim..."
+#			sudo apt-get remove -y vim vim-runtime vim-gnome gvim \
+#				vim-tiny vim-common vim-gui-common
+#			sudo dpkg -r vim
+#
+#			echo "Install vim prerequisites..."
+#			sudo apt-get install -y \
+#				libncurses5-dev libgnome2-dev libgnomeui-dev \
+#				libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+#				libcairo2-dev libx11-dev libxpm-dev libxt-dev \
+#				python-dev ruby-dev mercurial checkinstall
+#
+#			echo "Clone vim source code to vim-src/..."
+#			sudo rm -rf "$TERM_TOOLS_DIR/vim-src"
+#			git clone https://github.com/vim/vim.git "$TERM_TOOLS_DIR/vim-src"
+#			git checkout "$VIMVERSION"
+#
+#			echo "Build vim from source..."
+#			P="$(pwd)"
+#			cd "$TERM_TOOLS_DIR/vim-src"
+#			./configure \
+#				--with-features=huge \
+#				--enable-rubyinterp \
+#				--enable-pythoninterp \
+#				--with-python-config-dir=/usr/lib/python2.7-config \
+#				--enable-perlinterp \
+#				--enable-luainterp \
+#				--enable-gui=gtk2 \
+#				--enable-cscope \
+#				--prefix=/usr
+#			make VIMRUNTIMEDIR="$VIMRUNTIMEDIR"
+#			sudo checkinstall --pkgname=vim --pkgversion="$VIMVERSION" --pkgsrc="$(pwd)"
+#			cd "$P"
+#
+#			echo "Update alternatives"
+#			sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
+#			sudo update-alternatives --set editor /usr/bin/vim
+#			sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
+#			sudo update-alternatives --set vi /usr/bin/vim
+#
+#			echo "Done building vim"
+#		else
+#			sudo apt-get install -y vim-gnome
+#		fi
 	else
 		echo "Cannot find apt-get"
 		exit 1

@@ -51,6 +51,7 @@ fi
 
 # ack
 alias ack='ack-grep'
+alias sc='starcluster'
 
 # ls with a 1-second timeout
 if uname | grep Darwin > /dev/null; then
