@@ -50,9 +50,6 @@
 [submodule "vim/bundle/tabman"]
 	path = vim/bundle/tabman
 	url = https://github.com/kien/tabman.vim.git
-[submodule "autojump"]
-	path = autojump
-	url = https://github.com/joelthelion/autojump.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git

@@ -10,11 +10,11 @@ released their scripts!
 #### Using `vim`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen1.png?raw=true)
 
-#### Using `zsh` and `autojump`
+#### Using `zsh`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
- * Installs and configures `autojump`, `solarized`, `zsh`, `oh-my-zsh`
+ * Installs and configures `solarized`, `zsh`, `oh-my-zsh`
  * Syntax highlighting in `less`
  * Autocomplete in Python shell
  * Shortcuts for `git`
@@ -57,8 +57,6 @@ have `term-tools` working on both OSX and Ubuntu.
 
 4. Make sure that this is added to the end of your `~/.bashrc` and `~/.zshrc`:
    <pre>[[ -s ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh</pre>
-   (`shrc.sh` already includes the autojump include code -- no need to include
-   it twice).
 
 5. Create a Gnome Terminal profile "solarized", run the installer
    (`installer.sh`) in `gnome-terminal-colors-solarized`, and then make
@@ -80,10 +78,7 @@ This will clone the repository to `~/term-tools` and then run the installer
 
 ## USAGE
 
-1. The Vim commands are detailed in `~/.vimrc`
-
-2. For autojump, use the command `j` with a substring of the directly you want
-   to visit (that you have previously visited since installing these tools)
+The Vim commands are detailed in `~/.vimrc`
 
 ## SOLUTIONS TO POSSIBLE ISSUES
 
