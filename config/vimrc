@@ -437,7 +437,7 @@
 
 	" Powerline -- fancy status line {{{
 
-		let g:Powerline_symbols = 'fancy'
+		" let g:Powerline_symbols = 'fancy'
 		set laststatus=2  " 2 means always show status
 
 	" }}}
@@ -665,8 +665,8 @@
 	" Syntastic -- inline syntax errors {{{
 
 		" fancy warning symbols
-		let g:syntastic_error_symbol = '✗'
-		let g:syntastic_warning_symbol = '⚠'
+		"let g:syntastic_error_symbol = '✗'
+		"let g:syntastic_warning_symbol = ' ⚠'
 
 		" turn off default checking for c/c++
 		let g:syntastic_mode_map = {
@@ -776,18 +776,18 @@
 		let g:pymode_doc = 0
 		let g:pymode_lint_on_fly = 0
 		let g:pymode_lint_checkers = ['pyflakes', 'pylint', 'pep8', 'mccabe']
-		let g:pymode_lint_ignore = "R0912,W0401,W0511,W0622,W0702,W0704,E309,E501,R0914,R0911,C901,E265,E114,E116,E266,W391,E731"
+		let g:pymode_lint_ignore = "R0912,W0401,W0511,W0622,W0702,W0704,E309,E501,R0914,R0911,C901,E265,E114,E116,E266,W391,E731,C0111,F0401,W0102,E1002,C1001,W0201,W0603,W0703"
 		let g:pymode_lint_jump = 0
 		let g:pymode_breakpoint_key = '<leader>bp'
 		let g:pymode_rope = 0
 		let g:pymode_rope_completion = 0
 		let g:pymode_folding = 1
-		let g:pymode_lint_error_symbol = '✗'
-		let g:pymode_lint_todo_symbol = '⚠'
-		let g:pymode_lint_comment_symbol = '⚠'
-		let g:pymode_lint_visual_symbol = '⚠'
-		let g:pymode_lint_info_symbol = '⚠'
-		let g:pymode_lint_pyflakes_symbol = '⚠'
+		"let g:pymode_lint_error_symbol = '✗'
+		"let g:pymode_lint_todo_symbol = '⚠'
+		"let g:pymode_lint_comment_symbol = '⚠'
+		"let g:pymode_lint_visual_symbol = '⚠'
+		"let g:pymode_lint_info_symbol = '⚠'
+		"let g:pymode_lint_pyflakes_symbol = '⚠'
 
 		" Python jedi
 		"   (jedi#auto_vim_configuration sets completeopt to include a pesky window at
