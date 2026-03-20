@@ -17,6 +17,7 @@ else
 fi
 
 # Install Python CLI tools via pipx (respects PEP 668 externally-managed environments)
+
 if ! command -v pipx >/dev/null 2>&1; then
 	pkg_install pipx
 fi
