@@ -30,22 +30,35 @@ if [[ "$TERM" == "xterm" ]]; then
 fi
 
 # solarized color scheme
-if command -v dircolors >/dev/null 2>&1; then
-	eval $(dircolors $TERM_TOOLS_DIR/dircolors-solarized/dircolors.ansi-dark)
+if command -v gdircolors >/dev/null 2>&1; then
+	eval $(gdircolors "$TERM_TOOLS_DIR/dircolors-solarized/dircolors.ansi-dark")
+elif command -v dircolors >/dev/null 2>&1; then
+	eval $(dircolors "$TERM_TOOLS_DIR/dircolors-solarized/dircolors.ansi-dark")
 fi
 
 # syntax highlighting in less
+_lesspipe=""
 if [[ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
-  export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-  export LESS=' -R '
+	_lesspipe="/usr/share/source-highlight/src-hilite-lesspipe.sh"
+elif command -v brew >/dev/null 2>&1; then
+	_brew_lesspipe="$(brew --prefix)/share/source-highlight/src-hilite-lesspipe.sh"
+	if [[ -e "$_brew_lesspipe" ]]; then
+		_lesspipe="$_brew_lesspipe"
+	fi
 fi
+if [[ -n "$_lesspipe" ]]; then
+	export LESSOPEN="| $_lesspipe %s"
+	export LESS=' -R '
+fi
+unset _lesspipe _brew_lesspipe
 
 # python autocomplete
 [[ -s ~/.pythonrc ]] && export PYTHONSTARTUP=~/.pythonrc
 
-# ack
-alias ack='ack-grep'
-alias sc='starcluster'
+# ack -- on Linux it may be installed as ack-grep
+if ! command -v ack >/dev/null 2>&1 && command -v ack-grep >/dev/null 2>&1; then
+	alias ack='ack-grep'
+fi
 
 # ls with a 1-second timeout
 if uname | grep Darwin > /dev/null; then
@@ -63,7 +76,6 @@ fi
 # see http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty stop undef
 stty -ixon
-stty 115200
 
 # ZSH-SPECIFIC CONFIG
 if [ "$ZSH_VERSION" ]; then

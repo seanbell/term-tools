@@ -7,18 +7,19 @@ elif [ "$ZSH_VERSION" ]; then
 	export TERM_TOOLS_DIR="$(builtin cd "$( dirname "${(%):-%N}" )/.." && pwd)"
 fi
 builtin cd "$TERM_TOOLS_DIR"
+source "$TERM_TOOLS_DIR/installers/_common.sh"
 
-if command -v ack-grep >/dev/null 2>&1; then
+if command -v ack >/dev/null 2>&1 || command -v ack-grep >/dev/null 2>&1; then
 	echo "ack: exists"
-elif command -v apt-get >/dev/null 2>&1; then
-	# ubuntu
+elif [ "$PKG_MANAGER" = "apt-get" ]; then
 	sudo apt-get install -y ack-grep
-elif command -v brew >/dev/null 2>&1; then
-	# homebrew
+elif [ "$PKG_MANAGER" = "brew" ]; then
 	brew install ack
+elif [ "$PKG_MANAGER" = "dnf" ]; then
+	sudo dnf install -y ack
 else
 	echo "ERROR: ack is not installed"
 	exit 1
 fi
 
-ln $@ -s "$TERM_TOOLS_DIR/config/ackrc" ~/.ackrc
+ln -snf "$@" "$TERM_TOOLS_DIR/config/ackrc" ~/.ackrc

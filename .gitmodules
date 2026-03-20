@@ -3,13 +3,13 @@
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/closetag"]
 	path = vim/bundle/closetag
-	url = https://github.com/docunext/closetag.vim.git
+	url = https://github.com/alvan/vim-closetag.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
+	url = https://github.com/preservim/nerdcommenter.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/bundle/showmarks"]
 	path = vim/bundle/showmarks
 	url = https://github.com/vim-scripts/ShowMarks.git
@@ -19,34 +19,31 @@
 	url = https://github.com/ervandew/supertab.git
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
+	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/latex"]
 	path = vim/bundle/latex
 	url = https://github.com/seanbell/vim-latex
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
+	url = https://github.com/preservim/tagbar.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = https://github.com/preservim/nerdtree.git
 [submodule "vim/bundle/fswitch"]
 	path = vim/bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
 [submodule "vim/bundle/gitignore"]
 	path = vim/bundle/gitignore
 	url = https://github.com/vitaly/vim-gitignore.git
-[submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
-	url = https://github.com/sjl/gundo.vim.git
+[submodule "vim/bundle/undotree"]
+	path = vim/bundle/undotree
+	url = https://github.com/mbbill/undotree.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim.git
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "vim/bundle/tabman"]
 	path = vim/bundle/tabman
 	url = https://github.com/kien/tabman.vim.git
@@ -58,7 +55,7 @@
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
 [submodule "vim/bundle/rainbow-parentheses"]
 	path = vim/bundle/rainbow-parentheses
-	url = https://github.com/kien/rainbow_parentheses.vim.git
+	url = https://github.com/junegunn/rainbow_parentheses.vim.git
 [submodule "oh-my-zsh-custom/zsh-syntax-highlighting"]
 	path = oh-my-zsh-custom/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -108,7 +105,7 @@
 	url = https://github.com/tell-k/vim-autopep8
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
-	url = https://github.com/klen/python-mode
+	url = https://github.com/python-mode/python-mode
 [submodule "vim/bundle/nerdtree-tabs"]
 	path = vim/bundle/nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs

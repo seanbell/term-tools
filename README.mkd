@@ -1,11 +1,9 @@
 # TERM TOOLS
 
-This repository contains my terminal config and plugins, mostly focused around
-zsh and vim.  Most of this repository is pieced together from existing
-configurations and hard work by other programmers.  Many thanks to those who
-released their scripts!
+Terminal config and plugins, focused around zsh, vim, and tmux. Uses
+[Solarized](https://ethanschoonover.com/solarized/) color scheme throughout.
 
-## SREENSHOTS
+## SCREENSHOTS
 
 #### Using `vim`
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen1.png?raw=true)
@@ -14,93 +12,96 @@ released their scripts!
 ![](https://github.com/seanbell/term-tools/blob/master/screenshots/screen2.png?raw=true)
 
 ## FEATURES
- * Installs and configures `solarized`, `zsh`, `oh-my-zsh`
+
+ * Installs and configures `solarized`, `zsh`, `oh-my-zsh`, `tmux`
  * Syntax highlighting in `less`
  * Autocomplete in Python shell
- * Shortcuts for `git`
+ * Shortcuts for `git` (see `git lg`, `git st`, `git df`, etc.)
  * Improved `~/.vimrc` key mappings
- * Packages the best Vim plugins: `ack` `autopep8` `closetag` `coffee-script`
-   `ctrlp` `django-support` `easymotion` `fswitch` `fugitive` `gitignore`
-   `gundo` `hugefile` `javascript` `jedi` `latex` `less` `matchit`
-   `nerdcommenter` `nerdtree` `powerline` `rainbow-parentheses` `seek`
+ * Vim plugins: `ack` `autopep8` `closetag` `coffee-script`
+   `ctrlp` `easymotion` `fswitch` `fugitive` `gitignore`
+   `javascript` `jedi` `latex` `less` `matchit`
+   `nerdcommenter` `nerdtree` `rainbow-parentheses` `seek`
    `showmarks` `signify` `solarized` `startify` `supertab` `surround`
-   `syntastic` `tabman` `tagbar` `vimux` `vimux-pyutils` `yankstack`
+   `syntastic` `tabman` `tagbar` `undotree` `vimux` `vimux-pyutils` `yankstack`
  * Custom vim scripts: improved text-wrapping with `Q`,
-   delete-trailing-whitespace, render python `lambda` as `λ`, other things I
-   forget
- * Smart `ls` after `cd`: if `ls` takes more than 1 second to respond, it is
-   suppressed
- * More things I can't think of
+   delete-trailing-whitespace, and more
+ * Smart `ls` after `cd`: suppressed if `ls` takes more than 1 second
+ * Unified dark/light color scheme toggle for vim and tmux
+ * Python linting tools installed via `pipx` (flake8, pylint, isort, etc.)
 
-## INSTALLATION INSTRUCTIONS
+## INSTALLATION
 
-These instructions are for Ubuntu, but they can be easily adapted for OSX.  I
-have `term-tools` working on both OSX and Ubuntu.
+Works on **macOS** (Homebrew) and **Linux** (apt-get, dnf).
 
-0. Checkout term-tools:
-   <pre>cd $HOME; git clone git://github.com/seanbell/term-tools.git</pre>
+1. Clone:
 
-   If you want to install these elsewhere, you need to search the scripts for
-   `~/term-tools` and change them to the new location (sorry).
+        cd $HOME
+        git clone https://github.com/seanbell/term-tools.git
 
-1. Install patched Ubuntu fonts for the `powerline` plugin.  Open
-   `ubuntu-font-family-0.80/` using the file manager, open each of
-   `UbuntuMono-*-Powerline.ttf` and click install.
+2. Back up and remove any existing `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
+   `~/.vim`, and `~/.tmux.conf`.
 
-2. Backup and delete (aka `mv`) your `~/.zshrc`, `~/.vimrc`, `~/.gvimrc`,
-   `~/.vim`, and `~/.tmux.conf` files if you have them.
+3. Install:
 
-3. Install everything with `./install.sh`.  You shouldn't need to run it with
-   `sudo`, though the script will make calls to `sudo` internally.  It will ask
-   whether each component should be installed.  Run with `-f` to overwrite any
-   existing config you may have.
+        cd ~/term-tools
+        bash install.sh
 
-4. Make sure that this is added to the end of your `~/.bashrc` and `~/.zshrc`:
-   <pre>[[ -s ~/term-tools/config/shrc.sh ]] && source ~/term-tools/config/shrc.sh</pre>
+   The script will ask whether to install each component. Run with `-f` to
+   overwrite existing config files.
 
-5. Create a Gnome Terminal profile "solarized", run the installer
-   (`installer.sh`) in `gnome-terminal-colors-solarized`, and then make
-   "solarized" the default Gnome Terminal profile.  In that profile, make the
-   font `Ubuntu Mono for Powerline 13`.
+4. Set zsh as your default shell (if the installer didn't do it):
 
-6. Suggested: remap caps lock to escape -- open "keyboard layout" from the
-   Ubuntu menu (super key) choose "options..." then "Caps lock key behavior".
-   Select "make caps lock an additional escape".  This is probably the single
-   best improvement I've done to my workflow.
+        chsh -s $(which zsh)    # macOS
+        sudo chsh $USER -s /bin/zsh  # Linux
 
-## REMOTE SERVER INSTALL
+5. Restart your terminal.
 
-If on a remote server, you can use this to more quickly run the installer:
+### Remote server install
 
-	wget --no-check-certificate https://raw.github.com/seanbell/term-tools/master/install.sh -O - | bash
+    curl -fsSL https://raw.github.com/seanbell/term-tools/main/install.sh | bash
 
-This will clone the repository to `~/term-tools` and then run the installer
+This clones to `~/term-tools` and runs the installer.
+
+## DARK / LIGHT MODE
+
+Vim and tmux share a Solarized dark/light toggle via `~/.term-light`:
+
+    touch ~/.term-light   # switch to light mode
+    rm ~/.term-light      # switch to dark mode
+
+After toggling:
+ * **vim**: reopen or run `:source ~/.vimrc` (also toggle live with `F6`)
+ * **tmux**: reload config with `C-a g`
 
 ## USAGE
 
-The Vim commands are detailed in `~/.vimrc`
+ * Vim commands are detailed in `config/vimrc` (organized by fold sections)
+ * tmux prefix is `C-a` (not the default `C-b` — see `config/tmux.conf` for all keybindings)
+ * Git aliases: `git lg` (log graph), `git st`, `git df`, `git co`, etc.
 
-## SOLUTIONS TO POSSIBLE ISSUES
+## TROUBLESHOOTING
 
- * Typing is slow in large directories -- `zsh-syntax-highlighting` looks at
-   files in the current directory, so the whole terminal becomes slow if `ls`
-   is slow.  If this is an issue for you, remove `zsh-syntax-highlighting` from
-   the line `plugins=( ... )` in `~/.zshrc`.
+ * **Typing is slow in large directories** — `zsh-syntax-highlighting` looks at
+   files in the current directory. Remove `zsh-syntax-highlighting` from the
+   `plugins=( ... )` line in `~/.zshrc` to fix.
 
- * The terminal uses the same keybindings as the `EDITOR` variable (defaults to
-   `vim` if not set).  To use a different set of keybindings (e.g. `emacs`
-   inside the shell but `vim` as the `EDITOR`), add this to your `~/.zshrc` and
-   `~/.bashrc` (must be before the line that sources `~/term-tools/config/shrc.sh`):
-	<pre>
-	export EDITOR="vim"
-	export TERM_EDITOR="emacs"
-	</pre>
+ * **Different keybindings for shell vs editor** — add this to `~/.zshrc` and
+   `~/.bashrc` (before the line that sources `shrc.sh`):
 
- * Editing Python hangs sometimes, since jedi is a little buggy.  You can
-   disable these features by entering paste mode (F2).
+        export EDITOR="vim"
+        export TERM_EDITOR="emacs"
 
-## INSTALLING VIM FROM SOURCE (UBUNTU ONLY)
+ * **Python editing hangs** — jedi can be slow. Enter paste mode with `F2`.
 
-The `installers/vim.sh` installer optionally installs vim from source on
-Ubuntu.  It uses `checkinstall` which creates a fake Debian package to track
-what was installed.  To uninstall, run `sudo dpkg -r vim`.
+## PLUGIN CHANGES (2026 modernization)
+
+ * `vim-powerline` removed (deprecated by author) — status line uses vim's
+   built-in `laststatus=2`. Consider [vim-airline](https://github.com/vim-airline/vim-airline)
+   if you want a fancy status line.
+ * `gundo` removed (requires Python 2) — replaced with
+   [undotree](https://github.com/mbbill/undotree) (`<leader>u` still works).
+ * Submodule URLs updated for repos that moved to new GitHub orgs
+   (scrooloose → preservim, Lokaltog → easymotion, kien → ctrlpvim, etc.)
+ * Python tools installed via `pipx` instead of `sudo pip install`.
+ * Fugitive commands updated: `Gstatus` → `Git`, `Gblame` → `Git blame`, etc.

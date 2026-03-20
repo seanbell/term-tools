@@ -23,7 +23,11 @@
 [branch]
 	autosetupmerge = true
 [push]
-	default = upstream
+	default = simple
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
 [mergetool "vimdiff3"]
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [mergetool "gvimdiff3"]
